@@ -179,17 +179,23 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       {/* Mobile top bar */}
       <header
-        className="md:hidden fixed top-0 left-0 right-0 z-30 h-14 flex items-center justify-between px-4 bg-sidebar/95 backdrop-blur border-b border-sidebar-border"
+        className="md:hidden fixed top-0 left-0 right-0 z-30 bg-sidebar/95 backdrop-blur border-b border-sidebar-border"
+        style={{
+          paddingTop: "env(safe-area-inset-top, 0px)",
+          paddingLeft: "env(safe-area-inset-left, 0px)",
+          paddingRight: "env(safe-area-inset-right, 0px)",
+        }}
         data-testid="mobile-header"
       >
+      <div className="h-14 flex items-center justify-between px-3">
         <button
           type="button"
           aria-label="Open navigation"
           onClick={() => setMobileOpen(true)}
-          className="p-2 -ml-2 text-foreground/85 hover:text-primary"
+          className="p-3 text-foreground/85 hover:text-primary"
           data-testid="button-mobile-menu"
         >
-          <Menu className="w-5 h-5" />
+          <Menu className="w-6 h-6" />
         </button>
         <Link href="/" data-testid="link-mobile-home">
           <div className="flex items-center gap-2 cursor-pointer">
@@ -201,7 +207,8 @@ export default function Layout({ children }: { children: ReactNode }) {
             </div>
           </div>
         </Link>
-        <div className="w-7" aria-hidden />
+        <div className="w-12" aria-hidden />
+      </div>
       </header>
 
       {/* Mobile sidebar drawer */}
@@ -226,7 +233,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         </div>
       )}
 
-      <main className="flex-1 min-w-0 relative overflow-hidden pt-14 md:pt-0">
+      <main className="flex-1 min-w-0 relative overflow-hidden mobile-safe-pt md:pt-0">
         <div className="starfield" aria-hidden />
         <div className="grain absolute inset-0 pointer-events-none z-[2]" aria-hidden />
         <div className="relative z-10">{children}</div>

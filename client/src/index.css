@@ -819,3 +819,11 @@
   .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after { inset: -1px; }
 }
+
+/* iOS PWA safe-area: push main content below the status bar + fixed header.
+   Scoped to mobile only so it cannot fight md:pt-0 on desktop. */
+@media (max-width: 767px) {
+  .mobile-safe-pt {
+    padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+  }
+}
