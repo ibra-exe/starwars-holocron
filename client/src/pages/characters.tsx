@@ -1,4 +1,6 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
+import { useSettings } from "@/lib/settings";
+import { playR2Chirp } from "@/lib/sounds";
 import { useHashAnchor } from "@/lib/useHashAnchor";
 import { CHARACTERS, findCharacter } from "@/data/characters";
 import { findFaction } from "@/data/factions";
@@ -61,6 +63,8 @@ export default function CharactersPage() {
   const [category, setCategory] = useState<(typeof CATEGORIES)[number]>("All");
   const [alignment, setAlignment] = useState<ForceAlignment | "All">("All");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const { sounds } = useSettings();
+  const openCard = useCallback((id: string) => { setSelectedId(id); if (sounds) playR2Chirp(); }, [sounds]);
 
   const items = useMemo(() => {
     return CHARACTERS.filter((c) => {
@@ -91,7 +95,7 @@ export default function CharactersPage() {
         description="Every major figure across the saga — with their lineage, affiliations, and the loyalty arcs that defined them."
       />
 
-      <div className="sticky top-0 z-20 -mx-8 px-8 py-4 mb-8 bg-background/85 backdrop-blur-md border-b border-border">
+      <div className="sticky top-0 sticky-below-header z-20 -mx-4 sm:-mx-6 md:-mx-8 px-4 sm:px-6 md:px-8 py-4 mb-8 bg-background/85 backdrop-blur-md border-b border-border">
         <div className="flex flex-wrap gap-3 items-center">
           <div className="relative">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -114,7 +118,7 @@ export default function CharactersPage() {
         {items.map((c) => (
           <button
             key={c.id}
-            onClick={() => setSelectedId(c.id)}
+            onClick={() => openCard(c.id)}
             className="text-left rounded-xl border border-border bg-card p-5 hover-elevate"
             data-testid={`card-character-${c.id}`}
           >
@@ -135,7 +139,7 @@ export default function CharactersPage() {
         ))}
       </div>
 
-      {selected && <CharacterDrawer character={selected} onClose={() => setSelectedId(null)} onSelect={(id) => setSelectedId(id)} />}
+      {selected && <CharacterDrawer character={selected} onClose={() => setSelectedId(null)} onSelect={(id) => openCard(id)} />}
     </div>
   );
 }
@@ -168,7 +172,7 @@ function CharacterDrawer({ character: c, onClose, onSelect }: { character: Chara
         className="w-full md:max-w-4xl bg-card border-l border-border overflow-y-auto"
         style={{ borderLeftColor: plateColor, borderLeftWidth: 4 }}
       >
-        <div className="flex items-center justify-between px-4 md:px-7 pt-6 pb-2">
+        <div className="flex items-center justify-between px-4 md:px-7 pb-2 detail-panel-header">
           <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">Character Dossier</span>
           <button onClick={onClose} className="text-muted-foreground hover:text-foreground text-2xl leading-none" data-testid="button-close-character">×</button>
         </div>

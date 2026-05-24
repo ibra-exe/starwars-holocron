@@ -1,6 +1,7 @@
 import { useSettings } from "@/lib/settings";
+import { playToggle } from "@/lib/sounds";
 import { PageHeader } from "@/components/shared/Badges";
-import { Sparkles, Link2, EyeOff, Info, RefreshCw, Trash2 } from "lucide-react";
+import { Sparkles, Link2, EyeOff, Info, RefreshCw, Trash2, Zap, Volume2 } from "lucide-react";
 import { findEntityById } from "@/lib/entityIndex";
 import { setPendingAnchor } from "@/lib/useHashAnchor";
 import { useLocation } from "wouter";
@@ -13,6 +14,10 @@ export default function SettingsPage() {
     setSpoilerVeil,
     smartTooltip,
     setSmartTooltip,
+    animations,
+    setAnimations,
+    sounds,
+    setSounds,
     revealedIds,
     resetReveals,
     resetAll,
@@ -105,6 +110,26 @@ export default function SettingsPage() {
               </div>
             )}
           </div>
+        </SettingsGroup>
+
+        <SettingsGroup title="Motion" icon={Zap}>
+          <Toggle
+            label="UI animations"
+            description="Slide-in menus, fade transitions, and smooth panel entrances. Disable for a snappier experience or if you prefer reduced motion."
+            value={animations}
+            onChange={(v) => { setAnimations(v); if (sounds) playToggle(v); }}
+            testId="toggle-animations"
+          />
+        </SettingsGroup>
+
+        <SettingsGroup title="Sound Effects" icon={Volume2}>
+          <Toggle
+            label="Star Wars UI sounds"
+            description="Lightsaber hum when the menu opens, R2-D2 chirps on profile cards, and subtle blips for settings toggles. Synthesized in-browser — no audio files downloaded."
+            value={sounds}
+            onChange={(v) => { setSounds(v); playToggle(v); }}
+            testId="toggle-sounds"
+          />
         </SettingsGroup>
 
         <SettingsGroup title="Daily Holocron" icon={Sparkles}>

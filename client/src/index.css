@@ -826,4 +826,13 @@
   .mobile-safe-pt {
     padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
   }
+  /* Sticky filter bars must sit below the fixed mobile header */
+  .sticky-below-header {
+    top: calc(3.5rem + env(safe-area-inset-top, 0px));
+  }
+}
+
+/* Detail panel (character/planet/etc. dossier) — safe area at top on iOS PWA */
+.detail-panel-header {
+  padding-top: max(1.5rem, calc(env(safe-area-inset-top, 0px) + 0.5rem));
 }

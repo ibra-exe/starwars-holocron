@@ -5,12 +5,16 @@ export interface HolocronSettings {
   spoilerVeil: boolean;       // blur known major spoilers until revealed
   revealedIds: string[];      // ids that the user has explicitly unveiled
   smartTooltip: boolean;      // show category chip on hover for auto-links
+  animations: boolean;        // enable UI motion (slide-ins, fades, etc.)
+  sounds: boolean;            // enable Star Wars-inspired UI sound effects
 }
 
 interface SettingsContextValue extends HolocronSettings {
   setAutoLink: (v: boolean) => void;
   setSpoilerVeil: (v: boolean) => void;
   setSmartTooltip: (v: boolean) => void;
+  setAnimations: (v: boolean) => void;
+  setSounds: (v: boolean) => void;
   reveal: (id: string) => void;
   resetReveals: () => void;
   isRevealed: (id: string) => boolean;
@@ -22,6 +26,8 @@ const DEFAULTS: HolocronSettings = {
   spoilerVeil: false,
   revealedIds: [],
   smartTooltip: true,
+  animations: true,
+  sounds: false,
 };
 
 const STORAGE_KEY = "holocron-settings-v1";
@@ -38,6 +44,8 @@ function readStored(): HolocronSettings {
       spoilerVeil: typeof parsed.spoilerVeil === "boolean" ? parsed.spoilerVeil : DEFAULTS.spoilerVeil,
       revealedIds: Array.isArray(parsed.revealedIds) ? parsed.revealedIds : DEFAULTS.revealedIds,
       smartTooltip: typeof parsed.smartTooltip === "boolean" ? parsed.smartTooltip : DEFAULTS.smartTooltip,
+      animations: typeof parsed.animations === "boolean" ? parsed.animations : DEFAULTS.animations,
+      sounds: typeof parsed.sounds === "boolean" ? parsed.sounds : DEFAULTS.sounds,
     };
   } catch {
     return DEFAULTS;
@@ -67,6 +75,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const setAutoLink = useCallback((v: boolean) => setState((s) => ({ ...s, autoLink: v })), []);
   const setSpoilerVeil = useCallback((v: boolean) => setState((s) => ({ ...s, spoilerVeil: v })), []);
   const setSmartTooltip = useCallback((v: boolean) => setState((s) => ({ ...s, smartTooltip: v })), []);
+  const setAnimations = useCallback((v: boolean) => setState((s) => ({ ...s, animations: v })), []);
+  const setSounds = useCallback((v: boolean) => setState((s) => ({ ...s, sounds: v })), []);
   const reveal = useCallback((id: string) => {
     setState((s) => (s.revealedIds.includes(id) ? s : { ...s, revealedIds: [...s.revealedIds, id] }));
   }, []);
@@ -81,6 +91,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
         setAutoLink,
         setSpoilerVeil,
         setSmartTooltip,
+        setAnimations,
+        setSounds,
         reveal,
         resetReveals,
         isRevealed,
@@ -101,6 +113,8 @@ export function useSettings(): SettingsContextValue {
       setAutoLink: () => {},
       setSpoilerVeil: () => {},
       setSmartTooltip: () => {},
+      setAnimations: () => {},
+      setSounds: () => {},
       reveal: () => {},
       resetReveals: () => {},
       isRevealed: () => false,

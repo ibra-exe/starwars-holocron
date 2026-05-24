@@ -22,8 +22,11 @@ import {
   Quote,
   Settings,
 } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode, useEffect, useState } from "react";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { useSettings } from "@/lib/settings";
+import { playMenuOpen, playMenuClose, playNavClick } from "@/lib/sounds";
 
 const NAV = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard, testId: "nav-dashboard" },
@@ -76,7 +79,7 @@ function HolocronLogo({ className = "" }: { className?: string }) {
   );
 }
 
-function SidebarContent({ location, onNavigate }: { location: string; onNavigate?: () => void }) {
+function SidebarContent({ location, onNavigate, onNavSound }: { location: string; onNavigate?: () => void; onNavSound?: () => void }) {
   return (
     <>
       <div className="px-6 py-6 border-b border-sidebar-border relative">
@@ -107,7 +110,7 @@ function SidebarContent({ location, onNavigate }: { location: string; onNavigate
           return (
             <Link key={item.href} href={item.href} data-testid={item.testId}>
               <div
-                onClick={onNavigate}
+                onClick={() => { onNavSound?.(); onNavigate?.(); }}
                 className={`group flex items-center gap-3 px-3 py-2 rounded-md text-[13px] cursor-pointer transition-all relative ${
                   active
                     ? "bg-primary/[0.08] text-primary"
@@ -150,6 +153,11 @@ function SidebarContent({ location, onNavigate }: { location: string; onNavigate
 export default function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { animations, sounds } = useSettings();
+
+  const openMenu = () => { setMobileOpen(true); if (sounds) playMenuOpen(); };
+  const closeMenu = () => { setMobileOpen(false); if (sounds) playMenuClose(); };
+  const navSound = () => { if (sounds) playNavClick(); };
 
   // Close mobile sidebar whenever the route changes
   useEffect(() => {
@@ -166,6 +174,11 @@ export default function Layout({ children }: { children: ReactNode }) {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const spring = animations
+    ? { type: "spring" as const, damping: 26, stiffness: 260, mass: 0.85 }
+    : { duration: 0 };
+  const fade = { duration: animations ? 0.18 : 0 };
+
   return (
     <div className="flex min-h-screen w-full">
       {/* Desktop sidebar */}
@@ -174,7 +187,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         data-testid="sidebar"
       >
         <div className="absolute top-0 right-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent pointer-events-none" />
-        <SidebarContent location={location} />
+        <SidebarContent location={location} onNavSound={navSound} />
       </aside>
 
       {/* Mobile top bar */}
@@ -191,7 +204,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <button
           type="button"
           aria-label="Open navigation"
-          onClick={() => setMobileOpen(true)}
+          onClick={openMenu}
           className="p-3 text-foreground/85 hover:text-primary"
           data-testid="button-mobile-menu"
         >
@@ -212,26 +225,44 @@ export default function Layout({ children }: { children: ReactNode }) {
       </header>
 
       {/* Mobile sidebar drawer */}
-      {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-50" data-testid="mobile-sidebar-overlay">
-          <div
-            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-            onClick={() => setMobileOpen(false)}
-          />
-          <aside className="absolute inset-y-0 left-0 w-72 max-w-[85vw] bg-sidebar text-sidebar-foreground border-r border-sidebar-border flex flex-col shadow-2xl">
-            <button
-              type="button"
-              aria-label="Close navigation"
-              onClick={() => setMobileOpen(false)}
-              className="absolute top-3 right-3 p-1.5 text-muted-foreground hover:text-foreground z-10"
-              data-testid="button-mobile-close"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            key="mobile-sidebar"
+            className="md:hidden fixed inset-0 z-50"
+            data-testid="mobile-sidebar-overlay"
+          >
+            <motion.div
+              className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={fade}
+              onClick={closeMenu}
+            />
+            <motion.aside
+              className="absolute inset-y-0 left-0 w-72 max-w-[85vw] bg-sidebar text-sidebar-foreground border-r border-sidebar-border flex flex-col shadow-2xl"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={spring}
+              style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
             >
-              <X className="w-4 h-4" />
-            </button>
-            <SidebarContent location={location} onNavigate={() => setMobileOpen(false)} />
-          </aside>
-        </div>
-      )}
+              <button
+                type="button"
+                aria-label="Close navigation"
+                onClick={closeMenu}
+                className="absolute right-3 p-1.5 text-muted-foreground hover:text-foreground z-10"
+                style={{ top: "calc(0.75rem + env(safe-area-inset-top, 0px))" }}
+                data-testid="button-mobile-close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+              <SidebarContent location={location} onNavigate={closeMenu} onNavSound={navSound} />
+            </motion.aside>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <main className="flex-1 min-w-0 relative overflow-hidden mobile-safe-pt md:pt-0">
         <div className="starfield" aria-hidden />
