@@ -115,28 +115,36 @@ export default function CharactersPage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-        {items.map((c) => (
-          <button
-            key={c.id}
-            onClick={() => openCard(c.id)}
-            className="text-left rounded-xl border border-border bg-card p-5 hover-elevate"
-            data-testid={`card-character-${c.id}`}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{c.category}</span>
-              <ImportanceBar value={c.importance} />
-            </div>
-            <div className="font-display text-base text-foreground leading-tight">{c.name}</div>
-            <div className="text-xs text-muted-foreground italic mt-0.5">{c.species}{c.homeworld ? ` · ${c.homeworld}` : ""}</div>
-            {c.rank && <div className="text-[11px] text-foreground/70 mt-1">{c.rank}</div>}
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              <AlignmentBadge value={c.forceAlignment} />
-              {c.forceSensitive && (
-                <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-primary/40 text-primary font-display">Force-Sensitive</span>
-              )}
-            </div>
-          </button>
-        ))}
+        {items.map((c) => {
+          const cardColor = ALIGNMENT_COLOR[c.forceAlignment] || "#f0c14b";
+          return (
+            <button
+              key={c.id}
+              onClick={() => openCard(c.id)}
+              className="text-left rounded-xl border border-border bg-card p-4 hover-elevate"
+              data-testid={`card-character-${c.id}`}
+            >
+              <div className="flex items-start gap-3 mb-2.5">
+                <CharacterAvatar character={c} color={cardColor} />
+                <div className="flex-1 min-w-0 pt-0.5">
+                  <div className="flex items-center justify-between gap-1 mb-1">
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display truncate">{c.category}</span>
+                    <ImportanceBar value={c.importance} />
+                  </div>
+                  <div className="font-display text-[13px] text-foreground leading-tight">{c.name}</div>
+                </div>
+              </div>
+              <div className="text-xs text-muted-foreground italic">{c.species}{c.homeworld ? ` · ${c.homeworld}` : ""}</div>
+              {c.rank && <div className="text-[11px] text-foreground/70 mt-1 truncate">{c.rank}</div>}
+              <div className="mt-2.5 flex flex-wrap gap-1.5">
+                <AlignmentBadge value={c.forceAlignment} />
+                {c.forceSensitive && (
+                  <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-primary/40 text-primary font-display">Force-Sensitive</span>
+                )}
+              </div>
+            </button>
+          );
+        })}
       </div>
 
       {selected && <CharacterDrawer character={selected} onClose={() => setSelectedId(null)} onSelect={(id) => openCard(id)} />}
@@ -162,6 +170,39 @@ function Pill<T extends string>({ label, value, setValue, options }: { label: st
   );
 }
 
+function CharacterAvatar({ character: c, color }: { character: Character; color: string }) {
+  const [imgError, setImgError] = useState(false);
+  const initials = getInitials(c.name, 2);
+  const gradient = `radial-gradient(circle at 35% 30%, ${color}cc 0%, ${color}55 45%, ${color}22 80%)`;
+
+  return (
+    <div
+      className="w-11 h-11 rounded-full shrink-0 flex items-center justify-center overflow-hidden text-[13px] font-display font-bold select-none"
+      style={{
+        background: (c.imageUrl && !imgError) ? "transparent" : gradient,
+        color,
+        border: `1.5px solid ${color}66`,
+        boxShadow: `0 0 10px ${color}33`,
+      }}
+    >
+      {c.imageUrl && !imgError ? (
+        <img
+          src={c.imageUrl}
+          alt=""
+          onError={() => setImgError(true)}
+          onLoad={(e) => {
+            const img = e.currentTarget;
+            if (img.naturalWidth === 300 && img.naturalHeight === 171) setImgError(true);
+          }}
+          className="w-full h-full object-cover object-top"
+        />
+      ) : (
+        initials
+      )}
+    </div>
+  );
+}
+
 function CharacterDrawer({ character: c, onClose, onSelect }: { character: Character; onClose: () => void; onSelect: (id: string) => void }) {
   const plateColor = ALIGNMENT_COLOR[c.forceAlignment] || "#f0c14b";
   return (
@@ -181,6 +222,7 @@ function CharacterDrawer({ character: c, onClose, onSelect }: { character: Chara
           {/* Portrait plate column */}
           <aside className="md:sticky md:top-4 self-start flex flex-col items-center py-4">
             <VisualPlate
+              imageUrl={c.imageUrl}
               initials={getInitials(c.name, 2)}
               color={plateColor}
               eyebrow={c.category}

@@ -159,7 +159,7 @@ export const ARTIFACTS: Artifact[] = [
     affiliations: ["mandalorians", "death-watch", "sith-order"],
     continuity: "Canon",
     importance: 5,
-    color: "#1a1a1a",
+    color: "#a8a8a8",
   },
   {
     id: "mace-windu-saber",

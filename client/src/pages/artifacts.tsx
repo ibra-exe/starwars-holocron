@@ -105,6 +105,15 @@ export default function ArtifactsPage() {
           <Pill label="Continuity" value={continuity} setValue={(v) => setContinuity(v as any)} options={[...CONTINUITIES]} />
           <div className="ml-auto text-xs text-muted-foreground font-display tracking-widest uppercase">{items.length} relics</div>
         </div>
+        {(category === "Lightsaber" || category === "Lightsaber Variant") && (
+          <p className="mt-2 text-[11px] text-muted-foreground leading-relaxed">
+            <span className="text-foreground/60 font-display uppercase tracking-wider text-[9px]">{category}</span>
+            {" — "}
+            {category === "Lightsaber"
+              ? "Standard single-blade plasma weapons — the classic cylindrical construction used by Jedi and Sith alike."
+              : "Non-standard constructions: the Darksaber's flat black blade, saberstaffs, inquisitor spinning designs, saber-pikes, and other unconventional forms."}
+          </p>
+        )}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
@@ -125,7 +134,14 @@ export default function ArtifactsPage() {
               <div className="font-display text-base text-foreground leading-tight">{a.name}</div>
               {a.type && <div className="text-xs text-muted-foreground italic mt-0.5">{a.type}</div>}
               {blade && (
-                <div className="mt-3 h-1.5 rounded-full overflow-hidden" style={{ background: blade, boxShadow: a.lightsaberColor !== "Black" ? `0 0 12px ${typeof blade === "string" && !blade.startsWith("linear") ? blade : "#fff"}66` : "none" }} />
+                <div className="mt-3 h-1.5 rounded-full" style={{
+                  background: a.lightsaberColor === "Black"
+                    ? "linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.38) 8%, #0a0a0a 18%, #000 50%, #0a0a0a 82%, rgba(255,255,255,0.38) 92%, rgba(255,255,255,0.08) 100%)"
+                    : blade,
+                  boxShadow: a.lightsaberColor === "Black"
+                    ? "0 0 5px rgba(255,255,255,0.22), inset 0 0 0 0.5px rgba(255,255,255,0.2)"
+                    : `0 0 12px ${typeof blade === "string" && !blade.startsWith("linear") ? blade : "#fff"}66`,
+                }} />
               )}
               <div className="mt-3 flex flex-wrap gap-1.5">
                 <ContinuityBadge value={a.continuity} />
@@ -199,8 +215,12 @@ function ArtifactDrawer({ artifact: a, onClose }: { artifact: Artifact; onClose:
                 <div
                   className="h-2.5 rounded-full"
                   style={{
-                    background: blade,
-                    boxShadow: a.lightsaberColor !== "Black" ? `0 0 22px ${typeof blade === "string" && !blade.startsWith("linear") ? blade : "#fff"}88, 0 0 6px #fff` : "0 0 8px #000",
+                    background: a.lightsaberColor === "Black"
+                      ? "linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.38) 8%, #0a0a0a 18%, #000 50%, #0a0a0a 82%, rgba(255,255,255,0.38) 92%, rgba(255,255,255,0.08) 100%)"
+                      : blade,
+                  boxShadow: a.lightsaberColor === "Black"
+                    ? "0 0 10px rgba(255,255,255,0.18), inset 0 0 0 1px rgba(255,255,255,0.2)"
+                    : `0 0 22px ${typeof blade === "string" && !blade.startsWith("linear") ? blade : "#fff"}88, 0 0 6px #fff`,
                   }}
                 />
                 <div className="mt-1 text-center text-[10px] font-display tracking-widest uppercase text-foreground/80">{a.lightsaberColor}</div>

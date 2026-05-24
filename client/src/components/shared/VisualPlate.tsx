@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface VisualPlateProps {
   // Visual content
+  imageUrl?: string;          // real photo — renders inside the gold ring when provided
   initials?: string;          // up to 2-3 chars
   symbol?: string;            // emoji / single glyph (preferred over initials when present)
   color: string;              // primary accent color for this entity (hex or css color string)
@@ -22,6 +23,7 @@ interface VisualPlateProps {
  * sigil with the entity's color as a radial gradient and bold initials/symbol.
  */
 export function VisualPlate({
+  imageUrl,
   initials,
   symbol,
   color,
@@ -33,11 +35,14 @@ export function VisualPlate({
   children,
   className = "",
 }: VisualPlateProps) {
+  const [imgError, setImgError] = useState(false);
+  const showImage = !!imageUrl && !imgError;
+
   const dim = size === "lg" ? 220 : 160;
   const fontSize = size === "lg" ? (symbol ? "5.5rem" : initials && initials.length >= 3 ? "2.5rem" : "3.5rem") : (symbol ? "4rem" : "2.5rem");
 
-  // Build the gradient stops using the entity color.
   const gradient = `radial-gradient(circle at 35% 30%, ${color}cc 0%, ${color}55 28%, ${color}22 55%, hsl(var(--background)) 90%)`;
+  const borderRadius = variant === "hex" ? "11%" : "50%";
 
   return (
     <div className={`flex flex-col items-center ${className}`} data-testid="visual-plate">
@@ -59,62 +64,96 @@ export function VisualPlate({
               : "inset 0 0 0 1px hsl(var(--gold) / 0.4)",
           }}
         >
-          {/* Inner disc with color gradient */}
+          {/* Inner disc */}
           <div
             className="relative w-full h-full flex items-center justify-center overflow-hidden"
             style={{
-              background: gradient,
-              borderRadius: variant === "hex" ? "11%" : "50%",
+              background: showImage ? "hsl(var(--background))" : gradient,
+              borderRadius,
               boxShadow: "inset 0 0 0 1px hsl(var(--background) / 0.6), inset 0 -30px 60px hsl(var(--background) / 0.6)",
             }}
           >
-            {/* Subtle scanlines overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-30"
-              style={{
-                background:
-                  "repeating-linear-gradient(180deg, transparent 0px, transparent 2px, hsl(var(--background) / 0.18) 3px, transparent 4px)",
-              }}
-            />
-            {/* Concentric rings */}
-            <svg
-              viewBox="0 0 100 100"
-              className="absolute inset-0 w-full h-full opacity-50"
-              fill="none"
-            >
-              <circle cx="50" cy="50" r="46" stroke={color} strokeOpacity="0.25" strokeWidth="0.3" />
-              <circle cx="50" cy="50" r="40" stroke={color} strokeOpacity="0.18" strokeWidth="0.3" strokeDasharray="1.5 2" />
-              <circle cx="50" cy="50" r="34" stroke="hsl(var(--gold))" strokeOpacity="0.25" strokeWidth="0.25" />
-              {/* HUD ticks */}
-              {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-                <line
-                  key={deg}
-                  x1="50"
-                  y1="6"
-                  x2="50"
-                  y2="10"
-                  stroke="hsl(var(--gold))"
-                  strokeOpacity="0.55"
-                  strokeWidth="0.6"
-                  transform={`rotate(${deg} 50 50)`}
+            {showImage ? (
+              <>
+                <img
+                  src={imageUrl}
+                  alt=""
+                  onError={() => setImgError(true)}
+                  onLoad={(e) => {
+                    const img = e.currentTarget;
+                    if (img.naturalWidth === 300 && img.naturalHeight === 171) setImgError(true);
+                  }}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  style={{ borderRadius }}
                 />
-              ))}
-            </svg>
-
-            {/* Glyph / initials */}
-            <div
-              className="relative font-display text-center select-none"
-              style={{
-                fontSize,
-                lineHeight: 1,
-                color: symbol ? "hsl(var(--foreground))" : color,
-                textShadow: `0 0 18px ${color}aa, 0 2px 6px rgb(0 0 0 / 0.5)`,
-                letterSpacing: initials ? "0.02em" : 0,
-                fontWeight: 700,
-              }}
-            >
-              {symbol || initials || "?"}
-            </div>
+                {/* Subtle vignette + scanline HUD overlay over photo */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at 50% 110%, ${color}44 0%, transparent 65%)`,
+                    borderRadius,
+                  }}
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-15"
+                  style={{
+                    background: "repeating-linear-gradient(180deg, transparent 0px, transparent 2px, hsl(var(--background) / 0.18) 3px, transparent 4px)",
+                  }}
+                />
+                <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full opacity-25" fill="none">
+                  <circle cx="50" cy="50" r="46" stroke={color} strokeOpacity="0.4" strokeWidth="0.4" />
+                  <circle cx="50" cy="50" r="40" stroke="hsl(var(--gold))" strokeOpacity="0.3" strokeWidth="0.3" strokeDasharray="1.5 2" />
+                </svg>
+              </>
+            ) : (
+              <>
+                {/* Subtle scanlines overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-30"
+                  style={{
+                    background:
+                      "repeating-linear-gradient(180deg, transparent 0px, transparent 2px, hsl(var(--background) / 0.18) 3px, transparent 4px)",
+                  }}
+                />
+                {/* Concentric rings */}
+                <svg
+                  viewBox="0 0 100 100"
+                  className="absolute inset-0 w-full h-full opacity-50"
+                  fill="none"
+                >
+                  <circle cx="50" cy="50" r="46" stroke={color} strokeOpacity="0.25" strokeWidth="0.3" />
+                  <circle cx="50" cy="50" r="40" stroke={color} strokeOpacity="0.18" strokeWidth="0.3" strokeDasharray="1.5 2" />
+                  <circle cx="50" cy="50" r="34" stroke="hsl(var(--gold))" strokeOpacity="0.25" strokeWidth="0.25" />
+                  {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+                    <line
+                      key={deg}
+                      x1="50"
+                      y1="6"
+                      x2="50"
+                      y2="10"
+                      stroke="hsl(var(--gold))"
+                      strokeOpacity="0.55"
+                      strokeWidth="0.6"
+                      transform={`rotate(${deg} 50 50)`}
+                    />
+                  ))}
+                </svg>
+                {/* Glyph / initials */}
+                <div
+                  className="relative font-display text-center select-none"
+                  style={{
+                    fontSize,
+                    lineHeight: 1,
+                    color: symbol ? "hsl(var(--foreground))" : color,
+                    textShadow: `0 0 18px ${color}aa, 0 2px 6px rgb(0 0 0 / 0.5)`,
+                    letterSpacing: initials ? "0.02em" : 0,
+                    fontWeight: 700,
+                  }}
+                >
+                  {symbol || initials || "?"}
+                </div>
+              </>
+            )}
           </div>
         </div>
 

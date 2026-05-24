@@ -110,6 +110,7 @@ export interface Character {
   forceAlignment: ForceAlignment;
   forceSensitive: boolean;
   rank?: string;
+  imageUrl?: string; // real portrait photo for the visual plate
   affiliations: Affiliation[]; // ordered timeline
   master?: string;
   apprentices?: string[];
