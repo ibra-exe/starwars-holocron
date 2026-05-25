@@ -826,6 +826,10 @@
   .mobile-safe-pt {
     padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
   }
+  /* Extra bottom padding so content doesn't hide behind the fixed credit strip */
+  .mobile-safe-pt {
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
   /* Sticky filter bars must sit below the fixed mobile header */
   .sticky-below-header {
     top: calc(3.5rem + env(safe-area-inset-top, 0px));

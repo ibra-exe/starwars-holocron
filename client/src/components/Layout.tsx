@@ -23,7 +23,7 @@ import {
   Settings,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { useSettings } from "@/lib/settings";
 import { playMenuOpen, playMenuClose, playNavClick } from "@/lib/sounds";
@@ -145,8 +145,47 @@ function SidebarContent({ location, onNavigate, onNavSound }: { location: string
         <div className="font-mono text-[10px] text-muted-foreground/70 pl-5">
           25,000 BBY → 35 ABY
         </div>
+        <div className="pl-1 pt-1">
+          <TypewriterCredit />
+        </div>
       </div>
     </>
+  );
+}
+
+const CREDIT_TEXT = "Created by Ibra";
+
+function TypewriterCredit() {
+  const [count, setCount] = useState(0);
+  const [done, setDone] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    // Small random delay per char for realistic typing feel
+    const delays = Array.from({ length: CREDIT_TEXT.length }, () => 65 + Math.random() * 55);
+    let idx = 0;
+    function tick() {
+      if (idx < CREDIT_TEXT.length) {
+        idx++;
+        setCount(idx);
+        timerRef.current = setTimeout(tick, delays[idx] ?? 80);
+      } else {
+        setDone(true);
+      }
+    }
+    // Start after a short pause so it doesn't fire instantly on load
+    timerRef.current = setTimeout(tick, 900);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, []);
+
+  return (
+    <span className="font-mono text-[10px] tracking-[0.18em] text-primary/70 select-none">
+      {CREDIT_TEXT.slice(0, count)}
+      <span
+        className={done ? "animate-cursor-blink" : "opacity-100"}
+        style={{ display: "inline-block" }}
+      >_</span>
+    </span>
   );
 }
 
@@ -263,6 +302,19 @@ export default function Layout({ children }: { children: ReactNode }) {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Mobile-only fixed credit strip at bottom */}
+      <div
+        className="md:hidden fixed bottom-0 left-0 right-0 z-20 flex items-center justify-center py-1.5 px-4"
+        style={{
+          background: "hsl(var(--sidebar) / 0.92)",
+          backdropFilter: "blur(8px)",
+          borderTop: "1px solid hsl(var(--sidebar-border))",
+          paddingBottom: "max(0.375rem, env(safe-area-inset-bottom))",
+        }}
+      >
+        <TypewriterCredit />
+      </div>
 
       <main className="flex-1 min-w-0 relative overflow-hidden mobile-safe-pt md:pt-0">
         <div className="starfield" aria-hidden />
