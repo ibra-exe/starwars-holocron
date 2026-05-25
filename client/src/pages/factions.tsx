@@ -10,7 +10,7 @@ import { VisualPlate, getInitials } from "@/components/shared/VisualPlate";
 import { Faction } from "@/data/types";
 import { Search } from "lucide-react";
 
-const CATEGORIES = ["All", "Government", "Religious Order", "Military", "Rebellion", "Criminal", "Corporate", "Culture", "Cult", "Guild", "Other"] as const;
+const CATEGORIES = ["All", "Government", "Religious Order", "Military", "Rebellion", "Criminal", "Corporate", "Culture", "Cult", "Guild", "Clan", "Other"] as const;
 const ALIGNMENTS = ["All", "Light", "Dark", "Neutral", "Mixed"] as const;
 
 export default function FactionsPage() {

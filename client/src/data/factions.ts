@@ -4,7 +4,7 @@ import { FACTION_RANKS } from "./ranks";
 const _FACTIONS_BASE: Faction[] = [
   {
     id: "jedi-order",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/9d/Jedi_symbol.svg/revision/latest/smart/filters:strip_icc()/492?cb=20080329163323",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/9/9d/Jedi_symbol.svg/revision/latest?cb=20080329163323",
     name: "Jedi Order",
     shortName: "Jedi",
     ideology: "Selfless service to the Force and the Republic. Compassion without attachment. Defense without aggression. Knowledge over passion.",
@@ -87,7 +87,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "sith-eternal",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3e/Sith_Eternal_insignia.svg/revision/latest/smart/filters:strip_icc()/422?cb=20191223220202",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/3/3e/Sith_Eternal_insignia.svg/revision/latest/scale-to-width-down/500?cb=20191223220202",
     name: "Sith Eternal",
     ideology: "Restoration of Sith dominion through cloned bodies, fanatical loyalty, and a hidden fleet.",
     origin: "Exegol, ancient hidden Sith world",
@@ -113,7 +113,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "galactic-republic",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/de/Republic_Emblem.svg/revision/latest/smart/filters:strip_icc()/500?cb=20080311202148",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/d/de/Republic_Emblem.svg/revision/latest?cb=20080311202148",
     name: "Galactic Republic",
     shortName: "Republic",
     ideology: "Representative democracy, sentient rights, rule of law. Senate-based with elected Chancellor.",
@@ -145,7 +145,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "cis",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/34/CIS_roundel.svg/revision/latest/smart/filters:strip_icc()/500?cb=20240821212021",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/3/34/CIS_roundel.svg/revision/latest?cb=20240821212021",
     name: "Confederacy of Independent Systems",
     shortName: "Separatists",
     ideology: "Anti-Republic, pro-corporate autonomy. Officially: liberation from Senate corruption. Actually: Sidious-controlled puppet state.",
@@ -175,7 +175,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "trade-federation",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/ac/Trade_Federation.svg/revision/latest/smart/filters:strip_icc()/500?cb=20120211223906",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/a/ac/Trade_Federation.svg/revision/latest/scale-to-width-down/500?cb=20120211223906",
     name: "Trade Federation",
     ideology: "Corporate profit. Anti-taxation. Pro-monopoly.",
     origin: "Neimoidia / Cato Neimoidia",
@@ -200,7 +200,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "galactic-empire",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2e/Imperial_Emblem.svg/revision/latest/smart/filters:strip_icc()/500?cb=20250720193931",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/2/2e/Imperial_Emblem.svg/revision/latest?cb=20250720193931",
     name: "Galactic Empire",
     shortName: "Empire",
     ideology: "New Order: human-centric authoritarianism. Tarkin Doctrine — rule by fear of overwhelming force. Centralized power in the Emperor.",
@@ -235,7 +235,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "inquisitorius",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/22/Inquisitors-SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20251021051154",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/2/22/Inquisitors-SWCT.png/revision/latest/scale-to-width-down/500?cb=20251021051154",
     name: "Inquisitorius",
     ideology: "Hunt and convert or kill remaining Jedi. Serve the Emperor and Vader.",
     origin: "Fortress Inquisitorius, Nur, 19 BBY",
@@ -263,7 +263,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "rebel-alliance",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/71/Redstarbird.svg/revision/latest/smart/filters:strip_icc()/490?cb=20080228205026",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/7/71/Redstarbird.svg/revision/latest/scale-to-width-down/500?cb=20080228205026",
     name: "Alliance to Restore the Republic",
     shortName: "Rebels",
     ideology: "Restoration of the Galactic Republic; opposition to Imperial tyranny.",
@@ -295,7 +295,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "new-republic",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/0f/New_Republic_canon.svg/revision/latest/smart/filters:strip_icc()/500?cb=20160126010008",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/0/0f/New_Republic_canon.svg/revision/latest/scale-to-width-down/500?cb=20160126010008",
     name: "New Republic",
     ideology: "Restored representative democracy with militarization safeguards.",
     origin: "Chandrila, 4 ABY (declared)",
@@ -325,7 +325,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "first-order",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/46/First_Order.svg/revision/latest/smart/filters:strip_icc()/428?cb=20251225075036",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/4/46/First_Order.svg/revision/latest/scale-to-width-down/500?cb=20251225075036",
     name: "First Order",
     ideology: "Imperial restoration — Snoke's apocalyptic vision of order through annihilation.",
     origin: "Unknown Regions (cultivated by Imperial remnants and Palpatine's contingency)",
@@ -357,7 +357,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "resistance",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d8/Resistance_starbird.svg/revision/latest/smart/filters:strip_icc()/500?cb=20170821163450",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/e/ea/Resistance_starbird.svg/revision/latest?cb=20150913201739",
     name: "Resistance",
     ideology: "Volunteer paramilitary defending democracy against the First Order.",
     origin: "D'Qar, ~28 ABY (organized by Leia Organa)",
@@ -386,7 +386,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "mandalorians",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/5b/MandalorianSkullSWE.png/revision/latest/smart/filters:strip_icc()/500?cb=20230803024808",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/3/35/JaingHead.svg/revision/latest/scale-to-width-down/500?cb=20251223220728",
     name: "Mandalorians",
     ideology: "Warrior creed. Clan loyalty. The Way. Beskar armor and oral tradition.",
     origin: "Mandalore",
@@ -418,7 +418,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "hutt-cartel",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a6/Desilijic_clan_vector.svg/revision/latest/smart/filters:strip_icc()/500?cb=20160512232252",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/a/a6/Desilijic_clan_vector.svg/revision/latest/scale-to-width-down/500?cb=20160512232252",
     name: "Hutt Cartel / Hutt Space",
     ideology: "Profit. Slavery. Smuggling. Vice. Honor among Hutts (sometimes).",
     origin: "Nal Hutta",
@@ -445,7 +445,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "crimson-dawn",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/95/Crimson_dawn.svg/revision/latest/smart/filters:strip_icc()/500?cb=20240821221227",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/9/95/Crimson_dawn.svg/revision/latest?cb=20240821221227",
     name: "Crimson Dawn",
     ideology: "Galactic crime syndicate of the Imperial era; later weaponized for Sith resurgence.",
     origin: "Run by Maul during Imperial Era; Qi'ra inherits.",
@@ -472,7 +472,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "black-sun",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/54/Blacksun.svg/revision/latest/smart/filters:strip_icc()/418?cb=20250716001233",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/5/54/Blacksun.svg/revision/latest/scale-to-width-down/500?cb=20250716001233",
     name: "Black Sun",
     ideology: "Underworld empire; trafficking, assassination, smuggling.",
     origin: "Pre-Clone Wars",
@@ -495,7 +495,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "nightsisters",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d7/Nightsisters_symbol_-_JFO.svg/revision/latest/smart/filters:strip_icc()/500?cb=20230205053622",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/d/d7/Nightsisters_symbol_-_JFO.svg/revision/latest?cb=20230205053622",
     name: "Nightsisters of Dathomir",
     ideology: "Magick-wielding witches drawing on the Dathomiri ichor — a localized dark-side phenomenon.",
     origin: "Dathomir",
@@ -544,7 +544,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "chiss-ascendancy",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/5b/ChissAscendancyCanonSymbol.svg/revision/latest/smart/filters:strip_icc()/471?cb=20250718013735",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/5/5b/ChissAscendancyCanonSymbol.svg/revision/latest/scale-to-width-down/500?cb=20250718013735",
     name: "Chiss Ascendancy",
     ideology: "Isolationist, hyper-disciplined defense of the Chiss species in the Unknown Regions.",
     origin: "Csilla (Unknown Regions)",
@@ -564,7 +564,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "knights-of-ren",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/46/KnightsOfRen-DB.png/revision/latest/smart/filters:strip_icc()/500?cb=20220509230610",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/4/46/KnightsOfRen-DB.png/revision/latest/scale-to-width-down/500?cb=20220509230610",
     name: "Knights of Ren",
     ideology: "Cult of darkness venerating 'the shadow.' Personal weapon-cult under Ren (the leader, a title).",
     origin: "Pre-First Order era; revived by Ben Solo",
@@ -604,7 +604,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "path-of-the-open-hand",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/41/PathOfTheOpenHandMembersSymbol-CharactersOfSWTHR.png/revision/latest/smart/filters:strip_icc()/500?cb=20221021134015",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/4/41/PathOfTheOpenHandMembersSymbol-CharactersOfSWTHR.png/revision/latest/scale-to-width-down/500?cb=20221021134015",
     name: "Path of the Open Hand",
     ideology: "Force-fearing cult: the Force must not be used at all. Any use is theft and creates imbalance.",
     origin: "Outer Rim, ~382 BBY",
@@ -624,7 +624,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "nihil",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/45/NihilEye-PhaseIII.svg/revision/latest/smart/filters:strip_icc()/500?cb=20231205051912",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/4/45/NihilEye-PhaseIII.svg/revision/latest?cb=20231205051912",
     name: "The Nihil",
     ideology: "Anarchic marauder horde. 'The galaxy is ours to take.' Tempest-led plunder of hyperspace lanes.",
     origin: "Outer Rim, 232 BBY (active)",
@@ -644,7 +644,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "yuuzhan-vong",
-  logoUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/6e/YuuzhanVong_NEGAS.jpg/revision/latest/smart/filters:strip_icc()/500?cb=20070617052507",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/6/6e/YuuzhanVong_NEGAS.jpg/revision/latest/scale-to-width-down/500?cb=20070617052507",
     name: "Yuuzhan Vong",
     ideology: "(LEGENDS) Religious extragalactic invaders worshiping pain and biotechnology. Outside the Force.",
     origin: "Extragalactic, refugees from a destroyed galaxy",
@@ -661,6 +661,116 @@ const _FACTIONS_BASE: Faction[] = [
     category: "Military",
     alignment: "Dark",
     color: "#7a6840",
+  },
+
+  // ── CLANS ──────────────────────────────────────────────────────────────────
+
+  {
+    id: "death-watch",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/6/69/DeathWatch-TMP.png/revision/latest/scale-to-width-down/500?cb=20120906050305",
+    name: "Death Watch",
+    ideology: "Mandalorian warrior supremacy. Reclaim glory through violence and conquest — reject pacifism as weakness.",
+    origin: "Mandalore",
+    eras: ["clone-wars"],
+    structure: "Clan leader wields authority. Death Watch splintered from traditional Mandalorian society to oppose the pacifist New Mandalorian government of Duchess Satine.",
+    leadership: [
+      { name: "Pre Vizsla", characterId: "pre-vizsla" },
+      { name: "Darth Maul (briefly, by combat right)" },
+      { name: "Bo-Katan Kryze (after Vizsla's death, before splitting)" },
+    ],
+    allies: ["shadow-collective", "crimson-dawn"],
+    enemies: ["new-republic", "galactic-republic", "mandalorians"],
+    symbol: "Mandalorian skull on black — the ancient warrior sigil",
+    philosophy: "Only violence can restore Mandalorian pride. Pacifism is treason to the warrior heritage.",
+    riseAndFall: [
+      { era: "clone-wars", event: "Death Watch allied with Count Dooku's CIS, then broke with them. Formed the Shadow Collective with Maul and Savage Opress." },
+      { era: "clone-wars", event: "Pre Vizsla seized Mandalore in a staged coup — then lost his life to Maul in single combat. Clan fractured: loyalists followed Maul, Bo-Katan's Nite Owls refused." },
+    ],
+    importantEvents: ["Alliance with Darth Maul", "Coup on Mandalore", "Death of Pre Vizsla", "Siege of Mandalore"],
+    description: "Mandalorian splinter faction that rejected Duchess Satine's pacifist New Mandalorian government. Led by Pre Vizsla (wielder of the Darksaber), Death Watch staged a coup, briefly held Mandalore — then imploded when Maul killed Vizsla and seized command. Their legacy fractured into the Nite Owls and various imperial-era Mandalorian factions.",
+    category: "Clan",
+    alignment: "Dark",
+    color: "#5a6a7a",
+  },
+  {
+    id: "nite-owls",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/d/df/NiteOwls.svg/revision/latest?cb=20150308215520",
+    name: "Nite Owls",
+    ideology: "Mandalorian freedom and self-determination. Resist any conqueror — Sith, Empire, or otherwise.",
+    origin: "Mandalore",
+    eras: ["clone-wars", "rebellion-era", "new-republic-era"],
+    structure: "Elite Mandalorian commando unit, loyal specifically to Bo-Katan Kryze. Operated as Death Watch's most disciplined sub-unit before becoming fully independent.",
+    leadership: [
+      { name: "Bo-Katan Kryze" },
+    ],
+    allies: ["rebel-alliance", "galactic-republic (late Clone Wars)", "mandalorians"],
+    enemies: ["galactic-empire", "shadow-collective"],
+    symbol: "Owl crest in teal — Bo-Katan's personal sigil",
+    philosophy: "Mandalore for Mandalorians. Fight to free the homeworld and hold the Darksaber as Mand'alor.",
+    riseAndFall: [
+      { era: "clone-wars", event: "Bo-Katan split from Death Watch when Maul killed Pre Vizsla and she refused to follow a non-Mandalorian. Nite Owls allied with the Republic for the Siege of Mandalore." },
+      { era: "rebellion-era", event: "Fought the Imperial occupation of Mandalore. Received the Darksaber from Sabine Wren." },
+      { era: "new-republic-era", event: "Reclaimed Mandalore alongside Din Djarin and Grogu before Bo-Katan united the clans." },
+    ],
+    importantEvents: ["Siege of Mandalore", "Liberation attempts under the Empire", "Reclamation of Mandalore"],
+    description: "Elite Mandalorian commandos loyal to Bo-Katan Kryze. Originally Death Watch's finest unit, they broke with Maul after Pre Vizsla's death and have since fought for Mandalorian liberation across three eras. Bo-Katan's repeated pursuit of the Darksaber — and the legitimacy it represents — defines their arc from The Clone Wars through The Mandalorian.",
+    category: "Clan",
+    alignment: "Neutral",
+    color: "#2a7a8a",
+  },
+  {
+    id: "children-of-the-watch",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/6/6e/MandoTribe.png/revision/latest/scale-to-width-down/500?cb=20200103145329",
+    name: "Children of the Watch",
+    ideology: "\"This is the Way.\" Strict adherence to the ancient Mandalorian Creed — never remove the helmet, forge your armor from beskar, earn your keep as a warrior.",
+    origin: "Unknown comet/hidden camp; traces back to pre-Empire Mandalorian fundamentalists",
+    eras: ["new-republic-era"],
+    structure: "Led by the Armorer as spiritual authority; the Covert operates in secret cells to protect survivors of the Great Purge.",
+    leadership: [
+      { name: "The Armorer" },
+      { name: "Paz Vizsla" },
+      { name: "Din Djarin (foundling, later exiled and redeemed)" },
+    ],
+    allies: ["mandalorians"],
+    enemies: ["galactic-empire", "imperial-remnants"],
+    symbol: "Mandalorian skull — same warrior sigil, worn as a badge of living the old ways",
+    philosophy: "The helmet is never removed. A Mandalorian's identity lives in the Creed, not the face beneath. Foundlings are Mandalorian — clan is not blood, it is choice.",
+    riseAndFall: [
+      { era: "new-republic-era", event: "Survived the Great Purge by hiding in the shadows of Nevarro and elsewhere. Din Djarin found and adopted Grogu, inadvertently breaking the Creed by removing his helmet." },
+      { era: "new-republic-era", event: "The Covert was destroyed by Imperial remnants on Nevarro. Survivors regrouped and ultimately joined Bo-Katan's reclamation of Mandalore." },
+    ],
+    importantEvents: ["Great Purge of Mandalore", "Din Djarin's adoption of Grogu", "Destruction of the Covert", "Reclamation of Mandalore"],
+    description: "A secretive fundamentalist sect that preserved the old Mandalorian ways after the Great Purge. Their rigid Creed — never removing the helmet — set them apart from other Mandalorian survivors. Din Djarin was raised in their tradition; his journey to break and ultimately reaffirm the Creed is the spine of The Mandalorian series.",
+    category: "Clan",
+    alignment: "Neutral",
+    color: "#8a6a3a",
+  },
+  {
+    id: "clan-wren",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/1/1a/ClanWren-HoM.png/revision/latest/scale-to-width-down/500?cb=20200416183344",
+    name: "Clan Wren",
+    ideology: "House Vizsla loyalty, Mandalorian honor, and ultimately — resistance against Imperial control of Mandalore.",
+    origin: "Mandalore, House Vizsla",
+    eras: ["rebellion-era"],
+    structure: "Part of House Vizsla. Clan Wren answered to the Saxon super-clan during Imperial occupation until Sabine's return ignited civil war.",
+    leadership: [
+      { name: "Ursa Wren (Clan Mother)" },
+      { name: "Sabine Wren" },
+      { name: "Tristan Wren" },
+    ],
+    allies: ["rebel-alliance", "mandalorians"],
+    enemies: ["galactic-empire"],
+    symbol: "Wren clan sigil — Sabine's owl motif, rendered in vibrant Mandalorian colors",
+    philosophy: "Clan loyalty above politics — until the clan itself must be saved by fighting back.",
+    riseAndFall: [
+      { era: "rebellion-era", event: "Clan Wren initially collaborated with Imperial super-commandos to survive the occupation. Sabine's return with the Darksaber forced Ursa to choose sides — she chose her daughter." },
+      { era: "rebellion-era", event: "Sabine wielded and ultimately gifted the Darksaber to Bo-Katan Kryze, declaring her the true leader Mandalore needed. Clan Wren committed to the liberation of Mandalore." },
+    ],
+    importantEvents: ["Sabine's return to Mandalore", "Darksaber passed to Bo-Katan", "Battle for Mandalore"],
+    description: "A Mandalorian warrior clan within House Vizsla, best known as the family of Sabine Wren (Rebel explosives expert and artist). Initially compromised under Imperial pressure, Clan Wren chose rebellion when Sabine returned wielding the Darksaber. Their arc in Star Wars Rebels marks one of the saga's most personal clan loyalty stories.",
+    category: "Clan",
+    alignment: "Light",
+    color: "#c06a20",
   },
 ];
 

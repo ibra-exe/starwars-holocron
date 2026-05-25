@@ -68,7 +68,7 @@ export const PLANETS: Planet[] = [
   // ============ CORE WORLDS ============
   {
     id: "coruscant",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/84/CoruscantGlobeE1.png/revision/latest/smart/filters:strip_icc()/500?cb=20240513175137",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/84/CoruscantGlobeE1.png/revision/latest/scale-to-width-down/500?cb=20240513175137",
     name: "Coruscant",
     classification: "Core World",
     region: "Core Worlds",
@@ -129,7 +129,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "alderaan",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4a/Alderaan.jpg/revision/latest/smart/filters:strip_icc()/500?cb=20061211013805",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/4a/Alderaan.jpg/revision/latest?cb=20061211013805",
     name: "Alderaan",
     classification: "Core World",
     region: "Core Worlds",
@@ -183,7 +183,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "corellia",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/fe/Corellia-2025ToppsSWHyperspace.png/revision/latest/smart/filters:strip_icc()/500?cb=20260220041026",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/fe/Corellia-2025ToppsSWHyperspace.png/revision/latest/scale-to-width-down/500?cb=20260220041026",
     name: "Corellia",
     classification: "Core World",
     region: "Core Worlds",
@@ -238,7 +238,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "hosnian-prime",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b9/Hos.png/revision/latest/smart/filters:strip_icc()/500?cb=20171113015859",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b9/Hos.png",
     name: "Hosnian Prime",
     classification: "Core World",
     region: "Core Worlds",
@@ -280,7 +280,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "chandrila",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/0c/Chandrila-AoRCR.png/revision/latest/smart/filters:strip_icc()/500?cb=20170222012047",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/0c/Chandrila-AoRCR.png",
     name: "Chandrila",
     classification: "Core World",
     region: "Core Worlds",
@@ -327,7 +327,7 @@ export const PLANETS: Planet[] = [
   // ============ INNER / MID RIM ============
   {
     id: "naboo",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f0/Naboo_planet.png/revision/latest/smart/filters:strip_icc()/500?cb=20251122020213",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/f0/Naboo_planet.png/revision/latest/scale-to-width-down/500?cb=20251122020213",
     name: "Naboo",
     classification: "Mid Rim",
     region: "Mid Rim",
@@ -381,7 +381,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "kamino",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1c/Kamino-SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20251031043524",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/1c/Kamino-SWCT.png/revision/latest?cb=20251031043524",
     name: "Kamino",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -433,7 +433,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "geonosis",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/6d/Geonosis_AotC.png/revision/latest/smart/filters:strip_icc()/500?cb=20121231120327",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/6d/Geonosis_AotC.png/revision/latest/scale-to-width-down/500?cb=20121231120327",
     name: "Geonosis",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -482,7 +482,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "kashyyyk",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/ea/Kashyyyk-SW-MTHC.png/revision/latest/smart/filters:strip_icc()/500?cb=20251122015233",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/ea/Kashyyyk-SW-MTHC.png/revision/latest/scale-to-width-down/500?cb=20251122015233",
     name: "Kashyyyk",
     classification: "Mid Rim",
     region: "Mid Rim",
@@ -534,7 +534,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "bothawui",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/c0/Golm-DoaD.png/revision/latest/smart/filters:strip_icc()/500?cb=20120921014308",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/c0/Golm-DoaD.png/revision/latest/scale-to-width-down/500?cb=20120921014308",
     name: "Bothawui",
     classification: "Mid Rim",
     region: "Mid Rim",
@@ -577,7 +577,7 @@ export const PLANETS: Planet[] = [
   // ============ OUTER RIM ============
   {
     id: "tatooine",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b0/Tatooine_TPM.png/revision/latest/smart/filters:strip_icc()/500?cb=20241209041104",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/b0/Tatooine_TPM.png/revision/latest/scale-to-width-down/500?cb=20241209041104",
     name: "Tatooine",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -638,7 +638,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "mandalore",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/34/Mandalore-2025ToppsSWHyperspace.png/revision/latest/smart/filters:strip_icc()/500?cb=20260219064951",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/34/Mandalore-2025ToppsSWHyperspace.png/revision/latest/scale-to-width-down/500?cb=20260219064951",
     name: "Mandalore",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -726,7 +726,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "dagobah",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/7d/Dagobah-CGSWG.png/revision/latest/smart/filters:strip_icc()/500?cb=20241208214847",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/7d/Dagobah-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241208214847",
     name: "Dagobah",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -770,7 +770,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "hoth",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a1/Hoth-2024SWHyperspace.png/revision/latest/smart/filters:strip_icc()/500?cb=20251122012415",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/a1/Hoth-2024SWHyperspace.png/revision/latest/scale-to-width-down/500?cb=20251122012415",
     name: "Hoth",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -814,7 +814,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "endor",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1d/Endor_BF2.png/revision/latest/smart/filters:strip_icc()/500?cb=20171014232605",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/1d/Endor_BF2.png/revision/latest/scale-to-width-down/500?cb=20171014232605",
     name: "Endor (Forest Moon of Endor)",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -860,7 +860,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "jakku",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/ff/Jakku-PoeDameronFlightLog.png/revision/latest/smart/filters:strip_icc()/500?cb=20251031044441",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/ff/Jakku-PoeDameronFlightLog.png/revision/latest?cb=20251031044441",
     name: "Jakku",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -904,7 +904,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "mustafar",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/61/Mustafar-TROSGG.png/revision/latest/smart/filters:strip_icc()/500?cb=20200722072411",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/61/Mustafar-TROSGG.png/revision/latest/scale-to-width-down/500?cb=20200722072411",
     name: "Mustafar",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -951,7 +951,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "lothal",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/ac/Lothal-SM.png/revision/latest/smart/filters:strip_icc()/500?cb=20200909025000",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/ac/Lothal-SM.png/revision/latest/scale-to-width-down/500?cb=20200909025000",
     name: "Lothal",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -997,7 +997,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "ryloth",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/96/Ryloth-Homecoming.png/revision/latest/smart/filters:strip_icc()/500?cb=20200517155255",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/96/Ryloth-Homecoming.png",
     name: "Ryloth",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1044,7 +1044,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "ord-mantell",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/36/Ord_Mantell_EotECR.png/revision/latest/smart/filters:strip_icc()/500?cb=20170222012958",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/36/Ord_Mantell_EotECR.png",
     name: "Ord Mantell",
     classification: "Mid Rim",
     region: "Mid Rim",
@@ -1085,7 +1085,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "tython",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4d/Tython_TMS2.png/revision/latest/smart/filters:strip_icc()/500?cb=20201205044714",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/4d/Tython_TMS2.png/revision/latest/scale-to-width-down/500?cb=20201205044714",
     name: "Tython",
     classification: "Deep Core",
     region: "Deep Core",
@@ -1124,7 +1124,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "nevarro",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/0e/Nevarro-CGSWG.png/revision/latest/smart/filters:strip_icc()/500?cb=20241209031120",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/0e/Nevarro-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241209031120",
     name: "Nevarro",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1165,7 +1165,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "sorgan",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/9a/Sorgan.png/revision/latest/smart/filters:strip_icc()/500?cb=20201227234057",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/9/9a/Sorgan.png/revision/latest/scale-to-width-down/500?cb=20201227234057",
     name: "Sorgan",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1199,7 +1199,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "pasaana",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1b/Pasaana-TROSGG.png/revision/latest/smart/filters:strip_icc()/500?cb=20200321022322",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1b/Pasaana-TROSGG.png",
     name: "Pasaana",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1238,7 +1238,7 @@ export const PLANETS: Planet[] = [
   // ============ DEEP / WILD SPACE ============
   {
     id: "exegol",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/40/Exegol-TROSTGG.png/revision/latest/smart/filters:strip_icc()/500?cb=20250131030648",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/40/Exegol-TROSTGG.png/revision/latest/scale-to-width-down/500?cb=20250131030648",
     name: "Exegol",
     classification: "Unknown Regions",
     region: "Unknown Regions",
@@ -1277,7 +1277,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "mortis",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/43/MortisSurface.png/revision/latest/smart/filters:strip_icc()/500?cb=20130524215606",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/43/MortisSurface.png",
     name: "Mortis",
     classification: "Wild Space",
     region: "Wild Space / Force Realm",
@@ -1312,7 +1312,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "ahch-to",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/04/Ahch-To_TLJTVD.png/revision/latest/smart/filters:strip_icc()/500?cb=20251031041236",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/04/Ahch-To_TLJTVD.png/revision/latest?cb=20251031041236",
     name: "Ahch-To",
     classification: "Unknown Regions",
     region: "Unknown Regions",
@@ -1351,7 +1351,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "ilum",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/66/StarkillerBase-FH.png/revision/latest/smart/filters:strip_icc()/500?cb=20171113021205",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/66/StarkillerBase-FH.png/revision/latest/scale-to-width-down/500?cb=20171113021205",
     name: "Ilum / Starkiller Base",
     classification: "Unknown Regions",
     region: "Unknown Regions",
@@ -1395,7 +1395,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "crait",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/13/Crait_TLJVD.png/revision/latest/smart/filters:strip_icc()/500?cb=20190603071432",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/13/Crait_TLJVD.png/revision/latest/scale-to-width-down/500?cb=20190603071432",
     name: "Crait",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1433,7 +1433,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "cato-neimoidia",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/fe/CatoNeimoidia-BTCG.png/revision/latest?cb=20211111010658",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/fe/CatoNeimoidia-BTCG.png",
     name: "Cato Neimoidia",
     classification: "Colonies",
     region: "Colonies",
@@ -1474,7 +1474,7 @@ export const PLANETS: Planet[] = [
   // ============ SPECIAL / NOTABLE ============
   {
     id: "dathomir",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/34/DathomirJFO.jpg/revision/latest/smart/filters:strip_icc()/500?cb=20200222032237",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/34/DathomirJFO.jpg/revision/latest/scale-to-width-down/500?cb=20200222032237",
     name: "Dathomir",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1524,7 +1524,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "yavin-4",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d4/Yavin-4-SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20181015023938",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d4/Yavin-4-SWCT.png/revision/latest/scale-to-width-down/500?cb=20181015023938",
     name: "Yavin 4",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1572,7 +1572,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "bespin",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/11/Bespin-SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20181010054421",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/11/Bespin-SWCT.png/revision/latest/scale-to-width-down/500?cb=20181010054421",
     name: "Bespin (Cloud City)",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1622,7 +1622,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "kessel",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/e5/Kessel-SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20181015054435",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/e5/Kessel-SWCT.png",
     name: "Kessel",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1664,7 +1664,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "sullust",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/22/Sullust-SWBC62.png/revision/latest/smart/filters:strip_icc()/500?cb=20240218054831",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/22/Sullust-SWBC62.png",
     name: "Sullust",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1704,7 +1704,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "mon-cala",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/04/Dac-AORCR.png/revision/latest/smart/filters:strip_icc()/500?cb=20170222012252",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/04/Dac-AORCR.png",
     name: "Mon Cala (Dac)",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1753,7 +1753,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "felucia",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a2/Felucia_SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20181010054430",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/a2/Felucia_SWCT.png/revision/latest/scale-to-width-down/500?cb=20181010054430",
     name: "Felucia",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1791,7 +1791,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "polis-massa",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/60/PolisMassa.png/revision/latest/smart/filters:strip_icc()/500?cb=20130205053216",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/60/PolisMassa.png",
     name: "Polis Massa",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1828,7 +1828,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "scarif",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/6d/Scarif_SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20181010053537",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/6d/Scarif_SWCT.png/revision/latest/scale-to-width-down/500?cb=20181010053537",
     name: "Scarif",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1867,7 +1867,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "eadu",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/38/Eadu-SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20181010053249",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/38/Eadu-SWCT.png/revision/latest/scale-to-width-down/500?cb=20181010053249",
     name: "Eadu",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1902,7 +1902,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "jedha",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/38/Jedha-2015StarWars38.png/revision/latest/smart/filters:strip_icc()/500?cb=20240114021800",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/38/Jedha-2015StarWars38.png/revision/latest/scale-to-width-down/500?cb=20240114021800",
     name: "Jedha",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1946,7 +1946,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "kijimi",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4e/Kijimi-TROSTGG.png/revision/latest/smart/filters:strip_icc()/500?cb=20230804052601",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4e/Kijimi-TROSTGG.png",
     name: "Kijimi",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -1980,7 +1980,7 @@ export const PLANETS: Planet[] = [
   // ============ SPECIAL / NOTABLE (continued) ============
   {
     id: "pillio",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/81/PillioPlanetView.jpg/revision/latest/smart/filters:strip_icc()/500?cb=20201024090902",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/81/PillioPlanetView.jpg",
     name: "Pillio",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -2017,7 +2017,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "vandor",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cb/Vandor.png/revision/latest/smart/filters:strip_icc()/500?cb=20181015054828",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cb/Vandor.png",
     name: "Vandor",
     classification: "Mid Rim",
     region: "Mid Rim Territories",
@@ -2055,7 +2055,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "takodana",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f6/Tak.png/revision/latest/smart/filters:strip_icc()/500?cb=20251031035110",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/f6/Tak.png/revision/latest?cb=20251031035110",
     name: "Takodana",
     classification: "Mid Rim",
     region: "Mid Rim Territories",
@@ -2098,7 +2098,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "cantonica",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/da/Cantonica_TLJVD.png/revision/latest/smart/filters:strip_icc()/500?cb=20250130064231",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/da/Cantonica_TLJVD.png",
     name: "Cantonica",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -2141,7 +2141,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "d-qar",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f0/DQar_SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20181010053100",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/f0/DQar_SWCT.png/revision/latest/scale-to-width-down/500?cb=20181010053100",
     name: "D'Qar",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -2276,7 +2276,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "ziost",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/98/Iliabath-AcolyteVG.png/revision/latest/smart/filters:strip_icc()/500?cb=20250831105502",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/98/Iliabath-AcolyteVG.png",
     name: "Ziost",
     classification: "Outer Rim",
     region: "Outer Rim Territories",
@@ -2357,7 +2357,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "kuat",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/84/Kuat_-_Galactic_Atlas.png/revision/latest?cb=20161006000518",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/84/Kuat_-_Galactic_Atlas.png",
     name: "Kuat",
     classification: "Core World",
     region: "Core Worlds",
@@ -2445,7 +2445,7 @@ export const PLANETS: Planet[] = [
   },
   {
     id: "bakura",
-  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4e/Bakura-VaderImmortal.png/revision/latest?cb=20190529174654",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4e/Bakura-VaderImmortal.png",
     name: "Bakura",
     classification: "Outer Rim",
     region: "Outer Rim Territories",

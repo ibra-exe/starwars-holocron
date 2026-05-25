@@ -156,7 +156,7 @@ export interface Faction {
   riseAndFall: { era: EraId; event: string }[];
   importantEvents: string[];
   description: string;
-  category: "Government" | "Religious Order" | "Military" | "Rebellion" | "Criminal" | "Corporate" | "Culture" | "Cult" | "Guild" | "Other";
+  category: "Government" | "Religious Order" | "Military" | "Rebellion" | "Criminal" | "Corporate" | "Culture" | "Cult" | "Guild" | "Clan" | "Other";
   alignment: "Light" | "Dark" | "Neutral" | "Mixed";
   color: string; // primary css color
 }
