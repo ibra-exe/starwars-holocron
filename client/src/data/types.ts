@@ -151,6 +151,7 @@ export interface Faction {
   successors?: string[];
   predecessors?: string[];
   symbol: string; // emoji or short symbol description
+  logoUrl?: string; // emblem/logo from Wookieepedia
   philosophy: string;
   riseAndFall: { era: EraId; event: string }[];
   importantEvents: string[];

@@ -86,21 +86,23 @@ export default function PlanetsPage() {
           <button
             key={p.id}
             onClick={() => setSelectedId(p.id)}
-            className="text-left rounded-xl border border-border bg-card p-5 hover-elevate relative overflow-hidden"
+            className="text-left rounded-xl border border-border bg-card hover-elevate relative overflow-hidden flex flex-col"
             data-testid={`card-planet-${p.id}`}
           >
-            <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: p.color }} />
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{p.classification}</span>
-              <ImportanceBar value={p.importance} />
-            </div>
-            <div className="font-display text-base text-foreground leading-tight">{p.name}</div>
-            <div className="text-xs text-muted-foreground italic mt-0.5">{p.region}</div>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              <ContinuityBadge value={p.continuity} />
-              {p.climate.slice(0, 2).map((c) => (
-                <span key={c} className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-border text-foreground/85 font-display">{c}</span>
-              ))}
+            <PlanetBanner imageUrl={p.imageUrl} color={p.color} />
+            <div className="p-4 flex-1">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{p.classification}</span>
+                <ImportanceBar value={p.importance} />
+              </div>
+              <div className="font-display text-[13px] text-foreground leading-tight">{p.name}</div>
+              <div className="text-xs text-muted-foreground italic mt-0.5">{p.region}</div>
+              <div className="mt-2.5 flex flex-wrap gap-1.5">
+                <ContinuityBadge value={p.continuity} />
+                {p.climate.slice(0, 1).map((c) => (
+                  <span key={c} className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-border text-foreground/85 font-display">{c}</span>
+                ))}
+              </div>
             </div>
           </button>
         ))}
@@ -147,6 +149,7 @@ function PlanetDrawer({ planet: p, onClose }: { planet: Planet; onClose: () => v
         <div className="px-4 md:px-7 pb-8 md:grid md:grid-cols-[260px_1fr] md:gap-7">
           <aside className="md:sticky md:top-4 self-start flex flex-col items-center py-4">
             <VisualPlate
+              imageUrl={p.imageUrl}
               initials={getInitials(p.name, 2)}
               color={p.color}
               eyebrow={p.classification}
@@ -300,6 +303,21 @@ function PlanetDrawer({ planet: p, onClose }: { planet: Planet; onClose: () => v
       </div>
     </div>
     </DrawerPortal>
+  );
+}
+
+function PlanetBanner({ imageUrl, color }: { imageUrl?: string; color: string }) {
+  const [imgError, setImgError] = useState(false);
+  const gradient = `linear-gradient(135deg, ${color}55 0%, ${color}22 50%, ${color}11 100%)`;
+  return (
+    <div className="w-full h-24 relative overflow-hidden rounded-t-xl" style={{ background: gradient }}>
+      {imageUrl && !imgError && (
+        <img src={imageUrl} alt="" onError={() => setImgError(true)}
+          onLoad={(e) => { const img = e.currentTarget; if (img.naturalWidth === 300 && img.naturalHeight === 171) setImgError(true); }}
+          className="absolute inset-0 w-full h-full object-cover object-center" />
+      )}
+      <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, hsl(var(--card)) 100%)` }} />
+    </div>
   );
 }
 

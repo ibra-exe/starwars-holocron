@@ -60,6 +60,7 @@ export interface Artifact {
   continuity: "Canon" | "Legends" | "Both";
   importance: 1 | 2 | 3 | 4 | 5;
   color: string;
+  imageUrl?: string; // artifact photo from Wookieepedia
 }
 
 export const ARTIFACTS: Artifact[] = [
@@ -68,6 +69,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "skywalker-saber",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d9/SkywalkerLightsaberRepaired-SW100Objects.png/revision/latest/smart/filters:strip_icc()/166?cb=20230420131754",
     name: "The Skywalker Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -110,6 +112,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "darksaber",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4c/Darksaber-SWGE.png/revision/latest/smart/filters:strip_icc()/500?cb=20250601050517",
     name: "The Darksaber",
     category: "Lightsaber Variant",
     type: "Flat-blade black lightsaber",
@@ -163,6 +166,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "mace-windu-saber",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1a/MaceWinduLightsaber-SWCT.png/revision/latest/smart/filters:strip_icc()/500?cb=20251213061520",
     name: "Mace Windu's Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -193,6 +197,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "yoda-saber",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/ca/Yoda_lightsaber.png/revision/latest/smart/filters:strip_icc()/500?cb=20250510235556",
     name: "Yoda's Lightsaber",
     category: "Lightsaber",
     type: "Shoto (short-blade) lightsaber",
@@ -222,6 +227,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "obi-wan-saber-third",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/7b/KenobiThirdLightsaber-DB.png/revision/latest/smart/filters:strip_icc()/500?cb=20251213061329",
     name: "Obi-Wan Kenobi's Third Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -251,6 +257,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "qui-gon-saber",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b3/Qui-Gon_Jinns_lightsaber_-_SW_Card_Trader.png/revision/latest/smart/filters:strip_icc()/500?cb=20240220053206",
     name: "Qui-Gon Jinn's Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -276,6 +283,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "ahsoka-white-sabers",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/dc/AhsokaTanosLightsabers-SW100Objects.png/revision/latest/smart/filters:strip_icc()/278?cb=20230419210613",
     name: "Ahsoka Tano's White Lightsabers",
     category: "Lightsaber Variant",
     type: "Paired shoto and standard sabers",
@@ -397,6 +405,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "darth-maul-double-saber",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d5/Darth_Maul_Lightsaber_DB.png/revision/latest/smart/filters:strip_icc()/500?cb=20231227015442",
     name: "Darth Maul's Double-Bladed Lightsaber",
     category: "Lightsaber Variant",
     type: "Saberstaff (double-bladed)",
@@ -435,6 +444,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "asajj-ventress-sabers",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/76/VentressSabers-TLC.png/revision/latest/smart/filters:strip_icc()/500?cb=20220916020243",
     name: "Asajj Ventress's Twin Curved Lightsabers",
     category: "Lightsaber Variant",
     type: "Paired curved-hilt lightsabers (connectable to saberstaff)",
@@ -592,6 +602,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "kyber-crystal",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/5f/LightsaberCrystal-SWE.png/revision/latest/smart/filters:strip_icc()/276?cb=20160911062335",
     name: "Kyber Crystal",
     category: "Crystal",
     type: "Force-attuned focusing crystal",
@@ -629,6 +640,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "sith-holocron",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/74/MalachorSithHolocron-DVSWE.png/revision/latest/smart/filters:strip_icc()/500?cb=20221122061118",
     name: "Sith Holocron",
     category: "Holocron",
     type: "Sith knowledge-storage pyramid",
@@ -664,6 +676,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "sith-wayfinder",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/21/Wayfinder-TROS-GG.png/revision/latest/smart/filters:strip_icc()/438?cb=20230419135731",
     name: "Sith Wayfinder",
     category: "Sith Artifact",
     type: "Navigational device / dark-side artifact",
@@ -729,6 +742,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "korriban-sith-tombs",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/20/Valley_of_the_Dark_Lords_TCW.png/revision/latest/smart/filters:strip_icc()/500?cb=20200224012406",
     name: "The Sith Tombs of Korriban / Moraband",
     category: "Sith Artifact",
     type: "Dark-side Force nexus / necropolis",
@@ -772,6 +786,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "jedi-holocron",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2e/Holocron-TSWB.png/revision/latest/smart/filters:strip_icc()/468?cb=20220824044320",
     name: "Jedi Holocron",
     category: "Holocron",
     type: "Jedi knowledge-storage cube",
@@ -826,6 +841,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "jedi-archives",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cf/Jedi_Archives.png/revision/latest/smart/filters:strip_icc()/500?cb=20180704111733",
     name: "The Jedi Archives",
     category: "Jedi Artifact",
     type: "Repository of galactic knowledge",
@@ -874,6 +890,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "beskar",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/12/Beskar-TSWB.png/revision/latest/smart/filters:strip_icc()/500?cb=20211225211302",
     name: "Beskar (Mandalorian Iron)",
     category: "Mandalorian Relic",
     type: "Sacred metal / armor material",
@@ -964,6 +981,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "dl-44-blaster",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/0f/Han_Solo_DL-44_SWIconsHS.png/revision/latest/smart/filters:strip_icc()/500?cb=20190201010326",
     name: "Han Solo's DL-44 Heavy Blaster Pistol",
     category: "Weapon (Personal)",
     type: "Heavy blaster pistol",
@@ -991,6 +1009,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "chewbacca-bowcaster",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a9/Bowcaster_DICE.png/revision/latest/smart/filters:strip_icc()/500?cb=20220911002039",
     name: "Chewbacca's Bowcaster",
     category: "Weapon (Personal)",
     type: "Bowcaster (energy crossbow)",
@@ -1015,6 +1034,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "boba-fett-ee3",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/8f/EE3BlasterRifle-GalacticFiles2018Weapons.png/revision/latest/smart/filters:strip_icc()/500?cb=20260227011715",
     name: "Boba Fett's EE-3 Carbine Rifle",
     category: "Weapon (Personal)",
     type: "Blaster carbine",
@@ -1038,6 +1058,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "amban-sniper-rifle",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2d/AmbanSniperRifle-SW100Objects.png/revision/latest/smart/filters:strip_icc()/500?cb=20230419205034",
     name: "Amban Phase-Pulse Sniper Rifle",
     category: "Weapon (Personal)",
     type: "Disintegrator sniper rifle",
@@ -1100,6 +1121,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "boba-fett-armor",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1e/BobaFett-SWEDK.png/revision/latest/smart/filters:strip_icc()/193?cb=20240928211320",
     name: "Boba Fett's Mandalorian Armor",
     category: "Armor",
     type: "Mandalorian beskar/durasteel bounty hunter armor",
@@ -1131,6 +1153,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "stormtrooper-armor",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/ae/Stormtrooper-SoloOCE.png/revision/latest/smart/filters:strip_icc()/246?cb=20240109060341",
     name: "Stormtrooper Armor",
     category: "Armor",
     type: "Standard Imperial/First Order infantry armor",
@@ -1156,6 +1179,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "kylo-ren-mask",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d0/KyloRensReforgedHelmet-SW100Objects.png/revision/latest/smart/filters:strip_icc()/465?cb=20230422011531",
     name: "Kylo Ren's Mask",
     category: "Mask",
     type: "Intimidation/vocoder mask",
@@ -1190,6 +1214,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "star-forge",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/ea/StarForgeSucksGas-KOTOR1.jpg/revision/latest/smart/filters:strip_icc()/235?cb=20050611215331",
     name: "The Star Forge",
     category: "Other",
     type: "Rakatan superweapon / factory station",

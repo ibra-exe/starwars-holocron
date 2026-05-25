@@ -124,15 +124,20 @@ export default function ArtifactsPage() {
             <button
               key={a.id}
               onClick={() => setSelectedId(a.id)}
-              className="text-left rounded-xl border border-border bg-card p-5 hover-elevate relative overflow-hidden"
+              className="text-left rounded-xl border border-border bg-card p-4 hover-elevate relative overflow-hidden"
               data-testid={`card-artifact-${a.id}`}
             >
               <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: a.color }} />
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{a.category}</span>
-                <ImportanceBar value={a.importance} />
+              <div className="flex items-start gap-3 mb-2">
+                <ArtifactThumbnail imageUrl={a.imageUrl} color={a.color} name={a.name} />
+                <div className="flex-1 min-w-0 pt-0.5">
+                  <div className="flex items-center justify-between gap-1 mb-1">
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display truncate">{a.category}</span>
+                    <ImportanceBar value={a.importance} />
+                  </div>
+                  <div className="font-display text-[13px] text-foreground leading-tight">{a.name}</div>
+                </div>
               </div>
-              <div className="font-display text-base text-foreground leading-tight">{a.name}</div>
               {a.type && <div className="text-xs text-muted-foreground italic mt-0.5">{a.type}</div>}
               {blade && (
                 <div className="mt-3 h-1.5 rounded-full" style={{
@@ -197,6 +202,8 @@ function ArtifactDrawer({ artifact: a, onClose }: { artifact: Artifact; onClose:
         <div className="px-4 md:px-7 pb-8 md:grid md:grid-cols-[260px_1fr] md:gap-7">
           <aside className="md:sticky md:top-4 self-start flex flex-col items-center py-4">
             <VisualPlate
+              imageUrl={a.imageUrl}
+              imageObjectFit="contain"
               initials={getInitials(a.name, 2)}
               color={a.color}
               eyebrow={a.category}
@@ -369,6 +376,24 @@ function ArtifactDrawer({ artifact: a, onClose }: { artifact: Artifact; onClose:
       </div>
     </div>
     </DrawerPortal>
+  );
+}
+
+function ArtifactThumbnail({ imageUrl, color, name }: { imageUrl?: string; color: string; name: string }) {
+  const [imgError, setImgError] = useState(false);
+  const initials = getInitials(name, 2);
+  const gradient = `radial-gradient(circle at 35% 30%, ${color}cc 0%, ${color}55 45%, ${color}22 80%)`;
+  return (
+    <div
+      className="w-11 h-11 rounded-lg shrink-0 flex items-center justify-center overflow-hidden text-[13px] font-display font-bold select-none"
+      style={{ background: (imageUrl && !imgError) ? `${color}15` : gradient, color, border: `1.5px solid ${color}66`, boxShadow: `0 0 10px ${color}33` }}
+    >
+      {imageUrl && !imgError ? (
+        <img src={imageUrl} alt="" onError={() => setImgError(true)}
+          onLoad={(e) => { const img = e.currentTarget; if (img.naturalWidth === 300 && img.naturalHeight === 171) setImgError(true); }}
+          className="w-full h-full object-contain p-1" />
+      ) : <span>{initials}</span>}
+    </div>
   );
 }
 

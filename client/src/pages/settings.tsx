@@ -125,7 +125,7 @@ export default function SettingsPage() {
         <SettingsGroup title="Sound Effects" icon={Volume2}>
           <Toggle
             label="Star Wars UI sounds"
-            description="Lightsaber hum when the menu opens, R2-D2 chirps on profile cards, and subtle blips for settings toggles. Synthesized in-browser — no audio files downloaded."
+            description="Lightsaber hum when the menu opens, R2-D2 chirps on profile cards, and blips for settings toggles. Synthesized in-browser — no audio files downloaded. On iOS, sounds are muted when the device silent switch is on."
             value={sounds}
             onChange={(v) => { setSounds(v); playToggle(v); }}
             testId="toggle-sounds"

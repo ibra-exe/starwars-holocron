@@ -96,19 +96,20 @@ export default function ShipsPage() {
           <button
             key={s.id}
             onClick={() => setSelectedId(s.id)}
-            className="text-left rounded-xl border border-border bg-card p-5 hover-elevate relative overflow-hidden"
+            className="text-left rounded-xl border border-border bg-card hover-elevate relative overflow-hidden flex flex-col"
             data-testid={`card-ship-${s.id}`}
           >
-            <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: s.color }} />
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{s.category}</span>
-              <ImportanceBar value={s.importance} />
-            </div>
-            <div className="font-display text-base text-foreground leading-tight">{s.name}</div>
-            <div className="text-xs text-muted-foreground italic mt-0.5">{s.classDesignation}</div>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              <ContinuityBadge value={s.continuity} />
-              <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-border text-foreground/85 font-display">{s.manufacturer}</span>
+            <ShipBanner imageUrl={s.imageUrl} color={s.color} />
+            <div className="p-4 flex-1">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{s.category}</span>
+                <ImportanceBar value={s.importance} />
+              </div>
+              <div className="font-display text-[13px] text-foreground leading-tight">{s.name}</div>
+              <div className="text-xs text-muted-foreground italic mt-0.5 truncate">{s.classDesignation}</div>
+              <div className="mt-2.5 flex flex-wrap gap-1.5">
+                <ContinuityBadge value={s.continuity} />
+              </div>
             </div>
           </button>
         ))}
@@ -155,6 +156,8 @@ function ShipDrawer({ ship: s, onClose }: { ship: Ship; onClose: () => void }) {
         <div className="px-4 md:px-7 pb-8 md:grid md:grid-cols-[260px_1fr] md:gap-7">
           <aside className="md:sticky md:top-4 self-start flex flex-col items-center py-4">
             <VisualPlate
+              imageUrl={s.imageUrl}
+              imageObjectFit="contain"
               initials={getInitials(s.name, 2)}
               color={s.color}
               eyebrow={s.category}
@@ -284,6 +287,23 @@ function ShipDrawer({ ship: s, onClose }: { ship: Ship; onClose: () => void }) {
       </div>
     </div>
     </DrawerPortal>
+  );
+}
+
+function ShipBanner({ imageUrl, color }: { imageUrl?: string; color: string }) {
+  const [imgError, setImgError] = useState(false);
+  const gradient = `linear-gradient(135deg, ${color}44 0%, ${color}18 60%, transparent 100%)`;
+  return (
+    <div className="w-full h-24 relative overflow-hidden rounded-t-xl flex items-center justify-center" style={{ background: gradient }}>
+      {imageUrl && !imgError ? (
+        <img src={imageUrl} alt="" onError={() => setImgError(true)}
+          onLoad={(e) => { const img = e.currentTarget; if (img.naturalWidth === 300 && img.naturalHeight === 171) setImgError(true); }}
+          className="absolute inset-0 w-full h-full object-contain p-2" />
+      ) : (
+        <div className="w-full h-full" style={{ background: `radial-gradient(ellipse at center, ${color}22 0%, transparent 70%)` }} />
+      )}
+      <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 50%, hsl(var(--card)) 100%)` }} />
+    </div>
   );
 }
 

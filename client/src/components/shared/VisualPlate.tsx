@@ -3,6 +3,7 @@ import React, { useState } from "react";
 interface VisualPlateProps {
   // Visual content
   imageUrl?: string;          // real photo — renders inside the gold ring when provided
+  imageObjectFit?: "cover" | "contain"; // how image fills the circle (default: cover)
   initials?: string;          // up to 2-3 chars
   symbol?: string;            // emoji / single glyph (preferred over initials when present)
   color: string;              // primary accent color for this entity (hex or css color string)
@@ -24,6 +25,7 @@ interface VisualPlateProps {
  */
 export function VisualPlate({
   imageUrl,
+  imageObjectFit = "cover",
   initials,
   symbol,
   color,
@@ -83,7 +85,7 @@ export function VisualPlate({
                     const img = e.currentTarget;
                     if (img.naturalWidth === 300 && img.naturalHeight === 171) setImgError(true);
                   }}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  className={`absolute inset-0 w-full h-full ${imageObjectFit === "contain" ? "object-contain p-3" : "object-cover object-top"}`}
                   style={{ borderRadius }}
                 />
                 {/* Subtle vignette + scanline HUD overlay over photo */}

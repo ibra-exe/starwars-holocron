@@ -71,17 +71,19 @@ export default function FactionsPage() {
           <button
             key={f.id}
             onClick={() => setSelectedId(f.id)}
-            className="text-left rounded-xl border border-border bg-card p-5 hover-elevate relative overflow-hidden"
+            className="text-left rounded-xl border border-border bg-card p-4 hover-elevate relative overflow-hidden"
             data-testid={`card-faction-${f.id}`}
           >
             <div className="absolute top-0 left-0 right-0 h-1" style={{ background: f.color }} />
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{f.category}</span>
+            <div className="flex items-start gap-3 mb-2">
+              <FactionEmblem logoUrl={f.logoUrl} color={f.color} name={f.name} />
+              <div className="flex-1 min-w-0 pt-0.5">
+                <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{f.category}</span>
+                <div className="font-display text-[13px] text-foreground leading-tight mt-0.5">{f.name}</div>
+              </div>
             </div>
-            <div className="font-display text-lg text-foreground leading-tight">{f.name}</div>
-            {f.shortName && <div className="text-xs text-muted-foreground italic mt-0.5">{f.shortName}</div>}
-            <p className="text-xs text-foreground/75 mt-3 leading-relaxed line-clamp-3">{f.description}</p>
-            <div className="flex flex-wrap gap-1.5 mt-3">
+            <p className="text-xs text-foreground/75 leading-relaxed line-clamp-2">{f.description}</p>
+            <div className="flex flex-wrap gap-1.5 mt-2.5">
               <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-border text-foreground/85 font-display">{f.alignment}</span>
               {f.founded && <span className="text-[10px] text-muted-foreground font-display">{f.founded}</span>}
             </div>
@@ -129,8 +131,10 @@ function FactionDrawer({ faction: f, onClose, onSelectFaction }: { faction: Fact
           {/* Sigil column */}
           <aside className="md:sticky md:top-4 self-start flex flex-col items-center py-4">
             <VisualPlate
-              symbol={symbolGlyph}
-              initials={!symbolGlyph ? getInitials(f.shortName || f.name, 2) : undefined}
+              imageUrl={f.logoUrl}
+              imageObjectFit="contain"
+              symbol={!f.logoUrl ? symbolGlyph : undefined}
+              initials={!f.logoUrl && !symbolGlyph ? getInitials(f.shortName || f.name, 2) : undefined}
               color={f.color}
               eyebrow={f.category}
               title={f.alignment + (f.shortName ? ` · ${f.shortName}` : "")}
@@ -299,6 +303,24 @@ function FactionDrawer({ faction: f, onClose, onSelectFaction }: { faction: Fact
       </div>
     </div>
     </DrawerPortal>
+  );
+}
+
+function FactionEmblem({ logoUrl, color, name }: { logoUrl?: string; color: string; name: string }) {
+  const [imgError, setImgError] = useState(false);
+  const initials = getInitials(name, 2);
+  const gradient = `radial-gradient(circle at 35% 30%, ${color}cc 0%, ${color}55 45%, ${color}22 80%)`;
+  return (
+    <div
+      className="w-11 h-11 rounded-full shrink-0 flex items-center justify-center overflow-hidden text-[13px] font-display font-bold select-none"
+      style={{ background: (logoUrl && !imgError) ? `${color}18` : gradient, color, border: `1.5px solid ${color}66`, boxShadow: `0 0 10px ${color}33` }}
+    >
+      {logoUrl && !imgError ? (
+        <img src={logoUrl} alt="" onError={() => setImgError(true)}
+          onLoad={(e) => { const img = e.currentTarget; if (img.naturalWidth === 300 && img.naturalHeight === 171) setImgError(true); }}
+          className="w-8 h-8 object-contain" />
+      ) : <span>{initials}</span>}
+    </div>
   );
 }
 

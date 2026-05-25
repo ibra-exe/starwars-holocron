@@ -89,17 +89,22 @@ export default function SpeciesPage() {
           <button
             key={s.id}
             onClick={() => setSelectedId(s.id)}
-            className="text-left rounded-xl border border-border bg-card p-5 hover-elevate relative overflow-hidden"
+            className="text-left rounded-xl border border-border bg-card p-4 hover-elevate relative overflow-hidden"
             data-testid={`card-species-${s.id}`}
           >
             <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: s.color }} />
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{s.classification}</span>
-              <ImportanceBar value={s.importance} />
+            <div className="flex items-start gap-3 mb-2">
+              <EntityAvatar imageUrl={s.imageUrl} color={s.color} name={s.name} />
+              <div className="flex-1 min-w-0 pt-0.5">
+                <div className="flex items-center justify-between gap-1 mb-1">
+                  <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display truncate">{s.classification}</span>
+                  <ImportanceBar value={s.importance} />
+                </div>
+                <div className="font-display text-[13px] text-foreground leading-tight">{s.name}</div>
+              </div>
             </div>
-            <div className="font-display text-base text-foreground leading-tight">{s.name}</div>
-            <div className="text-xs text-muted-foreground italic mt-0.5">{s.homeworld}</div>
-            <div className="mt-3 flex flex-wrap gap-1.5">
+            <div className="text-xs text-muted-foreground italic">{s.homeworld}</div>
+            <div className="mt-2.5 flex flex-wrap gap-1.5">
               <ContinuityBadge value={s.continuity} />
               <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-border text-foreground/85 font-display">{s.diet}</span>
             </div>
@@ -149,6 +154,7 @@ function SpeciesDrawer({ species: s, onClose, onSelectSpecies }: { species: Spec
           {/* Visual plate column */}
           <aside className="md:sticky md:top-4 self-start flex flex-col items-center py-4">
             <VisualPlate
+              imageUrl={s.imageUrl}
               initials={getInitials(s.name, 2)}
               color={s.color}
               eyebrow={s.classification}
@@ -253,6 +259,24 @@ function SpeciesDrawer({ species: s, onClose, onSelectSpecies }: { species: Spec
       </div>
     </div>
     </DrawerPortal>
+  );
+}
+
+function EntityAvatar({ imageUrl, color, name }: { imageUrl?: string; color: string; name: string }) {
+  const [imgError, setImgError] = useState(false);
+  const initials = getInitials(name, 2);
+  const gradient = `radial-gradient(circle at 35% 30%, ${color}cc 0%, ${color}55 45%, ${color}22 80%)`;
+  return (
+    <div
+      className="w-11 h-11 rounded-full shrink-0 flex items-center justify-center overflow-hidden text-[13px] font-display font-bold select-none"
+      style={{ background: (imageUrl && !imgError) ? "transparent" : gradient, color, border: `1.5px solid ${color}66`, boxShadow: `0 0 10px ${color}33` }}
+    >
+      {imageUrl && !imgError ? (
+        <img src={imageUrl} alt="" onError={() => setImgError(true)}
+          onLoad={(e) => { const img = e.currentTarget; if (img.naturalWidth === 300 && img.naturalHeight === 171) setImgError(true); }}
+          className="w-full h-full object-cover object-top" />
+      ) : <span>{initials}</span>}
+    </div>
   );
 }
 

@@ -25,8 +25,8 @@ export function playMenuOpen() {
   osc.frequency.setValueAtTime(70, t);
   osc.frequency.exponentialRampToValueAtTime(420, t + 0.2);
   gain.gain.setValueAtTime(0, t);
-  gain.gain.linearRampToValueAtTime(0.09, t + 0.03);
-  gain.gain.setValueAtTime(0.09, t + 0.16);
+  gain.gain.linearRampToValueAtTime(0.35, t + 0.03);
+  gain.gain.setValueAtTime(0.35, t + 0.16);
   gain.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
   osc.start(t); osc.stop(t + 0.3);
 }
@@ -41,7 +41,7 @@ export function playMenuClose() {
   osc.type = "sawtooth";
   osc.frequency.setValueAtTime(420, t);
   osc.frequency.exponentialRampToValueAtTime(70, t + 0.2);
-  gain.gain.setValueAtTime(0.09, t);
+  gain.gain.setValueAtTime(0.35, t);
   gain.gain.exponentialRampToValueAtTime(0.001, t + 0.24);
   osc.start(t); osc.stop(t + 0.25);
 }
@@ -56,7 +56,7 @@ export function playNavClick() {
   osc.type = "sine";
   osc.frequency.setValueAtTime(680, t);
   osc.frequency.exponentialRampToValueAtTime(300, t + 0.07);
-  gain.gain.setValueAtTime(0.07, t);
+  gain.gain.setValueAtTime(0.28, t);
   gain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
   osc.start(t); osc.stop(t + 0.09);
 }
@@ -71,7 +71,7 @@ export function playToggle(on: boolean) {
   osc.type = "sine";
   osc.frequency.setValueAtTime(on ? 480 : 360, t);
   osc.frequency.exponentialRampToValueAtTime(on ? 820 : 200, t + 0.055);
-  gain.gain.setValueAtTime(0.08, t);
+  gain.gain.setValueAtTime(0.32, t);
   gain.gain.exponentialRampToValueAtTime(0.001, t + 0.07);
   osc.start(t); osc.stop(t + 0.08);
 }
@@ -91,7 +91,7 @@ export function playR2Chirp() {
     osc.type = "sine";
     osc.frequency.setValueAtTime(f0, t + delay);
     osc.frequency.exponentialRampToValueAtTime(f1, t + delay + 0.07);
-    gain.gain.setValueAtTime(0.065, t + delay);
+    gain.gain.setValueAtTime(0.26, t + delay);
     gain.gain.exponentialRampToValueAtTime(0.001, t + delay + 0.075);
     osc.start(t + delay); osc.stop(t + delay + 0.08);
   });
