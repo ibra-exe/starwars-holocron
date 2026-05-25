@@ -539,6 +539,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "asajj-ventress",
     name: "Asajj Ventress",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/fb/AsajjVentress-2024Base.png",
     species: "Dathomirian",
     homeworld: "Rattatak / Dathomir",
     gender: "Female",
@@ -589,6 +590,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "rex",
     name: "Captain Rex (CT-7567)",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/89/Captain_Rex_old.png",
     species: "Human (clone)",
     homeworld: "Kamino",
     gender: "Male",
@@ -642,6 +644,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "grogu",
     name: "Grogu",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/94/Mando2-TylerKirkham-Grogu.png",
     aliases: ["The Child", "Baby Yoda"],
     species: "Unknown (Yoda's species)",
     born: "~41 BBY",
@@ -688,6 +691,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "bo-katan",
     name: "Bo-Katan Kryze",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/ec/BoKatanKryze-TTG2024.png",
     species: "Human (Mandalorian)",
     homeworld: "Mandalore",
     gender: "Female",
@@ -716,6 +720,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "satine-kryze",
     name: "Duchess Satine Kryze",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3b/DuchessSatine-SWE.png",
     species: "Human (Mandalorian)",
     homeworld: "Mandalore",
     gender: "Female",
@@ -738,6 +743,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "pre-vizsla",
     name: "Pre Vizsla",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/fc/PreVizsla-Eminence.png",
     species: "Human (Mandalorian)",
     gender: "Male",
     died: "19 BBY",
@@ -898,6 +904,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "saw-gerrera",
     name: "Saw Gerrera",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/06/SawGerrera-Platinum2025.png",
     species: "Human",
     homeworld: "Onderon",
     gender: "Male",
@@ -921,6 +928,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "kanan-jarrus",
     name: "Kanan Jarrus / Caleb Dume",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f6/Kanan-JediNight.png",
     species: "Human",
     homeworld: "Coruscant",
     gender: "Male",
@@ -947,6 +955,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "ezra-bridger",
     name: "Ezra Bridger",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/ad/Ezra_Bridger_character_poster.png",
     species: "Human",
     homeworld: "Lothal",
     gender: "Male",
@@ -969,6 +978,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "hera-syndulla",
     name: "Hera Syndulla",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cc/MaryElizabethWinsteadasHeraSyndulla-ToppsChoice2025.png",
     species: "Twi'lek",
     homeworld: "Ryloth",
     gender: "Female",
@@ -992,6 +1002,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "sabine-wren",
     name: "Sabine Wren",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cc/Sabine_Wren-AG.png",
     species: "Human (Mandalorian)",
     homeworld: "Krownest",
     gender: "Female",
@@ -1014,6 +1025,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "moff-gideon",
     name: "Moff Gideon",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/16/Gideon_Armored.png",
     species: "Human",
     gender: "Male",
     status: "Alive",
@@ -1034,6 +1046,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "snoke",
     name: "Supreme Leader Snoke",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f0/Snoke-TLJOCE.png",
     species: "Strand-cast (Sith clone)",
     homeworld: "Exegol (created)",
     gender: "Male",
@@ -1053,6 +1066,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "general-hux",
     name: "General Armitage Hux",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d0/HuxTLJPromo.png",
     species: "Human",
     gender: "Male",
     died: "35 ABY",
@@ -1110,6 +1124,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "revan",
     name: "Revan",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/45/Render-Darth_Revan.png",
     species: "Human",
     gender: "Male",
     born: "~3994 BBY",
@@ -1133,6 +1148,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "darth-bane",
     name: "Darth Bane",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/5e/DarthBane-GoH-cropped.png",
     species: "Human",
     gender: "Male",
     born: "~1026 BBY",
@@ -1152,6 +1168,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "darth-plagueis",
     name: "Darth Plagueis",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/6c/Plagueis-TheAcolyte.png",
     species: "Muun",
     homeworld: "Mygeeto",
     gender: "Male",
@@ -1172,6 +1189,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "avar-kriss",
     name: "Avar Kriss",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a2/TheHighRepublic-5-NotoVirgin.jpg",
     species: "Human",
     homeworld: "Coruscant",
     gender: "Female",
@@ -1190,6 +1208,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "marchion-ro",
     name: "Marchion Ro",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/96/MarchionUnmasked-2021THRA5.png",
     aliases: ["The Eye"],
     species: "Evereni",
     gender: "Male",
@@ -1208,6 +1227,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "cad-bane",
     name: "Cad Bane",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/9a/CadBane-Bravura.png",
     species: "Duros",
     homeworld: "Duro",
     gender: "Male",
@@ -1228,6 +1248,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "savage-opress",
     name: "Savage Opress",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a0/SavageOpress-BTMF74.png",
     species: "Dathomirian Zabrak",
     homeworld: "Dathomir",
     gender: "Male",
@@ -1249,6 +1270,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "grand-inquisitor",
     name: "Grand Inquisitor",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/7d/TheGrandInquisitor-SWR.png",
     species: "Pau'an",
     gender: "Male",
     died: "3 BBY",
@@ -1267,6 +1289,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "reva",
     name: "Reva Sevander / Third Sister",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f8/ThirdSister-OWK1.png",
     species: "Human",
     gender: "Female",
     status: "Alive",
@@ -1285,6 +1308,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "cal-kestis",
     name: "Cal Kestis",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b0/9BBY_Cal.png",
     species: "Human",
     homeworld: "Bracca",
     gender: "Male",
@@ -1306,6 +1330,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "qira",
     name: "Qi'ra",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/05/QiraDress-SWI185.png",
     species: "Human",
     homeworld: "Corellia",
     gender: "Female",
@@ -1403,6 +1428,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "mara-jade",
     name: "Mara Jade Skywalker",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b1/Mara-Insider47cover.jpg",
     species: "Human",
     gender: "Female",
     status: "Deceased",
@@ -1424,6 +1450,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "jacen-solo",
     name: "Jacen Solo / Darth Caedus",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/e4/Caedus_EA.jpg",
     species: "Human",
     gender: "Male",
     born: "9 ABY",
@@ -1450,6 +1477,7 @@ export const CHARACTERS: Character[] = [
   {
     id: "jaina-solo",
     name: "Jaina Solo Fel",
+    imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/63/JainaSolo_EssentialAtlas.jpg",
     species: "Human",
     gender: "Female",
     born: "9 ABY",
