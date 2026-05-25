@@ -50,6 +50,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "sith-order",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/b/bf/Sith_canon.svg/revision/latest/scale-to-width-down/500?cb=20160702013109",
     name: "Sith Order (Rule of Two)",
     shortName: "Sith",
     ideology: "Passion fuels strength. Strength brings power. Power earns victory. Victory breaks chains. Domination is the natural state of the strong.",
@@ -522,6 +523,7 @@ const _FACTIONS_BASE: Faction[] = [
   },
   {
     id: "bounty-hunters-guild",
+  logoUrl: "https://static.wikia.nocookie.net/starwars/images/0/03/Bounty_Hunters_Guild.jpg/revision/latest/scale-to-width-down/500?cb=20090621063827",
     name: "Bounty Hunters' Guild",
     ideology: "Code-bound contract fulfillment. Pragmatic neutrality.",
     origin: "Pre-Clone Wars",

@@ -271,6 +271,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "echani",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d0/Raskta_Lsu.jpg/revision/latest?cb=20120426042145",
     name: "Echani",
     classification: "Near-Human",
     homeworld: "Eshan",
@@ -321,6 +322,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "rattataki",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/70/KaliyoDjannisFull-TOR.png/revision/latest/scale-to-width-down/500?cb=20161011033701",
     name: "Rattataki",
     classification: "Near-Human",
     homeworld: "Rattatak",
@@ -652,6 +654,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "togorian",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/50/Togorian-Thrawn3.png/revision/latest/scale-to-width-down/500?cb=20180420000025",
     name: "Togorian",
     classification: "Mammalian",
     homeworld: "Togoria",
@@ -675,6 +678,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "selonian",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/da/Leebon-2022THR4.png/revision/latest/scale-to-width-down/500?cb=20241204014211",
     name: "Selonian",
     classification: "Mammalian",
     homeworld: "Selonia (Corellian system)",
@@ -698,6 +702,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "drall",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/53/Drall-AA.png/revision/latest?cb=20230123043551",
     name: "Drall",
     classification: "Mammalian",
     homeworld: "Drall (Corellian system)",
@@ -721,6 +726,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "bimm",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/75/Rycar-Ryjerd-Canon.png/revision/latest?cb=20201213194344",
     name: "Bimm",
     classification: "Mammalian",
     homeworld: "Bimmisaari",
@@ -821,6 +827,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "yam-rii",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/9/94/218-Praying-Mantis.png/revision/latest/scale-to-width-down/500?cb=20230608174534",
     name: "Yam'rii",
     classification: "Insectoid",
     homeworld: "Huk",
@@ -1131,6 +1138,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "wol-cabasshite",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/47/WolCabasshite-Chron.png/revision/latest/scale-to-width-down/500?cb=20230830041809",
     name: "Wol Cabasshite",
     classification: "Mammalian",
     homeworld: "Cabasshi",
@@ -1156,6 +1164,7 @@ export const SPECIES: Species[] = [
   // ============ DROID / SYNTHETIC ============
   {
     id: "droid",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/e9/DroidTrio-SWED.png/revision/latest/scale-to-width-down/500?cb=20221105222741",
     name: "Droid",
     classification: "Artificial",
     homeworld: "Built galaxy-wide (Industrial Automaton, Cybot Galactica, Geonosis foundries)",
@@ -1187,6 +1196,7 @@ export const SPECIES: Species[] = [
   // ============ MISCELLANEOUS / ICONIC ============
   {
     id: "ortolan",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/3f/MaxRebo-BoBFCh2.png/revision/latest?cb=20220125131305",
     name: "Ortolan",
     classification: "Mammalian",
     homeworld: "Orto",
@@ -1210,6 +1220,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "tholothian",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/66/Tholothian-UP.png/revision/latest?cb=20190415010812",
     name: "Tholothian",
     classification: "Near-Human",
     homeworld: "Tholoth",
@@ -1260,6 +1271,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "ongree",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/ea/Pablo-Jill_Action.jpg/revision/latest?cb=20080410230706",
     name: "Ongree",
     classification: "Humanoid",
     homeworld: "Skustell",
@@ -1359,6 +1371,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "ugnaught",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/21/Kuiil_Advanced_Graphics.png/revision/latest/scale-to-width-down/500?cb=20260116012528",
     name: "Ugnaught",
     classification: "Mammalian",
     homeworld: "Gentes (original) / Bespin / Arvala-7",
@@ -1406,6 +1419,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "twilek-zabrak-misc",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/c5/Anzati-BattleOfJakkuInsurgencyRising3.png/revision/latest/scale-to-width-down/500?cb=20241014012405",
     name: "Anzati",
     classification: "Humanoid",
     homeworld: "Anzat",
@@ -1527,6 +1541,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "force-priestesses",
+  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/de/Force_Priestesses_Destiny.png/revision/latest/scale-to-width-down/500?cb=20150331114816",
     name: "Force Priestesses (Mortis-aligned)",
     classification: "Force Entity",
     homeworld: "Wellspring of Life",
