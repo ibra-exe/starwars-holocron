@@ -49,7 +49,7 @@ export const SPECIES: Species[] = [
   // ============ MAJOR HUMANOID / NEAR-HUMAN ============
   {
     id: "human",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/3f/HumansInTheResistance-TROS.jpg/revision/latest/scale-to-width-down/500?cb=20200305153027",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3f/HumansInTheResistance-TROS.jpg",
     name: "Human",
     classification: "Humanoid",
     homeworld: "Coruscant (galaxy-wide)",
@@ -80,7 +80,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "twilek",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/54/Twileks.png/revision/latest/scale-to-width-down/500?cb=20151229035344",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/54/Twileks.png",
     name: "Twi'lek",
     classification: "Near-Human",
     homeworld: "Ryloth",
@@ -109,7 +109,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "togruta",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/af/ShaakTi-TCWs3BR1.png/revision/latest/scale-to-width-down/500?cb=20220909175007",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/af/ShaakTi-TCWs3BR1.png",
     name: "Togruta",
     classification: "Humanoid",
     homeworld: "Shili",
@@ -136,7 +136,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "zabrak",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/a4/Zabrak_DICE.png/revision/latest/scale-to-width-down/500?cb=20230723013313",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a4/Zabrak_DICE.png",
     name: "Zabrak",
     classification: "Near-Human",
     homeworld: "Iridonia (and the colony world Dathomir)",
@@ -165,7 +165,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "chiss",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/ff/Thrawn_fullbody.png/revision/latest/scale-to-width-down/500?cb=20221120173900",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/ff/Thrawn_fullbody.png",
     name: "Chiss",
     classification: "Near-Human",
     homeworld: "Csilla",
@@ -193,7 +193,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "mirialan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/b7/Mirialan_Diplomat.png/revision/latest/scale-to-width-down/500?cb=20160207064156",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b7/Mirialan_Diplomat.png",
     name: "Mirialan",
     classification: "Near-Human",
     homeworld: "Mirial",
@@ -220,7 +220,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "kiffar",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/62/QuinlanVos-SWE.png/revision/latest?cb=20160913030038",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/62/QuinlanVos-SWE.png",
     name: "Kiffar",
     classification: "Near-Human",
     homeworld: "Kiffu, Kiffex",
@@ -247,7 +247,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "pantoran",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/f4/Papanoida_body_shot.png/revision/latest/scale-to-width-down/500?cb=20221205001600",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f4/Papanoida_body_shot.png",
     name: "Pantoran",
     classification: "Near-Human",
     homeworld: "Pantora (moon of Orto Plutonia)",
@@ -271,7 +271,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "echani",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d0/Raskta_Lsu.jpg/revision/latest?cb=20120426042145",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d0/Raskta_Lsu.jpg",
     name: "Echani",
     classification: "Near-Human",
     homeworld: "Eshan",
@@ -295,7 +295,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "miraluka",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/b5/Hunters_characters_diago_highres_fullbody.png/revision/latest/scale-to-width-down/500?cb=20230615201738",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b5/Hunters_characters_diago_highres_fullbody.png",
     name: "Miraluka",
     classification: "Near-Human",
     homeworld: "Alpheridies",
@@ -322,7 +322,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "rattataki",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/70/KaliyoDjannisFull-TOR.png/revision/latest/scale-to-width-down/500?cb=20161011033701",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/70/KaliyoDjannisFull-TOR.png",
     name: "Rattataki",
     classification: "Near-Human",
     homeworld: "Rattatak",
@@ -346,7 +346,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "nautolan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/81/Kitfisto_detail.png/revision/latest/scale-to-width-down/500?cb=20170608230157",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/81/Kitfisto_detail.png",
     name: "Nautolan",
     classification: "Amphibian",
     homeworld: "Glee Anselm",
@@ -372,7 +372,7 @@ export const SPECIES: Species[] = [
   // ============ REPTILIAN / SAURIAN ============
   {
     id: "trandoshan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/72/Bossk_full_body.png/revision/latest/scale-to-width-down/500?cb=20221008024202",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/72/Bossk_full_body.png",
     name: "Trandoshan",
     classification: "Reptilian",
     homeworld: "Trandosha (Dosha)",
@@ -396,7 +396,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "barabel",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/57/Barabel-NEGAS.png/revision/latest/scale-to-width-down/500?cb=20221106205115",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/57/Barabel-NEGAS.png",
     name: "Barabel",
     classification: "Reptilian",
     homeworld: "Barab I",
@@ -420,7 +420,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "rodian",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d3/Rodian_DICE.png/revision/latest/scale-to-width-down/500?cb=20260227044626",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d3/Rodian_DICE.png",
     name: "Rodian",
     classification: "Reptilian",
     homeworld: "Rodia",
@@ -469,7 +469,7 @@ export const SPECIES: Species[] = [
   // ============ AMPHIBIAN ============
   {
     id: "mon-calamari",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/23/The_Mon_Calamari.png/revision/latest/scale-to-width-down/500?cb=20150801202537",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/23/The_Mon_Calamari.png",
     name: "Mon Calamari",
     classification: "Amphibian",
     homeworld: "Mon Cala (Dac)",
@@ -496,7 +496,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "quarren",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/15/The_Quarren.png/revision/latest?cb=20151124051036",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/15/The_Quarren.png",
     name: "Quarren",
     classification: "Amphibian",
     homeworld: "Mon Cala (Dac)",
@@ -520,7 +520,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "gungan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d5/Gungan_warrior.png/revision/latest/scale-to-width-down/500?cb=20160911012903",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d5/Gungan_warrior.png",
     name: "Gungan",
     classification: "Amphibian",
     homeworld: "Naboo",
@@ -549,7 +549,7 @@ export const SPECIES: Species[] = [
   // ============ MAMMALIAN / FURRED ============
   {
     id: "wookiee",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/1e/Chewbacca-Fathead.png/revision/latest/scale-to-width-down/500?cb=20161108052810",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1e/Chewbacca-Fathead.png",
     name: "Wookiee",
     classification: "Mammalian",
     homeworld: "Kashyyyk",
@@ -577,7 +577,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "ewok",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/a8/Ewoks_Encyclopedia.png/revision/latest?cb=20210904221240",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a8/Ewoks_Encyclopedia.png",
     name: "Ewok",
     classification: "Mammalian",
     homeworld: "Endor (forest moon)",
@@ -604,7 +604,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "bothan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/81/Bothan-NEGAS.png/revision/latest/scale-to-width-down/500?cb=20221106235937",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/81/Bothan-NEGAS.png",
     name: "Bothan",
     classification: "Mammalian",
     homeworld: "Bothawui",
@@ -630,7 +630,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "lasat",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/45/ZebOrrelios-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241123221628",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/45/ZebOrrelios-CGSWG.png",
     name: "Lasat",
     classification: "Mammalian",
     homeworld: "Lira San (true homeworld) / Lasan (colony)",
@@ -654,7 +654,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "togorian",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/50/Togorian-Thrawn3.png/revision/latest/scale-to-width-down/500?cb=20180420000025",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/50/Togorian-Thrawn3.png",
     name: "Togorian",
     classification: "Mammalian",
     homeworld: "Togoria",
@@ -678,7 +678,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "selonian",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/da/Leebon-2022THR4.png/revision/latest/scale-to-width-down/500?cb=20241204014211",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/da/Leebon-2022THR4.png",
     name: "Selonian",
     classification: "Mammalian",
     homeworld: "Selonia (Corellian system)",
@@ -702,7 +702,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "drall",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/53/Drall-AA.png/revision/latest?cb=20230123043551",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/53/Drall-AA.png",
     name: "Drall",
     classification: "Mammalian",
     homeworld: "Drall (Corellian system)",
@@ -726,7 +726,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "bimm",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/75/Rycar-Ryjerd-Canon.png/revision/latest?cb=20201213194344",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/75/Rycar-Ryjerd-Canon.png",
     name: "Bimm",
     classification: "Mammalian",
     homeworld: "Bimmisaari",
@@ -752,7 +752,7 @@ export const SPECIES: Species[] = [
   // ============ INSECTOID ============
   {
     id: "geonosian",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/ae/SunFac-SWCTP.png/revision/latest/scale-to-width-down/500?cb=20221030230749",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/ae/SunFac-SWCTP.png",
     name: "Geonosian",
     classification: "Insectoid",
     homeworld: "Geonosis",
@@ -779,7 +779,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "verpine",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/fd/SlicingIn-Hal.jpg/revision/latest/scale-to-width-down/500?cb=20140505151653",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/fd/SlicingIn-Hal.jpg",
     name: "Verpine",
     classification: "Insectoid",
     homeworld: "Roche asteroid field",
@@ -803,7 +803,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "killik",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/8c/Killik-HanSolo1.jpg/revision/latest/scale-to-width-down/500?cb=20210919000439",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/8c/Killik-HanSolo1.jpg",
     name: "Killik",
     classification: "Insectoid",
     homeworld: "Alderaan (original) / Alzoc III / Kr",
@@ -827,7 +827,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "yam-rii",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/9/94/218-Praying-Mantis.png/revision/latest/scale-to-width-down/500?cb=20230608174534",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/94/218-Praying-Mantis.png",
     name: "Yam'rii",
     classification: "Insectoid",
     homeworld: "Huk",
@@ -853,7 +853,7 @@ export const SPECIES: Species[] = [
   // ============ HUTT / SLUG ============
   {
     id: "hutt",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/cc/Jabba-USCVV.png/revision/latest/scale-to-width-down/500?cb=20230513042612",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cc/Jabba-USCVV.png",
     name: "Hutt",
     classification: "Mammalian",
     homeworld: "Varl (original), Nal Hutta (adopted)",
@@ -882,7 +882,7 @@ export const SPECIES: Species[] = [
   // ============ DIMINUTIVE / ANCIENT MYSTERY ============
   {
     id: "yodas-species",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/c3/Yoda_TPM_RotS.png/revision/latest/scale-to-width-down/500?cb=20130810185858",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/c3/Yoda_TPM_RotS.png",
     name: "Yoda's Species",
     classification: "Mammalian",
     homeworld: "Unknown",
@@ -910,7 +910,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "jawa",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/bd/Jawas-SWApp.png/revision/latest/scale-to-width-down/500?cb=20251014234834",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/bd/Jawas-SWApp.png",
     name: "Jawa",
     classification: "Humanoid",
     homeworld: "Tatooine",
@@ -934,7 +934,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "tusken",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/2c/TuskenFamily-TSWB.png/revision/latest/scale-to-width-down/500?cb=20211225202021",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2c/TuskenFamily-TSWB.png",
     name: "Tusken Raider (Sand People)",
     classification: "Humanoid",
     homeworld: "Tatooine",
@@ -960,7 +960,7 @@ export const SPECIES: Species[] = [
   // ============ KEL DOR / OTHERS ============
   {
     id: "kel-dor",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/fd/Plokoon_detail.png/revision/latest/scale-to-width-down/500?cb=20241210055804",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/fd/Plokoon_detail.png",
     name: "Kel Dor",
     classification: "Humanoid",
     homeworld: "Dorin",
@@ -987,7 +987,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "kaminoan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/5f/Kaminoans-SWHC31.png/revision/latest/scale-to-width-down/500?cb=20241114001128",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/5f/Kaminoans-SWHC31.png",
     name: "Kaminoan",
     classification: "Humanoid",
     homeworld: "Kamino",
@@ -1015,7 +1015,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "neimoidian",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/b0/NeimoidiansSWE.png/revision/latest/scale-to-width-down/500?cb=20140909101500",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b0/NeimoidiansSWE.png",
     name: "Neimoidian",
     classification: "Humanoid",
     homeworld: "Neimoidia",
@@ -1042,7 +1042,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "duros",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/39/Duros_DICE.png/revision/latest/scale-to-width-down/500?cb=20221205150340",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/39/Duros_DICE.png",
     name: "Duros",
     classification: "Humanoid",
     homeworld: "Duro",
@@ -1066,7 +1066,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "sullustan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/04/NienNunbFull-SWBC62.png/revision/latest/scale-to-width-down/500?cb=20240218062248",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/04/NienNunbFull-SWBC62.png",
     name: "Sullustan",
     classification: "Mammalian",
     homeworld: "Sullust",
@@ -1090,7 +1090,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "ithorian",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/86/MokShaiz-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241207005444",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/86/MokShaiz-CGSWG.png",
     name: "Ithorian (Hammerhead)",
     classification: "Humanoid",
     homeworld: "Ithor",
@@ -1114,7 +1114,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "abednedo",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d2/CaiThrenalli-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241125024304",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d2/CaiThrenalli-CGSWG.png",
     name: "Abednedo",
     classification: "Humanoid",
     homeworld: "Abednedo",
@@ -1138,7 +1138,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "wol-cabasshite",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/47/WolCabasshite-Chron.png/revision/latest/scale-to-width-down/500?cb=20230830041809",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/47/WolCabasshite-Chron.png",
     name: "Wol Cabasshite",
     classification: "Mammalian",
     homeworld: "Cabasshi",
@@ -1164,7 +1164,7 @@ export const SPECIES: Species[] = [
   // ============ DROID / SYNTHETIC ============
   {
     id: "droid",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/e9/DroidTrio-SWED.png/revision/latest/scale-to-width-down/500?cb=20221105222741",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/e9/DroidTrio-SWED.png",
     name: "Droid",
     classification: "Artificial",
     homeworld: "Built galaxy-wide (Industrial Automaton, Cybot Galactica, Geonosis foundries)",
@@ -1196,7 +1196,7 @@ export const SPECIES: Species[] = [
   // ============ MISCELLANEOUS / ICONIC ============
   {
     id: "ortolan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/3f/MaxRebo-BoBFCh2.png/revision/latest?cb=20220125131305",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3f/MaxRebo-BoBFCh2.png",
     name: "Ortolan",
     classification: "Mammalian",
     homeworld: "Orto",
@@ -1220,7 +1220,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "tholothian",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/66/Tholothian-UP.png/revision/latest?cb=20190415010812",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/66/Tholothian-UP.png",
     name: "Tholothian",
     classification: "Near-Human",
     homeworld: "Tholoth",
@@ -1247,7 +1247,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "cerean",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/be/Mundi_bodyshot.png/revision/latest/scale-to-width-down/500?cb=20140603153008",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/be/Mundi_bodyshot.png",
     name: "Cerean",
     classification: "Humanoid",
     homeworld: "Cerea",
@@ -1271,7 +1271,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "ongree",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/ea/Pablo-Jill_Action.jpg/revision/latest?cb=20080410230706",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/ea/Pablo-Jill_Action.jpg",
     name: "Ongree",
     classification: "Humanoid",
     homeworld: "Skustell",
@@ -1295,7 +1295,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "iktotchi",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/78/SaeseeTiin-USWNE.png/revision/latest/scale-to-width-down/500?cb=20241215072448",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/78/SaeseeTiin-USWNE.png",
     name: "Iktotchi",
     classification: "Humanoid",
     homeworld: "Iktotch (moon of Iktotchon)",
@@ -1319,7 +1319,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "kaleesh",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d0/Kaleesh-Alien_Archive.jpg/revision/latest/scale-to-width-down/500?cb=20181011072919",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d0/Kaleesh-Alien_Archive.jpg",
     name: "Kaleesh",
     classification: "Reptilian",
     homeworld: "Kalee",
@@ -1343,7 +1343,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "muun",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/2c/Muun_FDEV_Arden_Beckwith.png/revision/latest/scale-to-width-down/500?cb=20211218053459",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2c/Muun_FDEV_Arden_Beckwith.png",
     name: "Muun",
     classification: "Humanoid",
     homeworld: "Muunilinst",
@@ -1371,7 +1371,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "ugnaught",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/21/Kuiil_Advanced_Graphics.png/revision/latest/scale-to-width-down/500?cb=20260116012528",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/21/Kuiil_Advanced_Graphics.png",
     name: "Ugnaught",
     classification: "Mammalian",
     homeworld: "Gentes (original) / Bespin / Arvala-7",
@@ -1395,7 +1395,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "bith",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/8e/SWA47_art_Bith.png/revision/latest/scale-to-width-down/500?cb=20230104150850",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/8e/SWA47_art_Bith.png",
     name: "Bith",
     classification: "Humanoid",
     homeworld: "Clak'dor VII",
@@ -1419,7 +1419,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "twilek-zabrak-misc",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/c5/Anzati-BattleOfJakkuInsurgencyRising3.png/revision/latest/scale-to-width-down/500?cb=20241014012405",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/c5/Anzati-BattleOfJakkuInsurgencyRising3.png",
     name: "Anzati",
     classification: "Humanoid",
     homeworld: "Anzat",
@@ -1443,7 +1443,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "skakoan",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d2/Wat_Tambor_SWE.png/revision/latest/scale-to-width-down/500?cb=20260225043345",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d2/Wat_Tambor_SWE.png",
     name: "Skakoan",
     classification: "Humanoid",
     homeworld: "Skako",
@@ -1467,7 +1467,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "yuuzhan-vong",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/6e/YuuzhanVong_NEGAS.jpg/revision/latest/scale-to-width-down/500?cb=20070617052507",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/6e/YuuzhanVong_NEGAS.jpg",
     name: "Yuuzhan Vong",
     classification: "Humanoid",
     homeworld: "Yuuzhan'tar (their original galaxy)",
@@ -1541,7 +1541,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "force-priestesses",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/de/Force_Priestesses_Destiny.png/revision/latest/scale-to-width-down/500?cb=20150331114816",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/de/Force_Priestesses_Destiny.png",
     name: "Force Priestesses (Mortis-aligned)",
     classification: "Force Entity",
     homeworld: "Wellspring of Life",
@@ -1565,7 +1565,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "porg",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/ef/Porg-SWLS.png/revision/latest/scale-to-width-down/500?cb=20241201183008",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/ef/Porg-SWLS.png",
     name: "Porg",
     classification: "Avian",
     homeworld: "Ahch-To",
@@ -1589,7 +1589,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "loth-wolf",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/a8/LothWolf-2025ToppsSWHyperspace.png/revision/latest/scale-to-width-down/500?cb=20260220042829",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a8/LothWolf-2025ToppsSWHyperspace.png",
     name: "Loth-Wolf",
     classification: "Mammalian",
     homeworld: "Lothal",
@@ -1613,7 +1613,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: "purrgil",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/57/Purrgil-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241130030607",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/57/Purrgil-CGSWG.png",
     name: "Purrgil",
     classification: "Cetacean",
     homeworld: "Deep space (intergalactic)",

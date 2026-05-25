@@ -69,7 +69,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "skywalker-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d9/SkywalkerLightsaberRepaired-SW100Objects.png/revision/latest/scale-to-width-down/500?cb=20230420131754",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d9/SkywalkerLightsaberRepaired-SW100Objects.png",
     name: "The Skywalker Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -112,7 +112,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "darksaber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/4c/Darksaber-SWGE.png/revision/latest/scale-to-width-down/500?cb=20250601050517",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4c/Darksaber-SWGE.png",
     name: "The Darksaber",
     category: "Lightsaber Variant",
     type: "Flat-blade black lightsaber",
@@ -166,7 +166,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "mace-windu-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/1a/MaceWinduLightsaber-SWCT.png/revision/latest/scale-to-width-down/500?cb=20251213061520",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1a/MaceWinduLightsaber-SWCT.png",
     name: "Mace Windu's Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -197,7 +197,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "yoda-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/ca/Yoda_lightsaber.png/revision/latest/scale-to-width-down/500?cb=20250510235556",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/ca/Yoda_lightsaber.png",
     name: "Yoda's Lightsaber",
     category: "Lightsaber",
     type: "Shoto (short-blade) lightsaber",
@@ -227,7 +227,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "obi-wan-saber-third",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/7b/KenobiThirdLightsaber-DB.png/revision/latest/scale-to-width-down/500?cb=20251213061329",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/7b/KenobiThirdLightsaber-DB.png",
     name: "Obi-Wan Kenobi's Third Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -257,7 +257,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "qui-gon-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/b3/Qui-Gon_Jinns_lightsaber_-_SW_Card_Trader.png/revision/latest/scale-to-width-down/500?cb=20240220053206",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b3/Qui-Gon_Jinns_lightsaber_-_SW_Card_Trader.png",
     name: "Qui-Gon Jinn's Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -283,7 +283,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "ahsoka-white-sabers",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/f4/AhsokaTanoLightsabers-FFp43.png/revision/latest/scale-to-width-down/500?cb=20220829043021",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f4/AhsokaTanoLightsabers-FFp43.png",
     name: "Ahsoka Tano's White Lightsabers",
     category: "Lightsaber Variant",
     type: "Paired shoto and standard sabers",
@@ -317,7 +317,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "kylo-ren-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/3e/KyloRensLightsaber-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20250205055919",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3e/KyloRensLightsaber-CGSWG.png",
     name: "Kylo Ren's Crossguard Lightsaber",
     category: "Lightsaber Variant",
     type: "Crossguard lightsaber",
@@ -350,7 +350,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "rey-yellow-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/b5/ReysLightsaber-SW100Objects.png/revision/latest/scale-to-width-down/500?cb=20241230051329",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b5/ReysLightsaber-SW100Objects.png",
     name: "Rey's Yellow Lightsaber",
     category: "Lightsaber",
     type: "Collapsible staff lightsaber",
@@ -379,7 +379,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "count-dooku-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/03/CountDookusLightsaber-DB.png/revision/latest/scale-to-width-down/500?cb=20230409213029",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/03/CountDookusLightsaber-DB.png",
     name: "Count Dooku's Curved-Hilt Lightsaber",
     category: "Lightsaber",
     type: "Curved-hilt single-blade lightsaber",
@@ -446,7 +446,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "asajj-ventress-sabers",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/fb/AsajjVentress-2024Base.png/revision/latest/scale-to-width-down/500?cb=20251026185311",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/fb/AsajjVentress-2024Base.png",
     name: "Asajj Ventress's Twin Curved Lightsabers",
     category: "Lightsaber Variant",
     type: "Paired curved-hilt lightsabers (connectable to saberstaff)",
@@ -504,7 +504,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "ezra-bridger-saber-blaster",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/ad/Ezra_Bridger_character_poster.png/revision/latest/scale-to-width-down/500?cb=20260201003755",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/ad/Ezra_Bridger_character_poster.png",
     name: "Ezra Bridger's Saber-Blaster",
     category: "Lightsaber Variant",
     type: "Lightsaber/blaster hybrid",
@@ -529,7 +529,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "kanan-jarrus-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/ad/Kanans_Lightsaber_hilt.png/revision/latest?cb=20161003044509",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/ad/Kanans_Lightsaber_hilt.png",
     name: "Kanan Jarrus's Lightsaber",
     category: "Lightsaber",
     type: "Separable hilt — saber and blaster grip",
@@ -554,7 +554,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "plo-koon-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/2f/Plo_Koon_Lightsaber.png/revision/latest/scale-to-width-down/500?cb=20230603002918",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2f/Plo_Koon_Lightsaber.png",
     name: "Plo Koon's Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber",
@@ -579,7 +579,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "kit-fisto-saber",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/b8/KitFisto-LightsabersoftheJedi.png/revision/latest/scale-to-width-down/500?cb=20251221044016",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b8/KitFisto-LightsabersoftheJedi.png",
     name: "Kit Fisto's Lightsaber",
     category: "Lightsaber",
     type: "Single-blade lightsaber (underwater-capable)",
@@ -608,7 +608,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "kyber-crystal",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/5f/LightsaberCrystal-SWE.png/revision/latest/scale-to-width-down/500?cb=20160911062335",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/5f/LightsaberCrystal-SWE.png",
     name: "Kyber Crystal",
     category: "Crystal",
     type: "Force-attuned focusing crystal",
@@ -646,7 +646,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "sith-holocron",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/74/MalachorSithHolocron-DVSWE.png/revision/latest/scale-to-width-down/500?cb=20221122061118",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/74/MalachorSithHolocron-DVSWE.png",
     name: "Sith Holocron",
     category: "Holocron",
     type: "Sith knowledge-storage pyramid",
@@ -682,7 +682,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "sith-wayfinder",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/21/Wayfinder-TROS-GG.png/revision/latest/scale-to-width-down/500?cb=20230419135731",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/21/Wayfinder-TROS-GG.png",
     name: "Sith Wayfinder",
     category: "Sith Artifact",
     type: "Navigational device / dark-side artifact",
@@ -715,7 +715,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "darth-plagueis-research",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/6c/Plagueis-TheAcolyte.png/revision/latest/scale-to-width-down/500?cb=20251104234859",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/6c/Plagueis-TheAcolyte.png",
     name: "Darth Plagueis's Research into Midi-chlorian Manipulation",
     category: "Sith Artifact",
     type: "Forbidden knowledge / alchemical research",
@@ -749,7 +749,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "korriban-sith-tombs",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/3a/ValleyOfTheDarkLords-EGTF.jpg/revision/latest/scale-to-width-down/500?cb=20081206164728",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3a/ValleyOfTheDarkLords-EGTF.jpg",
     name: "The Sith Tombs of Korriban / Moraband",
     category: "Sith Artifact",
     type: "Dark-side Force nexus / necropolis",
@@ -770,7 +770,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "sith-eternal-banner",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/3e/Sith_Eternal_insignia.svg/revision/latest/scale-to-width-down/500?cb=20191223220202",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3e/Sith_Eternal_insignia.svg",
     name: "Sith Eternal Banner",
     category: "Sith Artifact",
     type: "Symbol / cultural artifact",
@@ -794,7 +794,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "jedi-holocron",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/2e/Holocron-TSWB.png/revision/latest/scale-to-width-down/500?cb=20220824044320",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2e/Holocron-TSWB.png",
     name: "Jedi Holocron",
     category: "Holocron",
     type: "Jedi knowledge-storage cube",
@@ -825,7 +825,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "tython-force-temples",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/4d/Tython_TMS2.png/revision/latest/scale-to-width-down/500?cb=20201205044714",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4d/Tython_TMS2.png",
     name: "Force Temples of Tython",
     category: "Jedi Artifact",
     type: "Ancient Force nexus / structure",
@@ -850,7 +850,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "jedi-archives",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/cf/Jedi_Archives.png/revision/latest/scale-to-width-down/500?cb=20180704111733",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cf/Jedi_Archives.png",
     name: "The Jedi Archives",
     category: "Jedi Artifact",
     type: "Repository of galactic knowledge",
@@ -871,7 +871,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "prophecy-of-the-chosen-one",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/c1/ChosenOne-SotS.png/revision/latest/scale-to-width-down/500?cb=20221123042146",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/c1/ChosenOne-SotS.png",
     name: "The Prophecy of the Chosen One",
     category: "Prophecy/Tome",
     type: "Ancient Jedi prophecy",
@@ -900,7 +900,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "beskar",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/12/Beskar-TSWB.png/revision/latest/scale-to-width-down/500?cb=20211225211302",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/12/Beskar-TSWB.png",
     name: "Beskar (Mandalorian Iron)",
     category: "Mandalorian Relic",
     type: "Sacred metal / armor material",
@@ -935,7 +935,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "mandalorian-creed-helmet",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/3f/HelmetsCompiled-SWGoH.png/revision/latest/scale-to-width-down/500?cb=20240204133820",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3f/HelmetsCompiled-SWGoH.png",
     name: "The Mandalorian Helmet & the Creed",
     category: "Helmet",
     type: "Cultural practice / beskar helmet",
@@ -966,7 +966,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "mythosaur-skull",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/cd/Mythosaur-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241122042203",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cd/Mythosaur-CGSWG.png",
     name: "Mythosaur Skull Symbol",
     category: "Mandalorian Relic",
     type: "Cultural symbol / living creature",
@@ -993,7 +993,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "dl-44-blaster",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/0f/Han_Solo_DL-44_SWIconsHS.png/revision/latest/scale-to-width-down/500?cb=20190201010326",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/0f/Han_Solo_DL-44_SWIconsHS.png",
     name: "Han Solo's DL-44 Heavy Blaster Pistol",
     category: "Weapon (Personal)",
     type: "Heavy blaster pistol",
@@ -1021,7 +1021,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "chewbacca-bowcaster",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/a9/Bowcaster_DICE.png/revision/latest/scale-to-width-down/500?cb=20220911002039",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a9/Bowcaster_DICE.png",
     name: "Chewbacca's Bowcaster",
     category: "Weapon (Personal)",
     type: "Bowcaster (energy crossbow)",
@@ -1046,7 +1046,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "boba-fett-ee3",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/8f/EE3BlasterRifle-GalacticFiles2018Weapons.png/revision/latest/scale-to-width-down/500?cb=20260227011715",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/8f/EE3BlasterRifle-GalacticFiles2018Weapons.png",
     name: "Boba Fett's EE-3 Carbine Rifle",
     category: "Weapon (Personal)",
     type: "Blaster carbine",
@@ -1070,7 +1070,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "amban-sniper-rifle",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/9/96/Star-Wars-Boba-Fett-animated-version-sixth-scale-hot-toys.png/revision/latest/scale-to-width-down/500?cb=20171014065537",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/96/Star-Wars-Boba-Fett-animated-version-sixth-scale-hot-toys.png",
     name: "Amban Phase-Pulse Sniper Rifle",
     category: "Weapon (Personal)",
     type: "Disintegrator sniper rifle",
@@ -1098,7 +1098,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "darth-vader-suit",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/67/Darth_Vader_SWE_detail.png/revision/latest/scale-to-width-down/500?cb=20221128024813",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/67/Darth_Vader_SWE_detail.png",
     name: "Darth Vader's Life-Support Armor",
     category: "Armor",
     type: "Life-support cybernetic armor suit",
@@ -1134,7 +1134,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "boba-fett-armor",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/5e/BobaFettMain2.png/revision/latest/scale-to-width-down/500?cb=20241220230522",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/5e/BobaFettMain2.png",
     name: "Boba Fett's Mandalorian Armor",
     category: "Armor",
     type: "Mandalorian beskar/durasteel bounty hunter armor",
@@ -1166,7 +1166,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "stormtrooper-armor",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/ae/Stormtrooper-SoloOCE.png/revision/latest/scale-to-width-down/500?cb=20240109060341",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/ae/Stormtrooper-SoloOCE.png",
     name: "Stormtrooper Armor",
     category: "Armor",
     type: "Standard Imperial/First Order infantry armor",
@@ -1192,7 +1192,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "kylo-ren-mask",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d0/KyloRensReforgedHelmet-SW100Objects.png/revision/latest/scale-to-width-down/500?cb=20230422011531",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d0/KyloRensReforgedHelmet-SW100Objects.png",
     name: "Kylo Ren's Mask",
     category: "Mask",
     type: "Intimidation/vocoder mask",
@@ -1227,7 +1227,7 @@ export const ARTIFACTS: Artifact[] = [
   // ─────────────────────────────────────────────
   {
     id: "star-forge",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/ea/StarForgeSucksGas-KOTOR1.jpg/revision/latest?cb=20050611215331",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/ea/StarForgeSucksGas-KOTOR1.jpg",
     name: "The Star Forge",
     category: "Other",
     type: "Rakatan superweapon / factory station",
@@ -1263,7 +1263,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "telos-holocron",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/5a/Telosholocron.jpg/revision/latest?cb=20071126234319",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/5a/Telosholocron.jpg",
     name: "The Telos Holocron",
     category: "Holocron",
     type: "Jedi holocron containing Exile/Kreia knowledge",
@@ -1290,7 +1290,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "holocron-of-heresies",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/81/HolocronOfHeresies-TheNightsistersRevenge.jpg/revision/latest?cb=20101230152128",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/81/HolocronOfHeresies-TheNightsistersRevenge.jpg",
     name: "The Holocron of Heresies",
     category: "Holocron",
     type: "Ancient Sith forbidden-knowledge holocron",
@@ -1314,7 +1314,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "massassi-temples",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/9/93/Great_Temple_RO.png/revision/latest/scale-to-width-down/500?cb=20250215172730",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/93/Great_Temple_RO.png",
     name: "The Massassi Temples of Yavin 4",
     category: "Other",
     type: "Ancient Sith/Massassi temple complex",

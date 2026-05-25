@@ -59,7 +59,7 @@ export const SHIPS: Ship[] = [
   // ─────────────────────────────────────────────
   {
     id: "millennium-falcon",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/52/Millennium_Falcon_Fathead_TROS.png/revision/latest/scale-to-width-down/500?cb=20221029015218",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/52/Millennium_Falcon_Fathead_TROS.png",
     name: "Millennium Falcon",
     classDesignation: "YT-1300f light freighter (heavily modified)",
     category: "Light Freighter",
@@ -103,7 +103,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "x-wing-t65",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/00/Xwing-ROOCE.png/revision/latest/scale-to-width-down/500?cb=20230516042654",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/00/Xwing-ROOCE.png",
     name: "T-65 X-wing Starfighter",
     classDesignation: "T-65B X-wing starfighter",
     category: "Starfighter",
@@ -141,7 +141,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "razor-crest",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/2e/RazorCrest-TSWB.png/revision/latest/scale-to-width-down/500?cb=20260404200334",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2e/RazorCrest-TSWB.png",
     name: "Razor Crest",
     classDesignation: "ST-70 Assault Ship / Razor Crest gunship",
     category: "Light Freighter",
@@ -174,7 +174,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "slave-i",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/21/BobaFettsStarship-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241226014039",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/21/BobaFettsStarship-CGSWG.png",
     name: "Slave I (Firespray-31)",
     classDesignation: "Firespray-31-class patrol and attack craft",
     category: "Light Freighter",
@@ -252,7 +252,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "tantive-iv",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/24/TantiveIV-TSWB.png/revision/latest/scale-to-width-down/500?cb=20221006055135",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/24/TantiveIV-TSWB.png",
     name: "Tantive IV",
     classDesignation: "CR90 Corellian corvette",
     category: "Corvette",
@@ -289,7 +289,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "naboo-royal-starship",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/9/9a/Naboo_Royal_Starship_SWE.png/revision/latest/scale-to-width-down/500?cb=20260223073019",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/9a/Naboo_Royal_Starship_SWE.png",
     name: "Naboo Royal Starship (J-type 327)",
     classDesignation: "J-type 327 Nubian royal starship",
     category: "Yacht/Personal Transport",
@@ -319,7 +319,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "outrider",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/08/YT-2400-SWESV.png/revision/latest/scale-to-width-down/500?cb=20190615212745",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/08/YT-2400-SWESV.png",
     name: "Outrider",
     classDesignation: "YT-2400 light freighter (heavily modified)",
     category: "Light Freighter",
@@ -354,7 +354,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "krayt-claw",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/2/2f/Krayts_Claw_SaV.png/revision/latest/scale-to-width-down/500?cb=20181208003549",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2f/Krayts_Claw_SaV.png",
     name: "Krayt's Claw",
     classDesignation: "G9 Rigger-class freighter (modified)",
     category: "Light Freighter",
@@ -384,7 +384,7 @@ export const SHIPS: Ship[] = [
   // ─────────────────────────────────────────────
   {
     id: "imperial-class-star-destroyer",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/3e/ISD1-SWSVguide.png/revision/latest/scale-to-width-down/500?cb=20240602042313",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/3e/ISD1-SWSVguide.png",
     name: "Imperial-class Star Destroyer",
     classDesignation: "Imperial I/II-class Star Destroyer",
     category: "Star Destroyer",
@@ -429,7 +429,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "executor-super-star-destroyer",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/3/30/Executor_BF2.png/revision/latest/scale-to-width-down/500?cb=20230405071103",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/3/30/Executor_BF2.png",
     name: "Executor",
     classDesignation: "Executor-class Super Star Destroyer",
     category: "Super Star Destroyer",
@@ -470,7 +470,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "venator-class-star-destroyer",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/c8/Imperialattackcruisers.png/revision/latest/scale-to-width-down/500?cb=20140317112248",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/c8/Imperialattackcruisers.png",
     name: "Venator-class Star Destroyer",
     classDesignation: "Venator-class Star Destroyer",
     category: "Star Destroyer",
@@ -515,7 +515,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "acclamator-class",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/70/Acclamator-TCWIV.png/revision/latest/scale-to-width-down/500?cb=20241129023841",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/70/Acclamator-TCWIV.png",
     name: "Acclamator I-class Assault Ship",
     classDesignation: "Acclamator I-class transgalactic military assault ship",
     category: "Capital Ship",
@@ -546,7 +546,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "resurgent-class-star-destroyer",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/76/TheFinalizer-TLJVehiclesShips.png/revision/latest/scale-to-width-down/500?cb=20240401044947",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/76/TheFinalizer-TLJVehiclesShips.png",
     name: "Resurgent-class Star Destroyer",
     classDesignation: "Resurgent-class Battle Cruiser",
     category: "Star Destroyer",
@@ -582,7 +582,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "mandator-iv-dreadnought",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/0b/First_Order_Dreadnought_SWCT.png/revision/latest/scale-to-width-down/500?cb=20230812003020",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/0b/First_Order_Dreadnought_SWCT.png",
     name: "Mandator IV-class Siege Dreadnought",
     classDesignation: "Mandator IV-class Warship",
     category: "Capital Ship",
@@ -613,7 +613,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "providence-class",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/f1/Invincible-TCWs2BR3.png/revision/latest/scale-to-width-down/500?cb=20250404002141",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f1/Invincible-TCWs2BR3.png",
     name: "Providence-class Dreadnought",
     classDesignation: "Providence-class carrier/destroyer",
     category: "Capital Ship",
@@ -656,7 +656,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "lucrehulk-class-battleship",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/0a/Lucrehulk-Battlefront-2-Render.png/revision/latest/scale-to-width-down/500?cb=20221114195931",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/0a/Lucrehulk-Battlefront-2-Render.png",
     name: "Lucrehulk-class Battleship",
     classDesignation: "Lucrehulk-class LH-3210 cargo freighter (modified to battleship/carrier)",
     category: "Capital Ship",
@@ -698,7 +698,7 @@ export const SHIPS: Ship[] = [
   // ─────────────────────────────────────────────
   {
     id: "tie-fighter",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d1/TIE_Fighter_DICE.png/revision/latest/scale-to-width-down/500?cb=20161021230639",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d1/TIE_Fighter_DICE.png",
     name: "TIE/ln Space Superiority Starfighter",
     classDesignation: "TIE/ln space superiority starfighter",
     category: "Starfighter",
@@ -729,7 +729,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "tie-advanced-x1",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/e4/TIEAdvancedx1-MF78.png/revision/latest/scale-to-width-down/500?cb=20260312035020",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/e4/TIEAdvancedx1-MF78.png",
     name: "TIE Advanced x1",
     classDesignation: "TIE Advanced x1 prototype starfighter",
     category: "Starfighter",
@@ -759,7 +759,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "tie-interceptor",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/f5/TIE_Interceptor_BF.png/revision/latest/scale-to-width-down/500?cb=20170501054325",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/f5/TIE_Interceptor_BF.png",
     name: "TIE/IN Interceptor",
     classDesignation: "TIE/IN interceptor",
     category: "Interceptor",
@@ -820,7 +820,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "tie-silencer",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/e/ef/TIE_Silencer_TFOWM.png/revision/latest/scale-to-width-down/500?cb=20190629200209",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/e/ef/TIE_Silencer_TFOWM.png",
     name: "TIE/vn Space Superiority Silencer",
     classDesignation: "TIE/vn space superiority fighter",
     category: "Starfighter",
@@ -850,7 +850,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "a-wing",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/8d/A-wing_DICE.png/revision/latest/scale-to-width-down/500?cb=20161021230115",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/8d/A-wing_DICE.png",
     name: "RZ-1 A-wing Interceptor",
     classDesignation: "RZ-1 A-wing interceptor",
     category: "Interceptor",
@@ -881,7 +881,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "b-wing",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/85/BwingStarfighter-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20250210071035",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/85/BwingStarfighter-CGSWG.png",
     name: "A/SF-01 B-wing Heavy Assault Starfighter",
     classDesignation: "A/SF-01 B-wing heavy assault starfighter",
     category: "Bomber",
@@ -917,7 +917,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "y-wing",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/9/9f/YWing-JtRSaV.png/revision/latest/scale-to-width-down/500?cb=20251225190608",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/9/9f/YWing-JtRSaV.png",
     name: "BTL Y-wing Starfighter",
     classDesignation: "BTL-A4 Y-wing assault starfighter/bomber",
     category: "Bomber",
@@ -988,7 +988,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "v-19-torrent",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/5/57/V-19Torrent-TCW.png/revision/latest/scale-to-width-down/500?cb=20241230003503",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/5/57/V-19Torrent-TCW.png",
     name: "V-19 Torrent Starfighter",
     classDesignation: "V-19 Torrent starfighter",
     category: "Starfighter",
@@ -1019,7 +1019,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "eta-2-actis",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/04/Eta-2JediInterceptor-USC.png/revision/latest/scale-to-width-down/500?cb=20231105182911",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/04/Eta-2JediInterceptor-USC.png",
     name: "Eta-2 Actis-class Interceptor",
     classDesignation: "Eta-2 Actis-class light interceptor",
     category: "Interceptor",
@@ -1051,7 +1051,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "delta-7-aethersprite",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/c1/OWKDelta7Starfighter-Platinum2022.png/revision/latest/scale-to-width-down/500?cb=20241019013821",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/c1/OWKDelta7Starfighter-Platinum2022.png",
     name: "Delta-7 Aethersprite-class Light Interceptor",
     classDesignation: "Delta-7 Aethersprite-class light interceptor",
     category: "Interceptor",
@@ -1078,7 +1078,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "n1-naboo-starfighter",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/d/d3/N-1_BF2.png/revision/latest/scale-to-width-down/500?cb=20170825000654",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/d/d3/N-1_BF2.png",
     name: "N-1 Naboo Starfighter",
     classDesignation: "N-1 Naboo Royal Starfighter",
     category: "Starfighter",
@@ -1140,7 +1140,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "tri-fighter",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/4d/BuzzDroidDetail-SWE.png/revision/latest/scale-to-width-down/500?cb=20241212235831",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/4d/BuzzDroidDetail-SWE.png",
     name: "Droid Tri-Fighter",
     classDesignation: "TriFighter / Droid Tri-Fighter",
     category: "Starfighter",
@@ -1171,7 +1171,7 @@ export const SHIPS: Ship[] = [
   // ─────────────────────────────────────────────
   {
     id: "at-at",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/16/AT-AT_2_Fathead.png/revision/latest/scale-to-width-down/500?cb=20161108042721",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/16/AT-AT_2_Fathead.png",
     name: "AT-AT Walker",
     classDesignation: "All Terrain Armored Transport (AT-AT)",
     category: "Walker",
@@ -1204,7 +1204,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "at-st",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/f/ff/ATST-SWBdice.png/revision/latest/scale-to-width-down/500?cb=20230723050455",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/f/ff/ATST-SWBdice.png",
     name: "AT-ST Scout Walker",
     classDesignation: "All Terrain Scout Transport (AT-ST)",
     category: "Walker",
@@ -1235,7 +1235,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "at-te",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/60/ATTE-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20250404044201",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/60/ATTE-CGSWG.png",
     name: "AT-TE Walker",
     classDesignation: "All Terrain Tactical Enforcer (AT-TE)",
     category: "Walker",
@@ -1312,7 +1312,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "speeder-bike",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/47/Speeder_Bike_DICE.png/revision/latest/scale-to-width-down/500?cb=20230723010519",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/47/Speeder_Bike_DICE.png",
     name: "74-Z Military Speeder Bike",
     classDesignation: "74-Z speeder bike",
     category: "Speeder/Skiff",
@@ -1341,7 +1341,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "snowspeeder",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/4/44/T-47_Speeder_DICE.png/revision/latest/scale-to-width-down/500?cb=20230723013701",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/4/44/T-47_Speeder_DICE.png",
     name: "T-47 Airspeeder (Snowspeeder)",
     classDesignation: "T-47 airspeeder (modified for Hoth operations)",
     category: "Speeder/Skiff",
@@ -1372,7 +1372,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "x34-landspeeder",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/be/X-34-TGTB.png/revision/latest/scale-to-width-down/500?cb=20251217194807",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/be/X-34-TGTB.png",
     name: "X-34 Landspeeder",
     classDesignation: "X-34 landspeeder",
     category: "Speeder/Skiff",
@@ -1401,7 +1401,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "sail-barge",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/8c/Sail_Barge.png/revision/latest/scale-to-width-down/500?cb=20130331043828",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/8c/Sail_Barge.png",
     name: "Khetanna (Jabba's Sail Barge)",
     classDesignation: "Ubrikkian Luxury Sail Barge",
     category: "Speeder/Skiff",
@@ -1435,7 +1435,7 @@ export const SHIPS: Ship[] = [
   // ─────────────────────────────────────────────
   {
     id: "death-star-i",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/70/DSI-HDapproach.png/revision/latest/scale-to-width-down/500?cb=20130221005853",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/70/DSI-HDapproach.png",
     name: "Death Star",
     classDesignation: "DS-1 Orbital Battle Station",
     category: "Battle Station",
@@ -1475,7 +1475,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "death-star-ii",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/7/70/DSI-HDapproach.png/revision/latest/scale-to-width-down/500?cb=20130221005853",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/7/70/DSI-HDapproach.png",
     name: "Death Star II",
     classDesignation: "DS-2 Death Star II Mobile Battle Station",
     category: "Battle Station",
@@ -1512,7 +1512,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "starkiller-base",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/8/8d/StarkillerBaseCrop-FH.png/revision/latest/scale-to-width-down/500?cb=20220314044340",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/8/8d/StarkillerBaseCrop-FH.png",
     name: "Starkiller Base",
     classDesignation: "Starkiller Base — modified ice planet (planet-class superweapon)",
     category: "Battle Station",
@@ -1550,7 +1550,7 @@ export const SHIPS: Ship[] = [
   // ─────────────────────────────────────────────
   {
     id: "sith-infiltrator-scimitar",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/1c/Scimitar-USC.png/revision/latest/scale-to-width-down/500?cb=20190604143506",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1c/Scimitar-USC.png",
     name: "Scimitar (Sith Infiltrator)",
     classDesignation: "Sith Infiltrator",
     category: "Yacht/Personal Transport",
@@ -1587,7 +1587,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "solar-sailer-dooku",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/b/b2/DookusSolarSailer-TCW.png/revision/latest/scale-to-width-down/500?cb=20221105025756",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/b/b2/DookusSolarSailer-TCW.png",
     name: "Punworcca 116-class Solar Sailer",
     classDesignation: "Punworcca 116-class interstellar sloop (Solar Sailer)",
     category: "Yacht/Personal Transport",
@@ -1619,7 +1619,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "lambda-shuttle",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/6/6d/LambdaShuttle-Fathead.png/revision/latest/scale-to-width-down/500?cb=20230802043430",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/6/6d/LambdaShuttle-Fathead.png",
     name: "Imperial Lambda-class Shuttle",
     classDesignation: "Lambda-class T-4a shuttle",
     category: "Shuttle",
@@ -1656,7 +1656,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "sentinel-class-shuttle",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/1f/SentinelClassLandingCraft-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241226012032",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1f/SentinelClassLandingCraft-CGSWG.png",
     name: "Sentinel-class Landing Craft",
     classDesignation: "Sentinel-class landing craft",
     category: "Shuttle",
@@ -1685,7 +1685,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "atr-6-assault-transport",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/1/1f/SentinelClassLandingCraft-CGSWG.png/revision/latest/scale-to-width-down/500?cb=20241226012032",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/1/1f/SentinelClassLandingCraft-CGSWG.png",
     name: "ATR-6 Assault Transport",
     classDesignation: "ATR-6 assault transport",
     category: "Shuttle",
@@ -1738,7 +1738,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "k-wing",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/a/a6/ImperialStarHaluerReliance.jpg/revision/latest/scale-to-width-down/500?cb=20260121164725",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/a/a6/ImperialStarHaluerReliance.jpg",
     name: "K-wing Heavy Assault Starfighter",
     classDesignation: "K-wing heavy assault/bomber",
     category: "Bomber",
@@ -1769,7 +1769,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "sun-crusher",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/0/03/SunCrusher-NEGWT.png/revision/latest/scale-to-width-down/500?cb=20221022151505",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/0/03/SunCrusher-NEGWT.png",
     name: "Sun Crusher",
     classDesignation: "Sun Crusher superweapon prototype",
     category: "Capital Ship",
@@ -1804,7 +1804,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "outbound-flight",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/cc/Outboundship.jpg/revision/latest?cb=20091202030224",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/cc/Outboundship.jpg",
     name: "Outbound Flight",
     classDesignation: "Dreadnaught-class heavy cruiser fleet (6 ships)",
     category: "Capital Ship",
@@ -1829,7 +1829,7 @@ export const SHIPS: Ship[] = [
   },
   {
     id: "eye-of-palpatine",
-  imageUrl: "https://static.wikia.nocookie.net/starwars/images/c/c0/Palproid_front.png/revision/latest?cb=20131012015336",
+  imageUrl: "https://vignette.wikia.nocookie.net/starwars/images/c/c0/Palproid_front.png",
     name: "Eye of Palpatine",
     classDesignation: "Imperial battlemoon superweapon",
     category: "Battle Station",
