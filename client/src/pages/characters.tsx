@@ -213,7 +213,7 @@ function CharacterDrawer({ character: c, onClose, onSelect }: { character: Chara
         className="w-full md:max-w-4xl bg-card border-l border-border overflow-y-auto"
         style={{ borderLeftColor: plateColor, borderLeftWidth: 4 }}
       >
-        <div className="flex items-center justify-between px-4 md:px-7 pb-2 detail-panel-header">
+        <div className="flex items-center justify-between px-4 md:px-7 pb-2 detail-panel-header" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
           <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">Character Dossier</span>
           <button onClick={onClose} className="text-muted-foreground hover:text-foreground text-2xl leading-none" data-testid="button-close-character">×</button>
         </div>

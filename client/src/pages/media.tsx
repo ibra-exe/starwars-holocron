@@ -165,7 +165,7 @@ export default function MediaPage() {
             onClick={(e) => e.stopPropagation()}
             className="w-full md:max-w-xl bg-card border-l border-border overflow-y-auto"
           >
-            <div className="p-6">
+            <div className="p-6" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
               <div className="flex items-center justify-between mb-5">
                 <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">{selectedMedia.type}</span>
                 <button onClick={() => setSelected(null)} className="text-muted-foreground hover:text-foreground text-2xl leading-none" data-testid="button-close-media">×</button>

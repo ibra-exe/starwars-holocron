@@ -138,7 +138,7 @@ function SpeciesDrawer({ species: s, onClose, onSelectSpecies }: { species: Spec
         className="w-full md:max-w-4xl bg-card border-l overflow-y-auto"
         style={{ borderLeftColor: s.color, borderLeftWidth: 4 }}
       >
-        <div className="flex items-center justify-between px-4 md:px-7 pt-6 pb-2">
+        <div className="flex items-center justify-between px-4 md:px-7 pb-2" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
           <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">Specimen Record</span>
           <button onClick={onClose} className="text-muted-foreground hover:text-foreground text-2xl leading-none" data-testid="button-close-species">×</button>
         </div>
