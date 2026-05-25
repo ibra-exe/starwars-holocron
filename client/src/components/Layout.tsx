@@ -145,7 +145,7 @@ function SidebarContent({ location, onNavigate, onNavSound }: { location: string
         <div className="font-mono text-[10px] text-muted-foreground/70 pl-5">
           25,000 BBY → 35 ABY
         </div>
-        <div className="pl-1 pt-1">
+        <div className="flex justify-center pt-1">
           <TypewriterCredit />
         </div>
       </div>
