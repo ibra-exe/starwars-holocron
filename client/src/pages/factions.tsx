@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DrawerPortal } from "@/components/shared/DrawerPortal";
 import { setPendingAnchor, useHashAnchor } from "@/lib/useHashAnchor";
 import { FACTIONS, findFaction } from "@/data/factions";
 import { findCharacter } from "@/data/characters";
@@ -115,9 +116,10 @@ function FactionDrawer({ faction: f, onClose, onSelectFaction }: { faction: Fact
   // Pick a single glyph for the plate if the symbol field looks like one (length ≤ 3) — otherwise fallback to initials.
   const symbolGlyph = f.symbol && f.symbol.trim().length > 0 && f.symbol.trim().length <= 3 ? f.symbol.trim() : undefined;
   return (
+    <DrawerPortal>
     <div className="fixed inset-0 z-50 flex" onClick={onClose}>
       <div className="flex-1 bg-background/70 backdrop-blur-sm" />
-      <div onClick={(e) => e.stopPropagation()} className="w-full md:max-w-4xl bg-card border-l border-border overflow-y-auto" style={{ borderLeftColor: f.color, borderLeftWidth: 4 }}>
+      <div onClick={(e) => e.stopPropagation()} className="w-full md:max-w-4xl bg-card border-l border-border overflow-y-auto overscroll-y-contain" style={{ borderLeftColor: f.color, borderLeftWidth: 4 }}>
         <div className="flex items-center justify-between px-4 md:px-7 pb-2" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
           <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground font-display">Faction Dossier</span>
           <button onClick={onClose} className="text-muted-foreground hover:text-foreground text-2xl leading-none" data-testid="button-close-faction">×</button>
@@ -296,6 +298,7 @@ function FactionDrawer({ faction: f, onClose, onSelectFaction }: { faction: Fact
         </div>
       </div>
     </div>
+    </DrawerPortal>
   );
 }
 

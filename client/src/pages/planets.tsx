@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DrawerPortal } from "@/components/shared/DrawerPortal";
 import { setPendingAnchor, useHashAnchor } from "@/lib/useHashAnchor";
 import { PLANETS, findPlanet, PlanetClassification, Planet } from "@/data/planets";
 import { findCharacter } from "@/data/characters";
@@ -130,11 +131,12 @@ function Pill<T extends string>({ label, value, setValue, options }: { label: st
 
 function PlanetDrawer({ planet: p, onClose }: { planet: Planet; onClose: () => void }) {
   return (
+    <DrawerPortal>
     <div className="fixed inset-0 z-50 flex" onClick={onClose} data-testid="planet-detail-overlay">
       <div className="flex-1 bg-background/70 backdrop-blur-sm" />
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full md:max-w-4xl bg-card border-l overflow-y-auto"
+        className="w-full md:max-w-4xl bg-card border-l overflow-y-auto overscroll-y-contain"
         style={{ borderLeftColor: p.color, borderLeftWidth: 4 }}
       >
         <div className="flex items-center justify-between px-4 md:px-7 pb-2" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
@@ -297,6 +299,7 @@ function PlanetDrawer({ planet: p, onClose }: { planet: Planet; onClose: () => v
         </div>
       </div>
     </div>
+    </DrawerPortal>
   );
 }
 

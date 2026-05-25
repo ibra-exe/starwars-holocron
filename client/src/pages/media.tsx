@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DrawerPortal } from "@/components/shared/DrawerPortal";
 import { useHashAnchor } from "@/lib/useHashAnchor";
 import { MEDIA } from "@/data/media";
 import { ERAS } from "@/data/eras";
@@ -159,11 +160,12 @@ export default function MediaPage() {
 
       {/* Detail drawer */}
       {selectedMedia && (
+        <DrawerPortal>
         <div className="fixed inset-0 z-50 flex" onClick={() => setSelected(null)} data-testid="media-detail-overlay">
           <div className="flex-1 bg-background/70 backdrop-blur-sm" />
           <div
             onClick={(e) => e.stopPropagation()}
-            className="w-full md:max-w-xl bg-card border-l border-border overflow-y-auto"
+            className="w-full md:max-w-xl bg-card border-l border-border overflow-y-auto overscroll-y-contain"
           >
             <div className="p-6" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
               <div className="flex items-center justify-between mb-5">
@@ -199,6 +201,7 @@ export default function MediaPage() {
             </div>
           </div>
         </div>
+        </DrawerPortal>
       )}
     </div>
   );

@@ -7,6 +7,7 @@ import { PageHeader, ContinuityBadge, ImportanceBar } from "@/components/shared/
 import DrawerSection from "@/components/shared/DrawerSection";
 import { VisualPlate, getInitials } from "@/components/shared/VisualPlate";
 import { Search } from "lucide-react";
+import { DrawerPortal } from "@/components/shared/DrawerPortal";
 
 const CATEGORIES: Array<ArtifactCategory | "All"> = [
   "All",
@@ -180,11 +181,12 @@ function Pill<T extends string>({ label, value, setValue, options }: { label: st
 function ArtifactDrawer({ artifact: a, onClose }: { artifact: Artifact; onClose: () => void }) {
   const blade = bladeBg(a.lightsaberColor);
   return (
+    <DrawerPortal>
     <div className="fixed inset-0 z-50 flex" onClick={onClose} data-testid="artifact-detail-overlay">
       <div className="flex-1 bg-background/70 backdrop-blur-sm" />
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full md:max-w-4xl bg-card border-l overflow-y-auto"
+        className="w-full md:max-w-4xl bg-card border-l overflow-y-auto overscroll-y-contain"
         style={{ borderLeftColor: a.color, borderLeftWidth: 4 }}
       >
         <div className="flex items-center justify-between px-4 md:px-7 pb-2" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
@@ -366,6 +368,7 @@ function ArtifactDrawer({ artifact: a, onClose }: { artifact: Artifact; onClose:
         </div>
       </div>
     </div>
+    </DrawerPortal>
   );
 }
 

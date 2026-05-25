@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DrawerPortal } from "@/components/shared/DrawerPortal";
 import { setPendingAnchor, useHashAnchor } from "@/lib/useHashAnchor";
 import { SHIPS, findShip, ShipCategory, Ship } from "@/data/ships";
 import { findCharacter } from "@/data/characters";
@@ -138,11 +139,12 @@ function Pill<T extends string>({ label, value, setValue, options }: { label: st
 
 function ShipDrawer({ ship: s, onClose }: { ship: Ship; onClose: () => void }) {
   return (
+    <DrawerPortal>
     <div className="fixed inset-0 z-50 flex" onClick={onClose} data-testid="ship-detail-overlay">
       <div className="flex-1 bg-background/70 backdrop-blur-sm" />
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full md:max-w-4xl bg-card border-l overflow-y-auto"
+        className="w-full md:max-w-4xl bg-card border-l overflow-y-auto overscroll-y-contain"
         style={{ borderLeftColor: s.color, borderLeftWidth: 4 }}
       >
         <div className="flex items-center justify-between px-4 md:px-7 pb-2" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
@@ -281,6 +283,7 @@ function ShipDrawer({ ship: s, onClose }: { ship: Ship; onClose: () => void }) {
         </div>
       </div>
     </div>
+    </DrawerPortal>
   );
 }
 

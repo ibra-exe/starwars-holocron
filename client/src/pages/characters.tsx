@@ -14,6 +14,7 @@ import SpoilerVeil from "@/components/shared/SpoilerVeil";
 import { isCharacterSpoiler, isDeathSpoiler } from "@/data/spoilers";
 import { Character, ForceAlignment } from "@/data/types";
 import { Search } from "lucide-react";
+import { DrawerPortal } from "@/components/shared/DrawerPortal";
 
 // Map Force alignment to a hex color for the portrait plate
 const ALIGNMENT_COLOR: Record<ForceAlignment, string> = {
@@ -206,11 +207,12 @@ function CharacterAvatar({ character: c, color }: { character: Character; color:
 function CharacterDrawer({ character: c, onClose, onSelect }: { character: Character; onClose: () => void; onSelect: (id: string) => void }) {
   const plateColor = ALIGNMENT_COLOR[c.forceAlignment] || "#f0c14b";
   return (
+    <DrawerPortal>
     <div className="fixed inset-0 z-50 flex" onClick={onClose} data-testid="character-detail-overlay">
       <div className="flex-1 bg-background/70 backdrop-blur-sm" />
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full md:max-w-4xl bg-card border-l border-border overflow-y-auto"
+        className="w-full md:max-w-4xl bg-card border-l border-border overflow-y-auto overscroll-y-contain"
         style={{ borderLeftColor: plateColor, borderLeftWidth: 4 }}
       >
         <div className="flex items-center justify-between px-4 md:px-7 pb-2 detail-panel-header" style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}>
@@ -385,6 +387,7 @@ function CharacterDrawer({ character: c, onClose, onSelect }: { character: Chara
         </div>
       </div>
     </div>
+    </DrawerPortal>
   );
 }
 
