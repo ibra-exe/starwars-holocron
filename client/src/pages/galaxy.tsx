@@ -206,8 +206,8 @@ const LOD_THRESHOLD = 180; // switch to texture below this camera-distance
 
 // ─── "Far-out" threshold ─────────────────────────────────────────────────────
 // Show SW easter-egg text when camera is pulled much farther than normal view.
-const FAR_SHOW_DIST = 2500;
-const FAR_HIDE_DIST = 2000;
+const FAR_SHOW_DIST = 10000;
+const FAR_HIDE_DIST = 4000;
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
