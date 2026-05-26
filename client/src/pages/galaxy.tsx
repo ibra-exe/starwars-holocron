@@ -89,10 +89,11 @@ function strHash(s: string): number {
   return (h >>> 0) / 0xffffffff; // 0‥1
 }
 
-/** Y offset: thin disc, slightly thicker toward the Outer Rim. */
+/** Y offset: disc thickness — enough 3-D depth for natural-looking links without
+ *  planets drifting off-plane. Grows from ±12 at the core to ±45 at the Outer Rim. */
 function galaxyY(id: string, x: number, z: number): number {
   const r = Math.sqrt(x * x + z * z);
-  const variance = 4 + r * 0.04; // grows from ±4 at core to ±17 at edge
+  const variance = 12 + r * 0.1; // 3× more than original → real depth, still a disc
   return (strHash(id) - 0.5) * variance * 2;
 }
 
@@ -389,9 +390,7 @@ export default function GalaxyPage() {
           classification: p.classification,
           importance: p.importance,
           imageUrl: p.imageUrl,
-          // X,Z pinned to canonical galaxy positions; Y is free so the force
-          // simulation can spread nodes into a natural 3-D disc shape.
-          fx: gx, fz: gz, y: gy,
+          fx: gx, fy: gy, fz: gz,
         };
       }),
     [colorMode, filterRegion],
@@ -596,10 +595,10 @@ export default function GalaxyPage() {
             linkDirectionalParticles={edgeMode === "hyperspace" ? 2 : 0}
             linkDirectionalParticleWidth={1.2}
             linkDirectionalParticleColor={(l: any) => l.color ?? "#aaf"}
+            linkCurvature={0.2}
             onNodeClick={(n: any) => setSelectedId(n.id as string)}
-            cooldownTicks={150}
-            d3AlphaDecay={0.015}
-            d3VelocityDecay={0.25}
+            cooldownTicks={0}
+            warmupTicks={0}
           />
         )}
 
