@@ -7,7 +7,8 @@ import { findFaction } from "@/data/factions";
 import { PageHeader, ContinuityBadge, ImportanceBar } from "@/components/shared/Badges";
 import DrawerSection from "@/components/shared/DrawerSection";
 import { VisualPlate, getInitials } from "@/components/shared/VisualPlate";
-import { Search } from "lucide-react";
+import { Link } from "wouter";
+import { Orbit, Search } from "lucide-react";
 
 const CLASSIFICATIONS: Array<PlanetClassification | "All"> = [
   "All",
@@ -78,6 +79,12 @@ export default function PlanetsPage() {
           <Pill label="Region" value={classification} setValue={(v) => setClassification(v as any)} options={CLASSIFICATIONS} />
           <Pill label="Continuity" value={continuity} setValue={(v) => setContinuity(v as any)} options={[...CONTINUITIES]} />
           <div className="ml-auto text-xs text-muted-foreground font-display tracking-widest uppercase">{items.length} worlds</div>
+          <Link href="/galaxy">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-primary/50 text-primary text-[11px] font-display uppercase tracking-widest hover:bg-primary/10 transition-colors cursor-pointer">
+              <Orbit className="w-3.5 h-3.5" />
+              Galaxy Map
+            </div>
+          </Link>
         </div>
       </div>
 

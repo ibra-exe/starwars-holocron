@@ -21,6 +21,7 @@ import {
   GitBranch,
   Quote,
   Settings,
+  Orbit,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode, useEffect, useRef, useState } from "react";
@@ -37,6 +38,7 @@ const NAV = [
   { href: "/species", label: "Species", icon: Dna, testId: "nav-species" },
   { href: "/factions", label: "Factions", icon: Flag, testId: "nav-factions" },
   { href: "/planets", label: "Planets & Locations", icon: MapPin, testId: "nav-planets" },
+  { href: "/galaxy", label: "Galaxy Map", icon: Orbit, testId: "nav-galaxy" },
   { href: "/ships", label: "Ships & Vehicles", icon: Rocket, testId: "nav-ships" },
   { href: "/artifacts", label: "Weapons & Artifacts", icon: Gem, testId: "nav-artifacts" },
   { href: "/lineages", label: "Lineages", icon: GitBranch, testId: "nav-lineages" },

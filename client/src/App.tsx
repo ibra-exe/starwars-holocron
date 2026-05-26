@@ -20,6 +20,7 @@ import SearchPage from "@/pages/search";
 import SpeciesPage from "@/pages/species";
 import ContinuityPage from "@/pages/continuity";
 import PlanetsPage from "@/pages/planets";
+import GalaxyPage from "@/pages/galaxy";
 import ShipsPage from "@/pages/ships";
 import ArtifactsPage from "@/pages/artifacts";
 import LineagesPage from "@/pages/lineages";
@@ -42,6 +43,7 @@ function AppRouter() {
       <Route path="/species" component={SpeciesPage} />
       <Route path="/continuity" component={ContinuityPage} />
       <Route path="/planets" component={PlanetsPage} />
+      <Route path="/galaxy" component={GalaxyPage} />
       <Route path="/ships" component={ShipsPage} />
       <Route path="/artifacts" component={ArtifactsPage} />
       <Route path="/lineages" component={LineagesPage} />
