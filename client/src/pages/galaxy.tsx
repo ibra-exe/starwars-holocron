@@ -248,7 +248,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   // Large bright stars at high opacity so they're clearly visible above the
   // coloured zone fills — this is the primary "galaxy spiral" structure.
   const INNER_ARM_COUNT  = 4;
-  const INNER_ARM_STARS  = 1800;
+  const INNER_ARM_STARS  = 2800;
   const innerArmPos = new Float32Array(INNER_ARM_COUNT * INNER_ARM_STARS * 3);
   const innerArmCol = new Float32Array(INNER_ARM_COUNT * INNER_ARM_STARS * 3);
   let iai = 0;
@@ -279,7 +279,7 @@ function addSpaceBackground(scene: THREE.Scene) {
     iag.setAttribute("position", new THREE.BufferAttribute(innerArmPos.slice(0, iai * 3), 3));
     iag.setAttribute("color",    new THREE.BufferAttribute(innerArmCol.slice(0, iai * 3), 3));
     scene.add(new THREE.Points(iag,
-      new THREE.PointsMaterial({ size: 1.5, vertexColors: true, transparent: true, opacity: 0.50, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+      new THREE.PointsMaterial({ size: 1.7, vertexColors: true, transparent: true, opacity: 0.68, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
   }
 
   // ── 6. Galactic core glow ─────────────────────────────────────────────────
