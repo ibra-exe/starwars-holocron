@@ -301,7 +301,9 @@ export default function GalaxyPage() {
           classification: p.classification,
           importance: p.importance,
           imageUrl: p.imageUrl,
-          fx: gx, fy: gy, fz: gz,
+          // X,Z pinned to canonical galaxy positions; Y is free so the force
+          // simulation can spread nodes into a natural 3-D disc shape.
+          fx: gx, fz: gz, y: gy,
         };
       }),
     [colorMode, filterRegion],
@@ -502,14 +504,14 @@ export default function GalaxyPage() {
             nodeThreeObject={nodeThreeObject}
             nodeThreeObjectExtend={false}
             linkColor={(l: any) => l.color ?? "#334"}
-            linkWidth={0.8} linkOpacity={0.5}
-            linkCurvature={0.25}
+            linkWidth={0.8} linkOpacity={0.55}
             linkDirectionalParticles={edgeMode === "hyperspace" ? 2 : 0}
             linkDirectionalParticleWidth={1.2}
             linkDirectionalParticleColor={(l: any) => l.color ?? "#aaf"}
             onNodeClick={(n: any) => setSelectedId(n.id as string)}
-            cooldownTicks={0}
-            warmupTicks={0}
+            cooldownTicks={150}
+            d3AlphaDecay={0.015}
+            d3VelocityDecay={0.25}
           />
         )}
 
