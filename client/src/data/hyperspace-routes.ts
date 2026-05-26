@@ -19,7 +19,7 @@ export const HYPERSPACE_ROUTES: HyperspaceRoute[] = [
     id: "perlemian-trade-route",
     name: "Perlemian Trade Route",
     color: "#81d4fa",
-    planets: ["coruscant", "chandrila", "alderaan", "kuat", "hosnian-prime"],
+    planets: ["coruscant", "chandrila", "alderaan", "kuat", "cato-neimoidia", "hosnian-prime"],
   },
   {
     id: "hydian-way",
@@ -49,7 +49,7 @@ export const HYPERSPACE_ROUTES: HyperspaceRoute[] = [
     id: "mandalore-passage",
     name: "Mandalore Passage",
     color: "#90a4ae",
-    planets: ["mandalore", "concordia", "dathomir", "nevarro"],
+    planets: ["mandalore", "concordia", "dathomir", "nevarro", "sorgan"],
   },
   {
     id: "sith-worlds",
@@ -86,5 +86,11 @@ export const HYPERSPACE_ROUTES: HyperspaceRoute[] = [
     name: "Outer Rim Crossroads",
     color: "#ffb74d",
     planets: ["tatooine", "jakku", "ord-mantell", "cantonica", "takodana"],
+  },
+  {
+    id: "outer-rim-research-corridor",
+    name: "Outer Rim Research Corridor",
+    color: "#80cbc4",
+    planets: ["polis-massa", "pillio", "eadu", "bakura"],
   },
 ];
