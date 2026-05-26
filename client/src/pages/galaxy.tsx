@@ -133,15 +133,13 @@ function getDotTexture(): THREE.Texture {
 // ─── Space background ────────────────────────────────────────────────────────
 
 function addSpaceBackground(scene: THREE.Scene) {
-  // ── 1. Environment stars — unchanged from original ────────────────────────
-  // Spherical shell of 9,000 stars surrounding the entire scene.
-  // These are the "space" backdrop and should not be modified.
+  // ── 1. Environment stars — deep-space star field (spherical shell) ──────
   const PALETTE: [number, number, number][] = [
     [1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0],
     [0.75, 0.85, 1.0], [0.75, 0.85, 1.0],
     [1.0, 0.95, 0.78], [1.0, 0.80, 0.65], [0.55, 0.65, 1.0],
   ];
-  const N = 9000;
+  const N = 12000;
   const sp = new Float32Array(N * 3), sc = new Float32Array(N * 3);
   for (let i = 0; i < N; i++) {
     const th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
@@ -156,7 +154,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   sg.setAttribute("position", new THREE.BufferAttribute(sp, 3));
   sg.setAttribute("color",    new THREE.BufferAttribute(sc, 3));
   scene.add(new THREE.Points(sg,
-    new THREE.PointsMaterial({ size: 1.9, vertexColors: true, transparent: true, opacity: 0.88, sizeAttenuation: true })));
+    new THREE.PointsMaterial({ size: 2.0, vertexColors: true, transparent: true, opacity: 0.9, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 2. Milky Way background band — unchanged from original ────────────────
   // Disc-shaped band of 5,000 stars at r=1350–1800, in the XZ plane,
@@ -204,7 +202,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
   ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
   scene.add(new THREE.Points(ag,
-    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.70, sizeAttenuation: true })));
+    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.70, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 4. Galactic region zone fills ────────────────────────────────────────
   // Solid colored concentric bands on the XZ plane, matching the official
