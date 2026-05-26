@@ -30,23 +30,7 @@ function getTexture(url: string): THREE.Texture {
 
 // ─── Space background helpers ────────────────────────────────────────────────
 
-/** Create a radial-gradient canvas texture for nebula sprites. */
-function makeNebulaTex(r: number, g: number, b: number): THREE.CanvasTexture {
-  const canvas = document.createElement("canvas");
-  canvas.width = 256;
-  canvas.height = 256;
-  const ctx = canvas.getContext("2d")!;
-  const grad = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
-  grad.addColorStop(0,    `rgba(${r},${g},${b},0.55)`);
-  grad.addColorStop(0.3,  `rgba(${r},${g},${b},0.22)`);
-  grad.addColorStop(0.65, `rgba(${r},${g},${b},0.07)`);
-  grad.addColorStop(1,    `rgba(${r},${g},${b},0)`);
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, 256, 256);
-  return new THREE.CanvasTexture(canvas);
-}
-
-/** Populate the Three.js scene with stars, a Milky Way band, and nebulae. */
+/** Populate the Three.js scene with stars and a Milky Way band. */
 function addSpaceBackground(scene: THREE.Scene) {
   // ── Stars ──
   const STAR_PALETTE: [number, number, number][] = [
@@ -103,29 +87,6 @@ function addSpaceBackground(scene: THREE.Scene) {
     ),
   );
 
-  // ── Nebulae (additive-blend sprites with radial gradient textures) ──
-  const NEBULAE: { pos: [number, number, number]; rgb: [number, number, number]; scale: number }[] = [
-    { pos: [ 650,  290, -520], rgb: [ 70,  0, 160], scale: 950  }, // deep purple
-    { pos: [-520, -200,  420], rgb: [  0, 80, 210], scale: 750  }, // blue
-    { pos: [ 180,  470,  320], rgb: [180, 30,  90], scale: 800  }, // magenta
-    { pos: [-720,   10, -640], rgb: [  0,160, 220], scale: 1050 }, // cyan
-    { pos: [ 100, -520, -400], rgb: [120,  0, 180], scale: 640  }, // violet
-    { pos: [-310,  370, -220], rgb: [  0,110, 160], scale: 820  }, // teal
-    { pos: [ 800, -300,  200], rgb: [200,  0,  80], scale: 700  }, // crimson
-  ];
-  NEBULAE.forEach(({ pos, rgb, scale }) => {
-    const sprite = new THREE.Sprite(
-      new THREE.SpriteMaterial({
-        map: makeNebulaTex(...rgb),
-        transparent: true,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
-      }),
-    );
-    sprite.position.set(...pos);
-    sprite.scale.setScalar(scale);
-    scene.add(sprite);
-  });
 }
 
 // ─── Color maps ──────────────────────────────────────────────────────────────
