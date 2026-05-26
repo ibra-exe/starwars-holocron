@@ -139,7 +139,7 @@ function addSpaceBackground(scene: THREE.Scene) {
     [0.75, 0.85, 1.0], [0.75, 0.85, 1.0],
     [1.0, 0.95, 0.78], [1.0, 0.80, 0.65], [0.55, 0.65, 1.0],
   ];
-  const N = 12000;
+  const N = 16000;
   const sp = new Float32Array(N * 3), sc = new Float32Array(N * 3);
   for (let i = 0; i < N; i++) {
     const th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
@@ -153,13 +153,15 @@ function addSpaceBackground(scene: THREE.Scene) {
   const sg = new THREE.BufferGeometry();
   sg.setAttribute("position", new THREE.BufferAttribute(sp, 3));
   sg.setAttribute("color",    new THREE.BufferAttribute(sc, 3));
+  // sizeAttenuation: false — env stars are "infinitely" far; fixed pixel size
+  // so they stay visible regardless of zoom level.
   scene.add(new THREE.Points(sg,
-    new THREE.PointsMaterial({ size: 2.5, vertexColors: true, transparent: true, opacity: 0.92, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.92, sizeAttenuation: false, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 2. Milky Way background band — unchanged from original ────────────────
   // Disc-shaped band of 5,000 stars at r=1350–1800, in the XZ plane,
   // giving the galaxy a "you're inside the Milky Way" halo effect.
-  const M = 5000, mp = new Float32Array(M * 3);
+  const M = 6000, mp = new Float32Array(M * 3);
   for (let i = 0; i < M; i++) {
     const th = Math.random() * Math.PI * 2, r = 1350 + Math.random() * 450;
     mp[i*3]   = r * Math.cos(th);
@@ -169,7 +171,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   const mg = new THREE.BufferGeometry();
   mg.setAttribute("position", new THREE.BufferAttribute(mp, 3));
   scene.add(new THREE.Points(mg,
-    new THREE.PointsMaterial({ color: 0xccddf8, size: 1.1, transparent: true, opacity: 0.35, sizeAttenuation: true })));
+    new THREE.PointsMaterial({ color: 0xccddf8, size: 1.3, transparent: true, opacity: 0.55, sizeAttenuation: false, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 3. Spiral arm stars — new, kept separate from environment stars ────────
   // Blue spiral arms wrapping outside the planet zone (r = 350–950).
@@ -202,7 +204,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
   ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
   scene.add(new THREE.Points(ag,
-    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.70, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+    new THREE.PointsMaterial({ size: 2.2, vertexColors: true, transparent: true, opacity: 0.80, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 4. Galactic region zone fills ────────────────────────────────────────
   // Solid colored concentric bands on the XZ plane, matching the official
@@ -248,7 +250,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   // Large bright stars at high opacity so they're clearly visible above the
   // coloured zone fills — this is the primary "galaxy spiral" structure.
   const INNER_ARM_COUNT  = 4;
-  const INNER_ARM_STARS  = 2800;
+  const INNER_ARM_STARS  = 3500;
   const innerArmPos = new Float32Array(INNER_ARM_COUNT * INNER_ARM_STARS * 3);
   const innerArmCol = new Float32Array(INNER_ARM_COUNT * INNER_ARM_STARS * 3);
   let iai = 0;
@@ -279,7 +281,7 @@ function addSpaceBackground(scene: THREE.Scene) {
     iag.setAttribute("position", new THREE.BufferAttribute(innerArmPos.slice(0, iai * 3), 3));
     iag.setAttribute("color",    new THREE.BufferAttribute(innerArmCol.slice(0, iai * 3), 3));
     scene.add(new THREE.Points(iag,
-      new THREE.PointsMaterial({ size: 1.7, vertexColors: true, transparent: true, opacity: 0.68, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+      new THREE.PointsMaterial({ size: 2.0, vertexColors: true, transparent: true, opacity: 0.78, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
   }
 
   // ── 6. Galactic core glow ─────────────────────────────────────────────────
