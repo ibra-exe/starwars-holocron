@@ -132,7 +132,14 @@ function getDotTexture(): THREE.Texture {
 
 // ─── Space background ────────────────────────────────────────────────────────
 
-function addSpaceBackground(scene: THREE.Scene) {
+interface StarLayers {
+  envStars:    THREE.Points;
+  milkyWay:    THREE.Points;
+  outerSpiral: THREE.Points;
+  innerSpiral: THREE.Points | null;
+}
+
+function addSpaceBackground(scene: THREE.Scene): StarLayers {
   // ── 1. Environment stars — deep-space star field (spherical shell) ──────
   const PALETTE: [number, number, number][] = [
     [1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0],
@@ -155,8 +162,9 @@ function addSpaceBackground(scene: THREE.Scene) {
   sg.setAttribute("color",    new THREE.BufferAttribute(sc, 3));
   // !! LOCKED — do not change env star params. User approved these. !!
   // sizeAttenuation:false keeps them visible at all zoom levels.
-  scene.add(new THREE.Points(sg,
-    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.92, sizeAttenuation: false, map: getDotTexture(), alphaTest: 0.02 })));
+  const envStarPoints = new THREE.Points(sg,
+    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.92, sizeAttenuation: false, map: getDotTexture(), alphaTest: 0.02 }));
+  scene.add(envStarPoints);
 
   // ── 2. Milky Way background band — unchanged from original ────────────────
   // Disc-shaped band of 5,000 stars at r=1350–1800, in the XZ plane,
@@ -170,8 +178,9 @@ function addSpaceBackground(scene: THREE.Scene) {
   }
   const mg = new THREE.BufferGeometry();
   mg.setAttribute("position", new THREE.BufferAttribute(mp, 3));
-  scene.add(new THREE.Points(mg,
-    new THREE.PointsMaterial({ color: 0xccddf8, size: 1.3, transparent: true, opacity: 0.55, sizeAttenuation: false, map: getDotTexture(), alphaTest: 0.02 })));
+  const milkyWayPoints = new THREE.Points(mg,
+    new THREE.PointsMaterial({ color: 0xccddf8, size: 1.3, transparent: true, opacity: 0.55, sizeAttenuation: false, map: getDotTexture(), alphaTest: 0.02 }));
+  scene.add(milkyWayPoints);
 
   // ── 3. Spiral arm stars — new, kept separate from environment stars ────────
   // Blue spiral arms wrapping outside the planet zone (r = 350–950).
@@ -203,8 +212,9 @@ function addSpaceBackground(scene: THREE.Scene) {
   const ag = new THREE.BufferGeometry();
   ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
   ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
-  scene.add(new THREE.Points(ag,
-    new THREE.PointsMaterial({ size: 2.8, vertexColors: true, transparent: true, opacity: 0.92, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+  const outerSpiralPoints = new THREE.Points(ag,
+    new THREE.PointsMaterial({ size: 2.8, vertexColors: true, transparent: true, opacity: 0.92, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 }));
+  scene.add(outerSpiralPoints);
 
   // ── 4. Galactic region zone fills ────────────────────────────────────────
   // Solid colored concentric bands on the XZ plane, matching the official
@@ -276,12 +286,14 @@ function addSpaceBackground(scene: THREE.Scene) {
       iai++;
     }
   }
+  let innerSpiralPoints: THREE.Points | null = null;
   if (iai > 0) {
     const iag = new THREE.BufferGeometry();
     iag.setAttribute("position", new THREE.BufferAttribute(innerArmPos.slice(0, iai * 3), 3));
     iag.setAttribute("color",    new THREE.BufferAttribute(innerArmCol.slice(0, iai * 3), 3));
-    scene.add(new THREE.Points(iag,
-      new THREE.PointsMaterial({ size: 2.5, vertexColors: true, transparent: true, opacity: 0.90, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+    innerSpiralPoints = new THREE.Points(iag,
+      new THREE.PointsMaterial({ size: 2.5, vertexColors: true, transparent: true, opacity: 0.90, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 }));
+    scene.add(innerSpiralPoints);
   }
 
   // ── 6. Galactic core glow ─────────────────────────────────────────────────
@@ -297,6 +309,8 @@ function addSpaceBackground(scene: THREE.Scene) {
     new THREE.SphereGeometry(75, 16, 16),
     new THREE.MeshBasicMaterial({ color: 0xc09040, transparent: true, opacity: 0.10, depthWrite: false }),
   ));
+
+  return { envStars: envStarPoints, milkyWay: milkyWayPoints, outerSpiral: outerSpiralPoints, innerSpiral: innerSpiralPoints };
 }
 
 // ─── Color maps ─────────────────────────────────────────────────────────────
@@ -407,12 +421,15 @@ export default function GalaxyPage() {
   const [showLegend,   setShowLegend]   = useState(true);
   const [isFarOut,     setIsFarOut]     = useState(false);
   const [farKey,       setFarKey]       = useState(0);
+  const [showEnvStars,    setShowEnvStars]    = useState(true);
+  const [showSpiralStars, setShowSpiralStars] = useState(true);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const graphRef     = useRef<any>(null);
-  const bgAddedRef   = useRef(false);
-  const wasFarRef    = useRef(false);
+  const containerRef   = useRef<HTMLDivElement>(null);
+  const graphRef       = useRef<any>(null);
+  const bgAddedRef     = useRef(false);
+  const wasFarRef      = useRef(false);
   const distDisplayRef = useRef<HTMLSpanElement>(null);
+  const starLayersRef  = useRef<StarLayers | null>(null);
   const [graphW, setGraphW] = useState(0);
   const [graphH, setGraphH] = useState(0);
 
@@ -435,7 +452,7 @@ export default function GalaxyPage() {
       const ctrl  = graphRef.current?.controls?.();
       if (!scene) return;
       bgAddedRef.current = true;
-      addSpaceBackground(scene);
+      starLayersRef.current = addSpaceBackground(scene);
       // Bird's-eye view: mostly above, slight forward tilt so disc is visible
       if (cam && ctrl) {
         cam.position.set(0, 850, 180);
@@ -451,6 +468,21 @@ export default function GalaxyPage() {
     const t = setTimeout(() => graphRef.current?.zoomToFit?.(800, 80), 500);
     return () => clearTimeout(t);
   }, []);
+
+  // Sync star layer visibility with toggle state
+  useEffect(() => {
+    const l = starLayersRef.current;
+    if (!l) return;
+    l.envStars.visible  = showEnvStars;
+    l.milkyWay.visible  = showEnvStars;
+  }, [showEnvStars]);
+
+  useEffect(() => {
+    const l = starLayersRef.current;
+    if (!l) return;
+    l.outerSpiral.visible          = showSpiralStars;
+    if (l.innerSpiral) l.innerSpiral.visible = showSpiralStars;
+  }, [showSpiralStars]);
 
   // Poll camera distance each frame for the far-out easter egg
   useEffect(() => {
@@ -666,6 +698,30 @@ export default function GalaxyPage() {
 
         {/* Divider */}
         <span className="hidden sm:block w-px h-5 bg-border" />
+
+        {/* Star layer toggles */}
+        <button
+          onClick={() => setShowEnvStars((v) => !v)}
+          title="Toggle background stars"
+          className={`px-2.5 py-1.5 rounded-md text-[11px] font-display uppercase tracking-widest border transition-colors ${
+            showEnvStars
+              ? "border-primary text-primary bg-primary/10"
+              : "border-border text-muted-foreground hover:border-primary hover:text-foreground"
+          }`}
+        >
+          ✦ Stars
+        </button>
+        <button
+          onClick={() => setShowSpiralStars((v) => !v)}
+          title="Toggle galaxy spiral"
+          className={`px-2.5 py-1.5 rounded-md text-[11px] font-display uppercase tracking-widest border transition-colors ${
+            showSpiralStars
+              ? "border-primary text-primary bg-primary/10"
+              : "border-border text-muted-foreground hover:border-primary hover:text-foreground"
+          }`}
+        >
+          ✦ Spiral
+        </button>
 
         <label className="flex items-center gap-1.5 text-xs text-muted-foreground">
           <span className="uppercase tracking-widest font-display hidden lg:inline text-[10px]">Color</span>
