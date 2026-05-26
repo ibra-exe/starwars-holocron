@@ -49,7 +49,7 @@ An interactive Star Wars lore intelligence system — 13 eras spanning 25,000+ y
 | [Tailwind CSS v3](https://tailwindcss.com) | Utility-first styling |
 | [shadcn/ui](https://ui.shadcn.com) | Radix-based accessible component library |
 | [Framer Motion](https://www.framer.com/motion/) | Animations |
-| [D3.js](https://d3js.org) + [react-force-graph-2d](https://github.com/vasturiano/react-force-graph-2d) | Force-directed lineage graph |
+| [D3.js](https://d3js.org) + [react-force-graph-2d](https://github.com/vasturiano/react-force-graph) | Force-directed lineage graph |
 | [Mermaid.js](https://mermaid.js.org) | Faction relationship diagrams |
 | [Recharts](https://recharts.org) | Data visualizations |
 | [Lucide React](https://lucide.dev) | Icon library |
