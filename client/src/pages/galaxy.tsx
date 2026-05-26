@@ -111,6 +111,25 @@ function getTexture(url: string): THREE.Texture {
   return _texCache.get(url)!;
 }
 
+// Round dot texture for star particles — prevents the default square sprite look.
+let _dotTex: THREE.Texture | null = null;
+function getDotTexture(): THREE.Texture {
+  if (_dotTex) return _dotTex;
+  const size = 64;
+  const canvas = document.createElement("canvas");
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext("2d")!;
+  const grad = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  grad.addColorStop(0.0, "rgba(255,255,255,1.0)");
+  grad.addColorStop(0.4, "rgba(255,255,255,0.9)");
+  grad.addColorStop(0.8, "rgba(255,255,255,0.2)");
+  grad.addColorStop(1.0, "rgba(255,255,255,0.0)");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, size, size);
+  _dotTex = new THREE.CanvasTexture(canvas);
+  return _dotTex;
+}
+
 // ─── Space background ────────────────────────────────────────────────────────
 
 function addSpaceBackground(scene: THREE.Scene) {
@@ -135,7 +154,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   sg.setAttribute("position", new THREE.BufferAttribute(sp, 3));
   sg.setAttribute("color",    new THREE.BufferAttribute(sc, 3));
   scene.add(new THREE.Points(sg,
-    new THREE.PointsMaterial({ size: 2.0, vertexColors: true, transparent: true, opacity: 0.9, sizeAttenuation: true })));
+    new THREE.PointsMaterial({ size: 2.0, vertexColors: true, transparent: true, opacity: 0.9, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 2. Galaxy disc — dense star field in the XZ plane (r = 350–950) ──────
   // This forms the visible spiral galaxy seen OUTSIDE the planet zones,
@@ -170,7 +189,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   bg.setAttribute("position", new THREE.BufferAttribute(bgPos.slice(0, bi * 3), 3));
   bg.setAttribute("color",    new THREE.BufferAttribute(bgCol.slice(0, bi * 3), 3));
   scene.add(new THREE.Points(bg,
-    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.70, sizeAttenuation: true })));
+    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.70, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 3. Inner galaxy — denser star concentration inside the planet zone ────
   const IN_STARS = 4000;
@@ -195,7 +214,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   ig.setAttribute("position", new THREE.BufferAttribute(inPos, 3));
   ig.setAttribute("color",    new THREE.BufferAttribute(inCol, 3));
   scene.add(new THREE.Points(ig,
-    new THREE.PointsMaterial({ size: 0.9, vertexColors: true, transparent: true, opacity: 0.55, sizeAttenuation: true })));
+    new THREE.PointsMaterial({ size: 0.9, vertexColors: true, transparent: true, opacity: 0.55, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 4. Galactic region zone fills ────────────────────────────────────────
   // Solid colored concentric bands on the XZ plane, matching the official
