@@ -153,8 +153,8 @@ function addSpaceBackground(scene: THREE.Scene) {
   const sg = new THREE.BufferGeometry();
   sg.setAttribute("position", new THREE.BufferAttribute(sp, 3));
   sg.setAttribute("color",    new THREE.BufferAttribute(sc, 3));
-  // sizeAttenuation: false — env stars are "infinitely" far; fixed pixel size
-  // so they stay visible regardless of zoom level.
+  // !! LOCKED — do not change env star params. User approved these. !!
+  // sizeAttenuation:false keeps them visible at all zoom levels.
   scene.add(new THREE.Points(sg,
     new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.92, sizeAttenuation: false, map: getDotTexture(), alphaTest: 0.02 })));
 
@@ -204,7 +204,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
   ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
   scene.add(new THREE.Points(ag,
-    new THREE.PointsMaterial({ size: 2.2, vertexColors: true, transparent: true, opacity: 0.80, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+    new THREE.PointsMaterial({ size: 2.8, vertexColors: true, transparent: true, opacity: 0.92, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
 
   // ── 4. Galactic region zone fills ────────────────────────────────────────
   // Solid colored concentric bands on the XZ plane, matching the official
@@ -281,7 +281,7 @@ function addSpaceBackground(scene: THREE.Scene) {
     iag.setAttribute("position", new THREE.BufferAttribute(innerArmPos.slice(0, iai * 3), 3));
     iag.setAttribute("color",    new THREE.BufferAttribute(innerArmCol.slice(0, iai * 3), 3));
     scene.add(new THREE.Points(iag,
-      new THREE.PointsMaterial({ size: 2.0, vertexColors: true, transparent: true, opacity: 0.78, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+      new THREE.PointsMaterial({ size: 2.5, vertexColors: true, transparent: true, opacity: 0.90, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
   }
 
   // ── 6. Galactic core glow ─────────────────────────────────────────────────
