@@ -206,20 +206,20 @@ const LOD_THRESHOLD = 180; // switch to texture below this camera-distance
 
 // ─── "Far-out" threshold ─────────────────────────────────────────────────────
 // Show SW easter-egg text when camera is pulled much farther than normal view.
-const FAR_SHOW_DIST = 1500;
-const FAR_HIDE_DIST = 1150;
+const FAR_SHOW_DIST = 2500;
+const FAR_HIDE_DIST = 2000;
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function GalaxyPage() {
-  const [colorMode,  setColorMode]  = useState<ColorMode>("region");
-  const [edgeMode,   setEdgeMode]   = useState<EdgeMode>("hyperspace");
-  const [search,     setSearch]     = useState("");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [showLegend, setShowLegend] = useState(true);
-  const [isFarOut,   setIsFarOut]   = useState(false);
-  // key flips every time we enter far-out state → re-triggers CSS animation
-  const [farKey,     setFarKey]     = useState(0);
+  const [colorMode,    setColorMode]    = useState<ColorMode>("region");
+  const [edgeMode,     setEdgeMode]     = useState<EdgeMode>("hyperspace");
+  const [filterRegion, setFilterRegion] = useState<string>("All");
+  const [search,       setSearch]       = useState("");
+  const [selectedId,   setSelectedId]   = useState<string | null>(null);
+  const [showLegend,   setShowLegend]   = useState(true);
+  const [isFarOut,     setIsFarOut]     = useState(false);
+  const [farKey,       setFarKey]       = useState(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef     = useRef<any>(null);
@@ -289,22 +289,41 @@ export default function GalaxyPage() {
   // ─── Graph data ───────────────────────────────────────────────────────────
 
   const nodes = useMemo<GNode[]>(() =>
-    PLANETS.map((p) => {
-      const [gx, gz] = GALAXY_POS[p.id] ?? [0, 0];
-      const gy = galaxyY(p.id, gx, gz);
-      return {
-        id: p.id, name: p.name,
-        val: p.importance * 1.6,
-        color: getNodeColor(p.id, colorMode),
-        classification: p.classification,
-        importance: p.importance,
-        imageUrl: p.imageUrl,
-        // Fixed positions — disable force-directed jostling
-        fx: gx, fy: gy, fz: gz,
-      };
-    }),
-    [colorMode],
+    PLANETS
+      .filter((p) => filterRegion === "All" || p.classification === filterRegion)
+      .map((p) => {
+        const [gx, gz] = GALAXY_POS[p.id] ?? [0, 0];
+        const gy = galaxyY(p.id, gx, gz);
+        return {
+          id: p.id, name: p.name,
+          val: p.importance * 1.6,
+          color: getNodeColor(p.id, colorMode),
+          classification: p.classification,
+          importance: p.importance,
+          imageUrl: p.imageUrl,
+          fx: gx, fy: gy, fz: gz,
+        };
+      }),
+    [colorMode, filterRegion],
   );
+
+  const SORTED_PLANETS = useMemo(
+    () => [...PLANETS].sort((a, b) => a.name.localeCompare(b.name)),
+    [],
+  );
+
+  const flyTo = (id: string) => {
+    const gpos = GALAXY_POS[id];
+    if (!gpos) return;
+    const [gx, gz] = gpos;
+    const gy = galaxyY(id, gx, gz);
+    graphRef.current?.cameraPosition?.(
+      { x: gx, y: gy + 70, z: gz + 130 },
+      { x: gx, y: gy,      z: gz       },
+      1200,
+    );
+    setTimeout(() => setSelectedId(id), 400);
+  };
 
   const links = useMemo<GLink[]>(() => {
     if (edgeMode === "none") return [];
@@ -316,21 +335,32 @@ export default function GalaxyPage() {
         }));
       });
     }
+    // Only connect planets that share a faction AND are spatially close.
+    // This prevents galaxy-spanning crossing lines.
+    const MAX_FACTION_DIST = 220;
     const byFaction = new Map<string, string[]>();
     PLANETS.forEach((p) => p.affiliations.forEach((a) => {
       if (!byFaction.has(a.faction)) byFaction.set(a.faction, []);
       byFaction.get(a.faction)!.push(p.id);
     }));
     const out: GLink[] = [];
+    const seen = new Set<string>();
     byFaction.forEach((pids, fid) => {
       if (pids.length < 2) return;
       const faction = FACTIONS.find((f) => f.id === fid);
       const color   = faction?.color ?? "#444";
-      const sorted  = [...pids].sort(
-        (a, b) => (findPlanet(b)?.importance ?? 0) - (findPlanet(a)?.importance ?? 0),
-      );
-      for (let i = 0; i < Math.min(sorted.length - 1, 5); i++)
-        out.push({ source: sorted[i], target: sorted[i + 1], color, label: faction?.name });
+      for (let i = 0; i < pids.length; i++) {
+        for (let j = i + 1; j < pids.length; j++) {
+          const [ax, az] = GALAXY_POS[pids[i]] ?? [0, 0];
+          const [bx, bz] = GALAXY_POS[pids[j]] ?? [0, 0];
+          const dist = Math.sqrt((ax - bx) ** 2 + (az - bz) ** 2);
+          if (dist > MAX_FACTION_DIST) continue;
+          const key = [pids[i], pids[j]].sort().join("|");
+          if (seen.has(key)) continue;
+          seen.add(key);
+          out.push({ source: pids[i], target: pids[j], color, label: faction?.name });
+        }
+      }
     });
     return out;
   }, [edgeMode]);
@@ -395,11 +425,31 @@ export default function GalaxyPage() {
     <div className="flex flex-col overflow-hidden" style={{ height: "100dvh" }}>
 
       {/* Controls bar */}
-      <div className="shrink-0 z-20 px-4 sm:px-6 py-3 flex flex-wrap gap-3 items-center border-b border-border bg-black/75 backdrop-blur-md">
-        <span className="font-display text-[11px] uppercase tracking-[0.28em] text-primary mr-1 hidden sm:inline">Galaxy Map</span>
+      <div className="shrink-0 z-20 px-3 sm:px-5 py-2.5 flex flex-wrap gap-2 items-center border-b border-border bg-black/75 backdrop-blur-md">
 
-        <label className="flex items-center gap-2 text-xs text-muted-foreground">
-          <span className="uppercase tracking-widest font-display hidden md:inline">Color</span>
+        {/* Row-1 group: jump + region filter */}
+        <select
+          defaultValue=""
+          onChange={(e) => { flyTo(e.target.value); e.target.value = ""; }}
+          className="px-2 py-1.5 rounded-md bg-input border border-border text-sm text-foreground focus:border-primary focus:outline-none max-w-[160px]"
+        >
+          <option value="" disabled>Jump to planet…</option>
+          {SORTED_PLANETS.map((p) => (
+            <option key={p.id} value={p.id}>{p.name}</option>
+          ))}
+        </select>
+
+        <select value={filterRegion} onChange={(e) => setFilterRegion(e.target.value)}
+          className="px-2 py-1.5 rounded-md bg-input border border-border text-sm text-foreground focus:border-primary focus:outline-none">
+          <option value="All">All Regions</option>
+          {Object.keys(REGION_COLORS).map((r) => <option key={r} value={r}>{r}</option>)}
+        </select>
+
+        {/* Divider */}
+        <span className="hidden sm:block w-px h-5 bg-border" />
+
+        <label className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <span className="uppercase tracking-widest font-display hidden lg:inline text-[10px]">Color</span>
           <select value={colorMode} onChange={(e) => setColorMode(e.target.value as ColorMode)}
             className="px-2 py-1.5 rounded-md bg-input border border-border text-sm text-foreground focus:border-primary focus:outline-none">
             <option value="region">By Region</option>
@@ -408,32 +458,32 @@ export default function GalaxyPage() {
           </select>
         </label>
 
-        <label className="flex items-center gap-2 text-xs text-muted-foreground">
-          <span className="uppercase tracking-widest font-display hidden md:inline">Edges</span>
+        <label className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <span className="uppercase tracking-widest font-display hidden lg:inline text-[10px]">Edges</span>
           <select value={edgeMode} onChange={(e) => setEdgeMode(e.target.value as EdgeMode)}
             className="px-2 py-1.5 rounded-md bg-input border border-border text-sm text-foreground focus:border-primary focus:outline-none">
             <option value="hyperspace">Hyperspace Routes</option>
-            <option value="faction">Faction Connections</option>
+            <option value="faction">Faction Links</option>
             <option value="none">No Edges</option>
           </select>
         </label>
 
         <div className="relative">
           <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
-          <input type="search" placeholder="Highlight planet…" value={search}
+          <input type="search" placeholder="Highlight…" value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-8 pr-3 py-1.5 rounded-md bg-input border border-border text-sm w-40 focus:border-primary focus:outline-none" />
+            className="pl-8 pr-3 py-1.5 rounded-md bg-input border border-border text-sm w-32 focus:border-primary focus:outline-none" />
         </div>
 
         <div className="ml-auto flex items-center gap-2">
-          <span className="text-[10px] font-display uppercase tracking-widest text-muted-foreground hidden sm:inline">
-            {PLANETS.length} planets · {links.length} links
+          <span className="text-[10px] font-display uppercase tracking-widest text-muted-foreground hidden md:inline">
+            {nodes.length} planets · {links.length} links
           </span>
           <button onClick={() => setShowLegend((v) => !v)}
             className="px-2.5 py-1.5 rounded-md text-[11px] font-display uppercase tracking-widest border border-border text-muted-foreground hover:text-foreground hover:border-primary transition-colors">
             {showLegend ? "Hide" : "Legend"}
           </button>
-          <button onClick={() => graphRef.current?.zoomToFit?.(500, 60)} title="Reset camera"
+          <button onClick={() => graphRef.current?.zoomToFit?.(600, 60)} title="Reset camera"
             className="px-2 py-1.5 rounded-md border border-border text-muted-foreground hover:text-foreground hover:border-primary transition-colors">
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
@@ -469,7 +519,10 @@ export default function GalaxyPage() {
 
         {/* Legend */}
         {showLegend && (
-          <div className="absolute bottom-4 left-4 z-10 rounded-xl border border-border bg-black/70 backdrop-blur-md p-3 max-w-[190px]">
+          <div
+            className="absolute left-4 z-10 rounded-xl border border-border bg-black/70 backdrop-blur-md p-3 max-w-[190px] max-h-[35vh] overflow-y-auto"
+            style={{ bottom: "max(1rem, calc(env(safe-area-inset-bottom) + 0.5rem))" }}
+          >
             <div className="text-[9px] uppercase tracking-[0.28em] text-primary font-display mb-2">
               {colorMode === "region" ? "Galactic Region" : colorMode === "faction" ? "Faction" : "Importance"}
             </div>
