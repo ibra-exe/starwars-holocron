@@ -114,13 +114,13 @@ function getTexture(url: string): THREE.Texture {
 // ─── Space background ────────────────────────────────────────────────────────
 
 function addSpaceBackground(scene: THREE.Scene) {
-  // ── 1. Background star field ─────────────────────────────────────────────
+  // ── 1. Deep-space star field (spherical shell far from the galaxy) ────────
   const PALETTE: [number, number, number][] = [
     [1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0],
     [0.75, 0.85, 1.0], [0.75, 0.85, 1.0],
     [1.0, 0.95, 0.78], [1.0, 0.80, 0.65], [0.55, 0.65, 1.0],
   ];
-  const N = 9000;
+  const N = 12000;
   const sp = new Float32Array(N * 3), sc = new Float32Array(N * 3);
   for (let i = 0; i < N; i++) {
     const th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
@@ -135,118 +135,136 @@ function addSpaceBackground(scene: THREE.Scene) {
   sg.setAttribute("position", new THREE.BufferAttribute(sp, 3));
   sg.setAttribute("color",    new THREE.BufferAttribute(sc, 3));
   scene.add(new THREE.Points(sg,
-    new THREE.PointsMaterial({ size: 1.9, vertexColors: true, transparent: true, opacity: 0.88, sizeAttenuation: true })));
+    new THREE.PointsMaterial({ size: 2.0, vertexColors: true, transparent: true, opacity: 0.9, sizeAttenuation: true })));
 
-  // ── 2. Milky Way background halo band ────────────────────────────────────
-  const M = 5000, mp = new Float32Array(M * 3);
-  for (let i = 0; i < M; i++) {
-    const th = Math.random() * Math.PI * 2, r = 1350 + Math.random() * 450;
-    mp[i*3] = r * Math.cos(th);
-    mp[i*3+1] = (Math.random() - 0.5) * r * 0.38;
-    mp[i*3+2] = r * Math.sin(th);
-  }
-  const mg = new THREE.BufferGeometry();
-  mg.setAttribute("position", new THREE.BufferAttribute(mp, 3));
-  scene.add(new THREE.Points(mg,
-    new THREE.PointsMaterial({ color: 0xccddf8, size: 1.1, transparent: true, opacity: 0.35, sizeAttenuation: true })));
-
-  // ── 3. Spiral arm star concentration ─────────────────────────────────────
-  // The Star Wars galaxy has four major spiral arms (Perlemian, Corellian Run,
-  // Hydian Way, Rimma/Tingel Arm) following logarithmic spiral paths.
-  const ARM_COUNT  = 4;
-  const ARM_STARS  = 2200;
-  const armPos = new Float32Array(ARM_COUNT * ARM_STARS * 3);
-  const armCol = new Float32Array(ARM_COUNT * ARM_STARS * 3);
-  let ai = 0;
+  // ── 2. Galaxy disc — dense star field in the XZ plane (r = 350–950) ──────
+  // This forms the visible spiral galaxy seen OUTSIDE the planet zones,
+  // matching the dark-blue swirling galaxy background of the official map.
+  const ARM_COUNT = 4;
+  const BG_STARS  = 3500; // per arm — dense enough to see the spiral shape
+  const bgPos = new Float32Array(ARM_COUNT * BG_STARS * 3);
+  const bgCol = new Float32Array(ARM_COUNT * BG_STARS * 3);
+  let bi = 0;
   for (let arm = 0; arm < ARM_COUNT; arm++) {
     const offset = (arm / ARM_COUNT) * Math.PI * 2;
-    for (let s = 0; s < ARM_STARS; s++) {
-      const t     = s / ARM_STARS;
-      const theta = offset + t * Math.PI * 2.8;   // ~1.4 full winding
-      const r     = 22 * Math.exp(0.26 * (theta - offset));
-      const scatter = (Math.random() - 0.5) * r * 0.18;
-      const x = (r + scatter) * Math.cos(theta) + (Math.random() - 0.5) * 15;
-      const z = (r + scatter) * Math.sin(theta) + (Math.random() - 0.5) * 15;
-      const y = (Math.random() - 0.5) * 14;
-      if (Math.sqrt(x * x + z * z) > 390) continue;
-      armPos[ai * 3]     = x;
-      armPos[ai * 3 + 1] = y;
-      armPos[ai * 3 + 2] = z;
-      // Warm blue-white; golden tint near core
-      const cf = Math.max(0, 1 - Math.sqrt(x*x + z*z) / 390);
-      armCol[ai * 3]     = 0.72 + cf * 0.28;
-      armCol[ai * 3 + 1] = 0.78 + cf * 0.12;
-      armCol[ai * 3 + 2] = 1.00;
-      ai++;
+    for (let s = 0; s < BG_STARS; s++) {
+      const t     = s / BG_STARS;
+      // Spiral starts at r≈350 (just outside planet zone) and winds to r≈950
+      const theta = offset + t * Math.PI * 3.5;
+      const r     = 350 + t * 600;
+      const scatter = (Math.random() - 0.5) * r * 0.22;
+      const x = (r + scatter) * Math.cos(theta) + (Math.random() - 0.5) * 30;
+      const z = (r + scatter) * Math.sin(theta) + (Math.random() - 0.5) * 30;
+      const y = (Math.random() - 0.5) * r * 0.08; // thin disc
+      bgPos[bi * 3]     = x;
+      bgPos[bi * 3 + 1] = y;
+      bgPos[bi * 3 + 2] = z;
+      // Deep blue — the dark teal/blue of spiral arms in the official map
+      bgCol[bi * 3]     = 0.25 + Math.random() * 0.20;
+      bgCol[bi * 3 + 1] = 0.45 + Math.random() * 0.30;
+      bgCol[bi * 3 + 2] = 0.80 + Math.random() * 0.20;
+      bi++;
     }
   }
-  if (ai > 0) {
-    const ag = new THREE.BufferGeometry();
-    ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
-    ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
-    scene.add(new THREE.Points(ag,
-      new THREE.PointsMaterial({ size: 1.05, vertexColors: true, transparent: true, opacity: 0.52, sizeAttenuation: true })));
+  const bg = new THREE.BufferGeometry();
+  bg.setAttribute("position", new THREE.BufferAttribute(bgPos.slice(0, bi * 3), 3));
+  bg.setAttribute("color",    new THREE.BufferAttribute(bgCol.slice(0, bi * 3), 3));
+  scene.add(new THREE.Points(bg,
+    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.70, sizeAttenuation: true })));
+
+  // ── 3. Inner galaxy — denser star concentration inside the planet zone ────
+  const IN_STARS = 4000;
+  const inPos = new Float32Array(IN_STARS * 3);
+  const inCol = new Float32Array(IN_STARS * 3);
+  for (let i = 0; i < IN_STARS; i++) {
+    const th = Math.random() * Math.PI * 2;
+    const r  = Math.sqrt(Math.random()) * 350; // uniform in disc
+    const x  = r * Math.cos(th) + (Math.random() - 0.5) * 10;
+    const z  = r * Math.sin(th) + (Math.random() - 0.5) * 10;
+    const y  = (Math.random() - 0.5) * Math.max(6, r * 0.05);
+    inPos[i * 3]     = x;
+    inPos[i * 3 + 1] = y;
+    inPos[i * 3 + 2] = z;
+    // Warm golden near core → cool blue-white toward edge
+    const cf = Math.max(0, 1 - r / 350);
+    inCol[i * 3]     = 0.80 + cf * 0.20;
+    inCol[i * 3 + 1] = 0.75 + cf * 0.15;
+    inCol[i * 3 + 2] = 0.60 + (1 - cf) * 0.40;
   }
+  const ig = new THREE.BufferGeometry();
+  ig.setAttribute("position", new THREE.BufferAttribute(inPos, 3));
+  ig.setAttribute("color",    new THREE.BufferAttribute(inCol, 3));
+  scene.add(new THREE.Points(ig,
+    new THREE.PointsMaterial({ size: 0.9, vertexColors: true, transparent: true, opacity: 0.55, sizeAttenuation: true })));
 
-  // ── 4. Galactic core glow ─────────────────────────────────────────────────
-  // Inner bright nucleus — the bright white-gold centre seen on all official maps
-  scene.add(new THREE.Mesh(
-    new THREE.SphereGeometry(7, 16, 16),
-    new THREE.MeshBasicMaterial({ color: 0xfff4c8 }),
-  ));
-  // Inner halo
-  scene.add(new THREE.Mesh(
-    new THREE.SphereGeometry(28, 16, 16),
-    new THREE.MeshBasicMaterial({ color: 0xffe8a0, transparent: true, opacity: 0.18, depthWrite: false }),
-  ));
-  // Mid glow — transitions to cool purple/blue (like the real core bulge)
-  scene.add(new THREE.Mesh(
-    new THREE.SphereGeometry(70, 16, 16),
-    new THREE.MeshBasicMaterial({ color: 0xb090ff, transparent: true, opacity: 0.055, depthWrite: false }),
-  ));
-  // Outer diffuse glow
-  scene.add(new THREE.Mesh(
-    new THREE.SphereGeometry(140, 16, 16),
-    new THREE.MeshBasicMaterial({ color: 0x6070cc, transparent: true, opacity: 0.022, depthWrite: false }),
-  ));
-
-  // ── 5. Region boundary rings ──────────────────────────────────────────────
-  // Faint concentric rings on the XZ plane marking galactic region boundaries,
-  // matching the official Star Wars galaxy map style.
-  const RINGS: { r: number; color: number; opacity: number }[] = [
-    { r:  32, color: 0xffd54f, opacity: 0.25 }, // Deep Core edge
-    { r:  90, color: 0x4fc3f7, opacity: 0.18 }, // Core Worlds edge
-    { r: 130, color: 0x81d4fa, opacity: 0.14 }, // Colonies edge
-    { r: 175, color: 0x80cbc4, opacity: 0.12 }, // Inner Rim edge
-    { r: 215, color: 0x80cbc4, opacity: 0.10 }, // Expansion Region edge
-    { r: 265, color: 0xffb74d, opacity: 0.10 }, // Mid Rim edge
-    { r: 335, color: 0xef9a9a, opacity: 0.09 }, // Outer Rim edge
+  // ── 4. Galactic region zone fills ────────────────────────────────────────
+  // Solid colored concentric bands on the XZ plane, matching the official
+  // Star Wars galaxy map — warm golden core → cooler blue outer zones.
+  const ZONES: { inner: number; outer: number; color: number; opacity: number }[] = [
+    { inner:   0, outer:  32, color: 0xd4a820, opacity: 0.42 }, // Deep Core: golden
+    { inner:  32, outer:  90, color: 0xc88830, opacity: 0.34 }, // Core Worlds: amber
+    { inner:  90, outer: 130, color: 0xb07030, opacity: 0.26 }, // Colonies: brown-orange
+    { inner: 130, outer: 175, color: 0xb88858, opacity: 0.22 }, // Inner Rim: tan
+    { inner: 175, outer: 215, color: 0xa06878, opacity: 0.20 }, // Expansion: rose/mauve
+    { inner: 215, outer: 265, color: 0x607098, opacity: 0.18 }, // Mid Rim: periwinkle
+    { inner: 265, outer: 340, color: 0x405878, opacity: 0.14 }, // Outer Rim: steel blue
   ];
-  for (const { r, color, opacity } of RINGS) {
-    const ring = new THREE.Mesh(
-      new THREE.RingGeometry(r - 0.6, r + 0.6, 128),
-      new THREE.MeshBasicMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide, depthWrite: false }),
+  for (const z of ZONES) {
+    const mesh = new THREE.Mesh(
+      new THREE.RingGeometry(z.inner, z.outer, 128),
+      new THREE.MeshBasicMaterial({ color: z.color, transparent: true, opacity: z.opacity, side: THREE.DoubleSide, depthWrite: false }),
     );
-    ring.rotation.x = Math.PI / 2; // lay flat on XZ plane
-    scene.add(ring);
+    mesh.rotation.x = Math.PI / 2;
+    scene.add(mesh);
   }
+
+  // Soft glow halos on top of the zone fills to blend edges
+  const HALOS: { r: number; color: number; opacity: number }[] = [
+    { r:  34, color: 0xffdd60, opacity: 0.30 },
+    { r:  92, color: 0xe0a040, opacity: 0.20 },
+    { r: 132, color: 0xc07840, opacity: 0.15 },
+    { r: 177, color: 0xa07060, opacity: 0.12 },
+    { r: 217, color: 0x7080a8, opacity: 0.10 },
+    { r: 267, color: 0x506888, opacity: 0.09 },
+  ];
+  for (const h of HALOS) {
+    const mesh = new THREE.Mesh(
+      new THREE.RingGeometry(h.r - 8, h.r + 8, 128),
+      new THREE.MeshBasicMaterial({ color: h.color, transparent: true, opacity: h.opacity, side: THREE.DoubleSide, depthWrite: false }),
+    );
+    mesh.rotation.x = Math.PI / 2;
+    scene.add(mesh);
+  }
+
+  // ── 5. Galactic core glow ─────────────────────────────────────────────────
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(9, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0xfffae0 }),
+  ));
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(32, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0xffe890, transparent: true, opacity: 0.28, depthWrite: false }),
+  ));
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(75, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0xc09040, transparent: true, opacity: 0.10, depthWrite: false }),
+  ));
 }
 
 // ─── Color maps ─────────────────────────────────────────────────────────────
 
-// Colors tuned to match the official Star Wars galaxy map aesthetic:
-// warm golden core → blue Core Worlds → teal Mid Rim → orange Outer Rim → grey Unknown
+// Colors matched to the zone fills so planet dots look part of their region.
 const REGION_COLORS: Record<string, string> = {
-  "Deep Core":         "#ffe066",   // bright golden — matches the glowing core bulge
-  "Core World":        "#5bc8f5",   // vivid sky-blue
-  Colonies:            "#7ecfea",   // lighter blue
-  "Inner Rim":         "#5dd4b8",   // cyan-teal
-  "Expansion Region":  "#6ec98a",   // sage green
-  "Mid Rim":           "#f0c060",   // amber
-  "Outer Rim":         "#e87040",   // warm orange-red
-  "Hutt Space":        "#c07de0",   // purple
-  "Wild Space":        "#8090a8",   // steel-blue grey
-  "Unknown Regions":   "#4a5568",   // dark slate
+  "Deep Core":         "#ffd84a",   // bright golden
+  "Core World":        "#e8a030",   // amber
+  Colonies:            "#d48040",   // brown-orange
+  "Inner Rim":         "#d4a860",   // tan/cream
+  "Expansion Region":  "#c07888",   // rose/mauve
+  "Mid Rim":           "#7888c8",   // periwinkle blue
+  "Outer Rim":         "#5878a0",   // steel blue
+  "Hutt Space":        "#b060d0",   // purple
+  "Wild Space":        "#708090",   // slate
+  "Unknown Regions":   "#445566",   // dark slate
 };
 const IMPORTANCE_COLORS: Record<number, string> = {
   1: "#607d8b", 2: "#2196f3", 3: "#4caf50", 4: "#ff9800", 5: "#ff5252",
@@ -596,6 +614,7 @@ export default function GalaxyPage() {
             linkDirectionalParticleWidth={1.2}
             linkDirectionalParticleColor={(l: any) => l.color ?? "#aaf"}
             linkCurvature={0.2}
+            enableNodeDrag={false}
             onNodeClick={(n: any) => setSelectedId(n.id as string)}
             cooldownTicks={0}
             warmupTicks={0}
