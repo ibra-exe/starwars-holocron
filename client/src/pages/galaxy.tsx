@@ -503,6 +503,7 @@ export default function GalaxyPage() {
             nodeThreeObjectExtend={false}
             linkColor={(l: any) => l.color ?? "#334"}
             linkWidth={0.8} linkOpacity={0.5}
+            linkCurvature={0.25}
             linkDirectionalParticles={edgeMode === "hyperspace" ? 2 : 0}
             linkDirectionalParticleWidth={1.2}
             linkDirectionalParticleColor={(l: any) => l.color ?? "#aaf"}
