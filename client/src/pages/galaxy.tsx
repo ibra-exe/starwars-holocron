@@ -236,7 +236,46 @@ function addSpaceBackground(scene: THREE.Scene) {
     scene.add(mesh);
   }
 
-  // ── 5. Galactic core glow ─────────────────────────────────────────────────
+  // ── 5. Inner spiral arm stars — layered over the zone fills ──────────────
+  // Four logarithmic spiral arms follow paths within the planet zone (r < 390).
+  // Using warm-white / blue-white stars with partial opacity so the coloured
+  // zone fills still read through underneath — gives the galactic star-lane feel.
+  const ARM_COUNT  = 4;
+  const ARM_STARS  = 2800;
+  const armPos = new Float32Array(ARM_COUNT * ARM_STARS * 3);
+  const armCol = new Float32Array(ARM_COUNT * ARM_STARS * 3);
+  let ai = 0;
+  for (let arm = 0; arm < ARM_COUNT; arm++) {
+    const offset = (arm / ARM_COUNT) * Math.PI * 2;
+    for (let s = 0; s < ARM_STARS; s++) {
+      const t       = s / ARM_STARS;
+      const theta   = offset + t * Math.PI * 2.8;
+      const r       = 22 * Math.exp(0.26 * (theta - offset));
+      const scatter = (Math.random() - 0.5) * r * 0.18;
+      const x = (r + scatter) * Math.cos(theta) + (Math.random() - 0.5) * 14;
+      const z = (r + scatter) * Math.sin(theta) + (Math.random() - 0.5) * 14;
+      const y = (Math.random() - 0.5) * 12;
+      if (Math.sqrt(x * x + z * z) > 390) continue;
+      armPos[ai * 3]     = x;
+      armPos[ai * 3 + 1] = y;
+      armPos[ai * 3 + 2] = z;
+      // Warm golden near the core → cool blue-white toward the rim
+      const cf = Math.max(0, 1 - Math.sqrt(x * x + z * z) / 390);
+      armCol[ai * 3]     = 0.80 + cf * 0.20;
+      armCol[ai * 3 + 1] = 0.85 + cf * 0.10;
+      armCol[ai * 3 + 2] = 1.00;
+      ai++;
+    }
+  }
+  if (ai > 0) {
+    const ag = new THREE.BufferGeometry();
+    ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
+    ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
+    scene.add(new THREE.Points(ag,
+      new THREE.PointsMaterial({ size: 1.1, vertexColors: true, transparent: true, opacity: 0.48, sizeAttenuation: true })));
+  }
+
+  // ── 6. Galactic core glow ─────────────────────────────────────────────────
   scene.add(new THREE.Mesh(
     new THREE.SphereGeometry(9, 16, 16),
     new THREE.MeshBasicMaterial({ color: 0xfffae0 }),
