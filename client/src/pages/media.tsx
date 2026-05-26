@@ -35,6 +35,7 @@ export default function MediaPage() {
   const [type, setType] = useState<MediaType | "All">("All");
   const [era, setEra] = useState<EraId | "All">("All");
   const [ess, setEss] = useState<Essentiality | "All">("All");
+  const [sort, setSort] = useState<"default" | "release" | "chronological">("default");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -58,8 +59,13 @@ export default function MediaPage() {
         if (!m.title.toLowerCase().includes(s) && !m.summary.toLowerCase().includes(s)) return false;
       }
       return true;
-    }).sort((a, b) => b.importance - a.importance || a.inUniverseSortKey - b.inUniverseSortKey);
-  }, [continuity, type, era, ess, search]);
+    }).sort((a, b) => {
+      if (sort === "release") return a.releaseYear - b.releaseYear || a.title.localeCompare(b.title);
+      if (sort === "chronological") return a.inUniverseSortKey - b.inUniverseSortKey || a.title.localeCompare(b.title);
+      // default: importance desc, then chronological
+      return b.importance - a.importance || a.inUniverseSortKey - b.inUniverseSortKey;
+    });
+  }, [continuity, type, era, ess, search, sort]);
 
   const selectedMedia = selected ? MEDIA.find((m) => m.id === selected) : null;
 
@@ -88,6 +94,7 @@ export default function MediaPage() {
           <Pill label="Type" value={type} setValue={setType} options={["All", ...TYPES]} />
           <Pill label="Era" value={era} setValue={setEra} options={["All", ...ERAS.map((e) => e.id)]} labels={{ All: "All Eras", ...Object.fromEntries(ERAS.map((e) => [e.id, e.shortName])) }} />
           <Pill label="Essentiality" value={ess} setValue={setEss} options={["All", ...ESS]} />
+          <Pill label="Sort" value={sort} setValue={setSort} options={["default", "release", "chronological"]} labels={{ default: "Default", release: "Release Date", chronological: "Chronological" }} />
           <div className="ml-auto text-xs text-muted-foreground font-display tracking-widest uppercase">{items.length} entries</div>
           <div className="flex rounded-md border border-border overflow-hidden">
             <button onClick={() => setView("grid")} data-testid="button-view-grid" className={`px-3 py-1.5 text-xs uppercase tracking-widest font-display ${view === "grid" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}>
