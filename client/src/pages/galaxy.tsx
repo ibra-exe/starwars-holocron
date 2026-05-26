@@ -111,27 +111,6 @@ function getTexture(url: string): THREE.Texture {
   return _texCache.get(url)!;
 }
 
-// ─── Soft circular star sprite ───────────────────────────────────────────────
-// WebGL Points render as squares by default. Using a radial-gradient canvas
-// texture makes every star a soft circular disc instead.
-let _starTex: THREE.Texture | null = null;
-function getStarTexture(): THREE.Texture {
-  if (!_starTex) {
-    const S = 32;
-    const canvas = document.createElement("canvas");
-    canvas.width = S; canvas.height = S;
-    const ctx = canvas.getContext("2d")!;
-    const g = ctx.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
-    g.addColorStop(0,   "rgba(255,255,255,1)");
-    g.addColorStop(0.35,"rgba(255,255,255,0.7)");
-    g.addColorStop(1,   "rgba(255,255,255,0)");
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, S, S);
-    _starTex = new THREE.CanvasTexture(canvas);
-  }
-  return _starTex;
-}
-
 // ─── Space background ────────────────────────────────────────────────────────
 
 function addSpaceBackground(scene: THREE.Scene) {
@@ -156,7 +135,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   sg.setAttribute("position", new THREE.BufferAttribute(sp, 3));
   sg.setAttribute("color",    new THREE.BufferAttribute(sc, 3));
   scene.add(new THREE.Points(sg,
-    new THREE.PointsMaterial({ size: 1.9, vertexColors: true, transparent: true, opacity: 0.88, sizeAttenuation: true })));
+    new THREE.PointsMaterial({ size: 2.0, vertexColors: true, transparent: true, opacity: 0.9, sizeAttenuation: true })));
 
   // ── 2. Galaxy disc — dense star field in the XZ plane (r = 350–950) ──────
   // This forms the visible spiral galaxy seen OUTSIDE the planet zones,
@@ -293,7 +272,7 @@ function addSpaceBackground(scene: THREE.Scene) {
     ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
     ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
     scene.add(new THREE.Points(ag,
-      new THREE.PointsMaterial({ size: 1.6, map: getStarTexture(), alphaTest: 0.01, vertexColors: true, transparent: true, opacity: 0.55, sizeAttenuation: true })));
+      new THREE.PointsMaterial({ size: 2.2, vertexColors: true, transparent: true, opacity: 0.82, sizeAttenuation: true })));
   }
 
   // ── 6. Galactic core glow ─────────────────────────────────────────────────
