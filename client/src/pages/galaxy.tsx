@@ -306,6 +306,42 @@ function getNodeColor(id: string, mode: ColorMode): string {
 const PLANET_IDS = new Set(PLANETS.map((p) => p.id));
 const LOD_THRESHOLD = 180; // switch to texture below this camera-distance
 
+// ─── Text label sprites ───────────────────────────────────────────────────────
+// Canvas-rendered text sprites that float next to each planet in the close-up
+// LOD level. Cached by name+color to avoid redundant canvas allocations.
+const _labelTexCache = new Map<string, THREE.Texture>();
+
+function makeTextSprite(name: string, color: string, r: number): THREE.Sprite {
+  const key = `${name}|${color}`;
+  let tex = _labelTexCache.get(key);
+  if (!tex) {
+    const W = 384, H = 48;
+    const canvas = document.createElement("canvas");
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext("2d")!;
+    ctx.clearRect(0, 0, W, H);
+    ctx.font = "bold 22px 'Courier New', monospace";
+    ctx.textBaseline = "middle";
+    // Dark outline for readability against any background
+    ctx.strokeStyle = "rgba(0,4,18,0.92)";
+    ctx.lineWidth = 4;
+    ctx.strokeText(name, 6, H / 2);
+    ctx.fillStyle = color;
+    ctx.fillText(name, 6, H / 2);
+    tex = new THREE.CanvasTexture(canvas);
+    _labelTexCache.set(key, tex);
+  }
+  const sprite = new THREE.Sprite(
+    new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }),
+  );
+  // Scale: 18 world-units wide, keep W:H aspect ratio
+  const labelW = 18, labelH = labelW * (48 / 384);
+  sprite.scale.set(labelW, labelH, 1);
+  // Position: to the right of the planet + a little above centre
+  sprite.position.set(r * 2.2 + labelW * 0.55, r * 0.9, 0);
+  return sprite;
+}
+
 // ─── "Far-out" threshold ─────────────────────────────────────────────────────
 // Show SW easter-egg text when camera is pulled much farther than normal view.
 const FAR_SHOW_DIST = 10000;
@@ -315,7 +351,7 @@ const FAR_HIDE_DIST = 6000;
 
 export default function GalaxyPage() {
   const [colorMode,    setColorMode]    = useState<ColorMode>("region");
-  const [edgeMode,     setEdgeMode]     = useState<EdgeMode>("hyperspace");
+  const [edgeMode,     setEdgeMode]     = useState<EdgeMode>("none");
   const [filterRegion, setFilterRegion] = useState<string>("All");
   const [search,       setSearch]       = useState("");
   const [selectedId,   setSelectedId]   = useState<string | null>(null);
@@ -429,7 +465,7 @@ export default function GalaxyPage() {
       { x: gx, y: gy,      z: gz       },
       1200,
     );
-    setTimeout(() => setSelectedId(id), 400);
+    // Don't auto-open the drawer — let the user click the planet themselves
   };
 
   const links = useMemo<GLink[]>(() => {
@@ -491,17 +527,34 @@ export default function GalaxyPage() {
     const url = node.imageUrl as string | undefined;
     const lod = new THREE.LOD();
 
+    // ── Close-up level (camera < LOD_THRESHOLD) ───────────────────────────
+    // Use a camera-facing Sprite so the image renders correctly without the
+    // sphere-wrapping distortion that MeshBasicMaterial{map} on a SphereGeometry
+    // produces (Wookieepedia images are flat art, not equirectangular projections).
+    const closeGroup = new THREE.Group();
     if (url) {
-      const mesh = new THREE.Mesh(
-        new THREE.SphereGeometry(r * 1.5, 32, 32),
-        new THREE.MeshBasicMaterial({
+      const imgSprite = new THREE.Sprite(
+        new THREE.SpriteMaterial({
           map: getTexture(url),
-          transparent: !highlighted, opacity: highlighted ? 1 : 0.15,
+          transparent: !highlighted,
+          opacity: highlighted ? 1 : 0.18,
         }),
       );
-      lod.addLevel(mesh, 0);
+      const s = r * 4;
+      imgSprite.scale.set(s, s, 1);
+      closeGroup.add(imgSprite);
+    } else {
+      // No image: plain coloured sphere
+      closeGroup.add(new THREE.Mesh(
+        new THREE.SphereGeometry(r * 1.5, 24, 24),
+        new THREE.MeshBasicMaterial({ color: col, transparent: !highlighted, opacity: highlighted ? 1 : 0.15 }),
+      ));
     }
+    // Floating name label — only visible in close-up
+    closeGroup.add(makeTextSprite(node.name as string, node.color as string, r));
+    lod.addLevel(closeGroup, 0);
 
+    // ── Far level (camera ≥ LOD_THRESHOLD) — coloured glow dot ───────────
     const far = new THREE.Group();
     far.add(new THREE.Mesh(
       new THREE.SphereGeometry(r, 14, 14),
@@ -513,7 +566,7 @@ export default function GalaxyPage() {
         new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.07, depthWrite: false }),
       ));
     }
-    lod.addLevel(far, url ? LOD_THRESHOLD : 0);
+    lod.addLevel(far, LOD_THRESHOLD);
     return lod;
   };
 
