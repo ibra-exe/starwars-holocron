@@ -237,11 +237,11 @@ function addSpaceBackground(scene: THREE.Scene) {
   }
 
   // ── 5. Inner spiral arm stars — layered over the zone fills ──────────────
-  // Four logarithmic spiral arms follow paths within the planet zone (r < 390).
-  // Using warm-white / blue-white stars with partial opacity so the coloured
-  // zone fills still read through underneath — gives the galactic star-lane feel.
+  // Four logarithmic spiral arms traced within the planet zone (r < 390).
+  // Large bright stars at high opacity so they're clearly visible above the
+  // coloured zone fills — this is the primary "galaxy spiral" structure.
   const ARM_COUNT  = 4;
-  const ARM_STARS  = 2800;
+  const ARM_STARS  = 4000;
   const armPos = new Float32Array(ARM_COUNT * ARM_STARS * 3);
   const armCol = new Float32Array(ARM_COUNT * ARM_STARS * 3);
   let ai = 0;
@@ -251,18 +251,18 @@ function addSpaceBackground(scene: THREE.Scene) {
       const t       = s / ARM_STARS;
       const theta   = offset + t * Math.PI * 2.8;
       const r       = 22 * Math.exp(0.26 * (theta - offset));
-      const scatter = (Math.random() - 0.5) * r * 0.18;
-      const x = (r + scatter) * Math.cos(theta) + (Math.random() - 0.5) * 14;
-      const z = (r + scatter) * Math.sin(theta) + (Math.random() - 0.5) * 14;
-      const y = (Math.random() - 0.5) * 12;
+      const scatter = (Math.random() - 0.5) * r * 0.16;
+      const x = (r + scatter) * Math.cos(theta) + (Math.random() - 0.5) * 10;
+      const z = (r + scatter) * Math.sin(theta) + (Math.random() - 0.5) * 10;
+      const y = (Math.random() - 0.5) * 8; // keep tight to the disc plane
       if (Math.sqrt(x * x + z * z) > 390) continue;
       armPos[ai * 3]     = x;
       armPos[ai * 3 + 1] = y;
       armPos[ai * 3 + 2] = z;
-      // Warm golden near the core → cool blue-white toward the rim
+      // Warm golden near the core → bright blue-white toward the rim
       const cf = Math.max(0, 1 - Math.sqrt(x * x + z * z) / 390);
-      armCol[ai * 3]     = 0.80 + cf * 0.20;
-      armCol[ai * 3 + 1] = 0.85 + cf * 0.10;
+      armCol[ai * 3]     = 0.85 + cf * 0.15;
+      armCol[ai * 3 + 1] = 0.90 + cf * 0.10;
       armCol[ai * 3 + 2] = 1.00;
       ai++;
     }
@@ -272,7 +272,7 @@ function addSpaceBackground(scene: THREE.Scene) {
     ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
     ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
     scene.add(new THREE.Points(ag,
-      new THREE.PointsMaterial({ size: 1.1, vertexColors: true, transparent: true, opacity: 0.48, sizeAttenuation: true })));
+      new THREE.PointsMaterial({ size: 2.2, vertexColors: true, transparent: true, opacity: 0.82, sizeAttenuation: true })));
   }
 
   // ── 6. Galactic core glow ─────────────────────────────────────────────────
@@ -567,23 +567,19 @@ export default function GalaxyPage() {
     const lod = new THREE.LOD();
 
     // ── Close-up level (camera < LOD_THRESHOLD) ───────────────────────────
-    // Use a camera-facing Sprite so the image renders correctly without the
-    // sphere-wrapping distortion that MeshBasicMaterial{map} on a SphereGeometry
-    // produces (Wookieepedia images are flat art, not equirectangular projections).
     const closeGroup = new THREE.Group();
     if (url) {
-      const imgSprite = new THREE.Sprite(
-        new THREE.SpriteMaterial({
+      // Textured sphere — kept as a sphere per user preference.
+      // Texture quality improvements (equirectangular maps, etc.) are a future task.
+      closeGroup.add(new THREE.Mesh(
+        new THREE.SphereGeometry(r * 1.5, 32, 32),
+        new THREE.MeshBasicMaterial({
           map: getTexture(url),
           transparent: !highlighted,
-          opacity: highlighted ? 1 : 0.18,
+          opacity: highlighted ? 1 : 0.15,
         }),
-      );
-      const s = r * 4;
-      imgSprite.scale.set(s, s, 1);
-      closeGroup.add(imgSprite);
+      ));
     } else {
-      // No image: plain coloured sphere
       closeGroup.add(new THREE.Mesh(
         new THREE.SphereGeometry(r * 1.5, 24, 24),
         new THREE.MeshBasicMaterial({ color: col, transparent: !highlighted, opacity: highlighted ? 1 : 0.15 }),
