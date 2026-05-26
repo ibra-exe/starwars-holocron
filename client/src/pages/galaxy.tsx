@@ -8,7 +8,7 @@ import { HYPERSPACE_ROUTES } from "@/data/hyperspace-routes";
 import { DrawerPortal } from "@/components/shared/DrawerPortal";
 import DrawerSection from "@/components/shared/DrawerSection";
 import { ContinuityBadge, ImportanceBar } from "@/components/shared/Badges";
-import { Link } from "wouter";
+import { setPendingAnchor } from "@/lib/useHashAnchor";
 import { RotateCcw, Search, X } from "lucide-react";
 
 // ─── Canonical galaxy coordinates (x, z) ──────────────────────────────────
@@ -572,10 +572,15 @@ export default function GalaxyPage() {
                   </DrawerSection>
                 )}
                 <div className="mt-5 pt-4 border-t border-border">
-                  <Link href={`/planets#${selected.id}`}
-                    className="block w-full text-center py-2 rounded-md border border-primary text-primary text-xs font-display uppercase tracking-widest hover:bg-primary/10 transition-colors">
+                  <button
+                    onClick={() => {
+                      setPendingAnchor({ page: "/planets", id: selected.id });
+                      window.location.hash = "#/planets";
+                    }}
+                    className="block w-full text-center py-2 rounded-md border border-primary text-primary text-xs font-display uppercase tracking-widest hover:bg-primary/10 transition-colors"
+                  >
                     Full Entry →
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
