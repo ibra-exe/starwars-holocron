@@ -113,7 +113,7 @@ function getTexture(url: string): THREE.Texture {
 // ─── Space background ────────────────────────────────────────────────────────
 
 function addSpaceBackground(scene: THREE.Scene) {
-  // Stars
+  // ── 1. Background star field ─────────────────────────────────────────────
   const PALETTE: [number, number, number][] = [
     [1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0],
     [0.75, 0.85, 1.0], [0.75, 0.85, 1.0],
@@ -136,7 +136,7 @@ function addSpaceBackground(scene: THREE.Scene) {
   scene.add(new THREE.Points(sg,
     new THREE.PointsMaterial({ size: 1.9, vertexColors: true, transparent: true, opacity: 0.88, sizeAttenuation: true })));
 
-  // Milky Way disc band
+  // ── 2. Milky Way background halo band ────────────────────────────────────
   const M = 5000, mp = new Float32Array(M * 3);
   for (let i = 0; i < M; i++) {
     const th = Math.random() * Math.PI * 2, r = 1350 + Math.random() * 450;
@@ -148,21 +148,104 @@ function addSpaceBackground(scene: THREE.Scene) {
   mg.setAttribute("position", new THREE.BufferAttribute(mp, 3));
   scene.add(new THREE.Points(mg,
     new THREE.PointsMaterial({ color: 0xccddf8, size: 1.1, transparent: true, opacity: 0.35, sizeAttenuation: true })));
+
+  // ── 3. Spiral arm star concentration ─────────────────────────────────────
+  // The Star Wars galaxy has four major spiral arms (Perlemian, Corellian Run,
+  // Hydian Way, Rimma/Tingel Arm) following logarithmic spiral paths.
+  const ARM_COUNT  = 4;
+  const ARM_STARS  = 2200;
+  const armPos = new Float32Array(ARM_COUNT * ARM_STARS * 3);
+  const armCol = new Float32Array(ARM_COUNT * ARM_STARS * 3);
+  let ai = 0;
+  for (let arm = 0; arm < ARM_COUNT; arm++) {
+    const offset = (arm / ARM_COUNT) * Math.PI * 2;
+    for (let s = 0; s < ARM_STARS; s++) {
+      const t     = s / ARM_STARS;
+      const theta = offset + t * Math.PI * 2.8;   // ~1.4 full winding
+      const r     = 22 * Math.exp(0.26 * (theta - offset));
+      const scatter = (Math.random() - 0.5) * r * 0.18;
+      const x = (r + scatter) * Math.cos(theta) + (Math.random() - 0.5) * 15;
+      const z = (r + scatter) * Math.sin(theta) + (Math.random() - 0.5) * 15;
+      const y = (Math.random() - 0.5) * 14;
+      if (Math.sqrt(x * x + z * z) > 390) continue;
+      armPos[ai * 3]     = x;
+      armPos[ai * 3 + 1] = y;
+      armPos[ai * 3 + 2] = z;
+      // Warm blue-white; golden tint near core
+      const cf = Math.max(0, 1 - Math.sqrt(x*x + z*z) / 390);
+      armCol[ai * 3]     = 0.72 + cf * 0.28;
+      armCol[ai * 3 + 1] = 0.78 + cf * 0.12;
+      armCol[ai * 3 + 2] = 1.00;
+      ai++;
+    }
+  }
+  if (ai > 0) {
+    const ag = new THREE.BufferGeometry();
+    ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
+    ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
+    scene.add(new THREE.Points(ag,
+      new THREE.PointsMaterial({ size: 1.05, vertexColors: true, transparent: true, opacity: 0.52, sizeAttenuation: true })));
+  }
+
+  // ── 4. Galactic core glow ─────────────────────────────────────────────────
+  // Inner bright nucleus — the bright white-gold centre seen on all official maps
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(7, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0xfff4c8 }),
+  ));
+  // Inner halo
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(28, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0xffe8a0, transparent: true, opacity: 0.18, depthWrite: false }),
+  ));
+  // Mid glow — transitions to cool purple/blue (like the real core bulge)
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(70, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0xb090ff, transparent: true, opacity: 0.055, depthWrite: false }),
+  ));
+  // Outer diffuse glow
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(140, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0x6070cc, transparent: true, opacity: 0.022, depthWrite: false }),
+  ));
+
+  // ── 5. Region boundary rings ──────────────────────────────────────────────
+  // Faint concentric rings on the XZ plane marking galactic region boundaries,
+  // matching the official Star Wars galaxy map style.
+  const RINGS: { r: number; color: number; opacity: number }[] = [
+    { r:  32, color: 0xffd54f, opacity: 0.25 }, // Deep Core edge
+    { r:  90, color: 0x4fc3f7, opacity: 0.18 }, // Core Worlds edge
+    { r: 130, color: 0x81d4fa, opacity: 0.14 }, // Colonies edge
+    { r: 175, color: 0x80cbc4, opacity: 0.12 }, // Inner Rim edge
+    { r: 215, color: 0x80cbc4, opacity: 0.10 }, // Expansion Region edge
+    { r: 265, color: 0xffb74d, opacity: 0.10 }, // Mid Rim edge
+    { r: 335, color: 0xef9a9a, opacity: 0.09 }, // Outer Rim edge
+  ];
+  for (const { r, color, opacity } of RINGS) {
+    const ring = new THREE.Mesh(
+      new THREE.RingGeometry(r - 0.6, r + 0.6, 128),
+      new THREE.MeshBasicMaterial({ color, transparent: true, opacity, side: THREE.DoubleSide, depthWrite: false }),
+    );
+    ring.rotation.x = Math.PI / 2; // lay flat on XZ plane
+    scene.add(ring);
+  }
 }
 
 // ─── Color maps ─────────────────────────────────────────────────────────────
 
+// Colors tuned to match the official Star Wars galaxy map aesthetic:
+// warm golden core → blue Core Worlds → teal Mid Rim → orange Outer Rim → grey Unknown
 const REGION_COLORS: Record<string, string> = {
-  "Core World":        "#4fc3f7",
-  "Deep Core":         "#ffd54f",
-  Colonies:            "#81d4fa",
-  "Inner Rim":         "#a5d6a7",
-  "Expansion Region":  "#80cbc4",
-  "Mid Rim":           "#ffb74d",
-  "Outer Rim":         "#ef9a9a",
-  "Hutt Space":        "#ce93d8",
-  "Wild Space":        "#b0bec5",
-  "Unknown Regions":   "#78909c",
+  "Deep Core":         "#ffe066",   // bright golden — matches the glowing core bulge
+  "Core World":        "#5bc8f5",   // vivid sky-blue
+  Colonies:            "#7ecfea",   // lighter blue
+  "Inner Rim":         "#5dd4b8",   // cyan-teal
+  "Expansion Region":  "#6ec98a",   // sage green
+  "Mid Rim":           "#f0c060",   // amber
+  "Outer Rim":         "#e87040",   // warm orange-red
+  "Hutt Space":        "#c07de0",   // purple
+  "Wild Space":        "#8090a8",   // steel-blue grey
+  "Unknown Regions":   "#4a5568",   // dark slate
 };
 const IMPORTANCE_COLORS: Record<number, string> = {
   1: "#607d8b", 2: "#2196f3", 3: "#4caf50", 4: "#ff9800", 5: "#ff5252",
@@ -504,7 +587,7 @@ export default function GalaxyPage() {
             ref={graphRef}
             graphData={{ nodes, links }}
             width={graphW} height={graphH}
-            backgroundColor="#00001a"
+            backgroundColor="#000010"
             nodeId="id" nodeLabel="name"
             nodeThreeObject={nodeThreeObject}
             nodeThreeObjectExtend={false}
