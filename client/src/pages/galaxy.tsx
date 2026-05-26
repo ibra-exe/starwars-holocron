@@ -140,13 +140,13 @@ function addSpaceBackground(scene: THREE.Scene) {
   // ── 2. Galaxy disc — dense star field in the XZ plane (r = 350–950) ──────
   // This forms the visible spiral galaxy seen OUTSIDE the planet zones,
   // matching the dark-blue swirling galaxy background of the official map.
-  const ARM_COUNT = 4;
+  const BG_ARM_COUNT = 4;
   const BG_STARS  = 3500; // per arm — dense enough to see the spiral shape
-  const bgPos = new Float32Array(ARM_COUNT * BG_STARS * 3);
-  const bgCol = new Float32Array(ARM_COUNT * BG_STARS * 3);
+  const bgPos = new Float32Array(BG_ARM_COUNT * BG_STARS * 3);
+  const bgCol = new Float32Array(BG_ARM_COUNT * BG_STARS * 3);
   let bi = 0;
-  for (let arm = 0; arm < ARM_COUNT; arm++) {
-    const offset = (arm / ARM_COUNT) * Math.PI * 2;
+  for (let arm = 0; arm < BG_ARM_COUNT; arm++) {
+    const offset = (arm / BG_ARM_COUNT) * Math.PI * 2;
     for (let s = 0; s < BG_STARS; s++) {
       const t     = s / BG_STARS;
       // Spiral starts at r≈350 (just outside planet zone) and winds to r≈950
