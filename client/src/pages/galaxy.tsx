@@ -247,15 +247,15 @@ function addSpaceBackground(scene: THREE.Scene) {
   // Four logarithmic spiral arms traced within the planet zone (r < 390).
   // Large bright stars at high opacity so they're clearly visible above the
   // coloured zone fills — this is the primary "galaxy spiral" structure.
-  const ARM_COUNT  = 4;
-  const ARM_STARS  = 4000;
-  const armPos = new Float32Array(ARM_COUNT * ARM_STARS * 3);
-  const armCol = new Float32Array(ARM_COUNT * ARM_STARS * 3);
-  let ai = 0;
-  for (let arm = 0; arm < ARM_COUNT; arm++) {
-    const offset = (arm / ARM_COUNT) * Math.PI * 2;
-    for (let s = 0; s < ARM_STARS; s++) {
-      const t       = s / ARM_STARS;
+  const INNER_ARM_COUNT  = 4;
+  const INNER_ARM_STARS  = 4000;
+  const innerArmPos = new Float32Array(INNER_ARM_COUNT * INNER_ARM_STARS * 3);
+  const innerArmCol = new Float32Array(INNER_ARM_COUNT * INNER_ARM_STARS * 3);
+  let iai = 0;
+  for (let arm = 0; arm < INNER_ARM_COUNT; arm++) {
+    const offset = (arm / INNER_ARM_COUNT) * Math.PI * 2;
+    for (let s = 0; s < INNER_ARM_STARS; s++) {
+      const t       = s / INNER_ARM_STARS;
       const theta   = offset + t * Math.PI * 2.8;
       const r       = 22 * Math.exp(0.26 * (theta - offset));
       const scatter = (Math.random() - 0.5) * r * 0.16;
@@ -263,22 +263,22 @@ function addSpaceBackground(scene: THREE.Scene) {
       const z = (r + scatter) * Math.sin(theta) + (Math.random() - 0.5) * 10;
       const y = (Math.random() - 0.5) * 8; // keep tight to the disc plane
       if (Math.sqrt(x * x + z * z) > 390) continue;
-      armPos[ai * 3]     = x;
-      armPos[ai * 3 + 1] = y;
-      armPos[ai * 3 + 2] = z;
+      innerArmPos[iai * 3]     = x;
+      innerArmPos[iai * 3 + 1] = y;
+      innerArmPos[iai * 3 + 2] = z;
       // Warm golden near the core → bright blue-white toward the rim
       const cf = Math.max(0, 1 - Math.sqrt(x * x + z * z) / 390);
-      armCol[ai * 3]     = 0.85 + cf * 0.15;
-      armCol[ai * 3 + 1] = 0.90 + cf * 0.10;
-      armCol[ai * 3 + 2] = 1.00;
-      ai++;
+      innerArmCol[iai * 3]     = 0.85 + cf * 0.15;
+      innerArmCol[iai * 3 + 1] = 0.90 + cf * 0.10;
+      innerArmCol[iai * 3 + 2] = 1.00;
+      iai++;
     }
   }
-  if (ai > 0) {
-    const ag = new THREE.BufferGeometry();
-    ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
-    ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
-    scene.add(new THREE.Points(ag,
+  if (iai > 0) {
+    const iag = new THREE.BufferGeometry();
+    iag.setAttribute("position", new THREE.BufferAttribute(innerArmPos.slice(0, iai * 3), 3));
+    iag.setAttribute("color",    new THREE.BufferAttribute(innerArmCol.slice(0, iai * 3), 3));
+    scene.add(new THREE.Points(iag,
       new THREE.PointsMaterial({ size: 2.2, vertexColors: true, transparent: true, opacity: 0.82, sizeAttenuation: true })));
   }
 
