@@ -225,6 +225,7 @@ export default function GalaxyPage() {
   const graphRef     = useRef<any>(null);
   const bgAddedRef   = useRef(false);
   const wasFarRef    = useRef(false);
+  const distDisplayRef = useRef<HTMLSpanElement>(null);
   const [graphW, setGraphW] = useState(0);
   const [graphH, setGraphH] = useState(0);
 
@@ -271,6 +272,10 @@ export default function GalaxyPage() {
       const cam = graphRef.current?.camera?.();
       if (cam) {
         const dist = cam.position.length();
+        // Update the HUD counter without triggering a React re-render
+        if (distDisplayRef.current) {
+          distDisplayRef.current.textContent = Math.round(dist).toString();
+        }
         if (!wasFarRef.current && dist > FAR_SHOW_DIST) {
           wasFarRef.current = true;
           setIsFarOut(true);
@@ -518,6 +523,22 @@ export default function GalaxyPage() {
         {/* Zoom-in hint */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-full border border-border bg-black/60 backdrop-blur-sm text-[10px] font-display uppercase tracking-widest text-muted-foreground pointer-events-none select-none">
           Zoom in on a planet to see its surface
+        </div>
+
+        {/* Camera distance HUD — useful for tuning the easter-egg thresholds */}
+        <div className="absolute top-3 right-3 z-10 flex flex-col items-end gap-0.5 pointer-events-none select-none">
+          <div className="px-2.5 py-1 rounded-md border border-border/60 bg-black/55 backdrop-blur-sm">
+            <span className="font-mono text-[11px] text-muted-foreground/70 tracking-wider">
+              dist{" "}
+            </span>
+            <span ref={distDisplayRef} className="font-mono text-[13px] text-primary/80 tabular-nums">
+              —
+            </span>
+            <span className="font-mono text-[10px] text-muted-foreground/50 tracking-wider"> u</span>
+          </div>
+          <div className="px-2 py-0.5 rounded-sm bg-black/40 text-[9px] font-mono text-muted-foreground/40 tracking-wider">
+            easter egg @ {FAR_SHOW_DIST} u
+          </div>
         </div>
 
         {/* Legend */}
