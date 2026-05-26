@@ -342,8 +342,9 @@ function getNodeColor(id: string, mode: ColorMode): string {
   return "#888";
 }
 
-const PLANET_IDS = new Set(PLANETS.map((p) => p.id));
-const LOD_THRESHOLD = 180; // switch to texture below this camera-distance
+const PLANET_IDS    = new Set(PLANETS.map((p) => p.id));
+const LOD_TEXTURE   = 180; // below this distance → show texture sphere
+const LOD_LABEL     = 350; // below this distance → show floating name label
 
 // ─── Text label sprites ───────────────────────────────────────────────────────
 // Canvas-rendered text sprites that float next to each planet in the close-up
@@ -499,12 +500,14 @@ export default function GalaxyPage() {
     if (!gpos) return;
     const [gx, gz] = gpos;
     const gy = galaxyY(id, gx, gz);
+    // Zoom close enough to trigger the texture LOD (< LOD_TEXTURE = 180)
+    // Distance here ≈ sqrt(35² + 65²) ≈ 73 units — clearly shows the texture.
+    // Drawer stays closed; user can click the planet to open it.
     graphRef.current?.cameraPosition?.(
-      { x: gx, y: gy + 70, z: gz + 130 },
-      { x: gx, y: gy,      z: gz       },
+      { x: gx, y: gy + 35, z: gz + 65 },
+      { x: gx, y: gy,      z: gz      },
       1200,
     );
-    // Don't auto-open the drawer — let the user click the planet themselves
   };
 
   const links = useMemo<GLink[]>(() => {
@@ -566,11 +569,9 @@ export default function GalaxyPage() {
     const url = node.imageUrl as string | undefined;
     const lod = new THREE.LOD();
 
-    // ── Close-up level (camera < LOD_THRESHOLD) ───────────────────────────
+    // ── Level 0: close-up (camera < LOD_TEXTURE) — textured sphere + label ─
     const closeGroup = new THREE.Group();
     if (url) {
-      // Textured sphere — kept as a sphere per user preference.
-      // Texture quality improvements (equirectangular maps, etc.) are a future task.
       closeGroup.add(new THREE.Mesh(
         new THREE.SphereGeometry(r * 1.5, 32, 32),
         new THREE.MeshBasicMaterial({
@@ -585,23 +586,37 @@ export default function GalaxyPage() {
         new THREE.MeshBasicMaterial({ color: col, transparent: !highlighted, opacity: highlighted ? 1 : 0.15 }),
       ));
     }
-    // Floating name label — only visible in close-up
     closeGroup.add(makeTextSprite(node.name as string, node.color as string, r));
     lod.addLevel(closeGroup, 0);
 
-    // ── Far level (camera ≥ LOD_THRESHOLD) — coloured glow dot ───────────
-    const far = new THREE.Group();
-    far.add(new THREE.Mesh(
+    // ── Level 1: medium zoom (LOD_TEXTURE ≤ camera < LOD_LABEL) — glow + label
+    const midGroup = new THREE.Group();
+    midGroup.add(new THREE.Mesh(
       new THREE.SphereGeometry(r, 14, 14),
       new THREE.MeshBasicMaterial({ color: col, transparent: !highlighted, opacity: highlighted ? 1 : 0.12 }),
     ));
     if (highlighted) {
-      far.add(new THREE.Mesh(
+      midGroup.add(new THREE.Mesh(
         new THREE.SphereGeometry(r * 2.6, 14, 14),
         new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.07, depthWrite: false }),
       ));
     }
-    lod.addLevel(far, LOD_THRESHOLD);
+    midGroup.add(makeTextSprite(node.name as string, node.color as string, r));
+    lod.addLevel(midGroup, LOD_TEXTURE);
+
+    // ── Level 2: far out (camera ≥ LOD_LABEL) — glow dot only, no label ──
+    const farGroup = new THREE.Group();
+    farGroup.add(new THREE.Mesh(
+      new THREE.SphereGeometry(r, 14, 14),
+      new THREE.MeshBasicMaterial({ color: col, transparent: !highlighted, opacity: highlighted ? 1 : 0.12 }),
+    ));
+    if (highlighted) {
+      farGroup.add(new THREE.Mesh(
+        new THREE.SphereGeometry(r * 2.6, 14, 14),
+        new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.07, depthWrite: false }),
+      ));
+    }
+    lod.addLevel(farGroup, LOD_LABEL);
     return lod;
   };
 
