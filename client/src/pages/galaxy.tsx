@@ -133,13 +133,15 @@ function getDotTexture(): THREE.Texture {
 // ─── Space background ────────────────────────────────────────────────────────
 
 function addSpaceBackground(scene: THREE.Scene) {
-  // ── 1. Deep-space star field (spherical shell far from the galaxy) ────────
+  // ── 1. Environment stars — unchanged from original ────────────────────────
+  // Spherical shell of 9,000 stars surrounding the entire scene.
+  // These are the "space" backdrop and should not be modified.
   const PALETTE: [number, number, number][] = [
     [1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0],
     [0.75, 0.85, 1.0], [0.75, 0.85, 1.0],
     [1.0, 0.95, 0.78], [1.0, 0.80, 0.65], [0.55, 0.65, 1.0],
   ];
-  const N = 12000;
+  const N = 9000;
   const sp = new Float32Array(N * 3), sc = new Float32Array(N * 3);
   for (let i = 0; i < N; i++) {
     const th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
@@ -154,67 +156,55 @@ function addSpaceBackground(scene: THREE.Scene) {
   sg.setAttribute("position", new THREE.BufferAttribute(sp, 3));
   sg.setAttribute("color",    new THREE.BufferAttribute(sc, 3));
   scene.add(new THREE.Points(sg,
-    new THREE.PointsMaterial({ size: 2.0, vertexColors: true, transparent: true, opacity: 0.9, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+    new THREE.PointsMaterial({ size: 1.9, vertexColors: true, transparent: true, opacity: 0.88, sizeAttenuation: true })));
 
-  // ── 2. Galaxy disc — dense star field in the XZ plane (r = 350–950) ──────
-  // This forms the visible spiral galaxy seen OUTSIDE the planet zones,
-  // matching the dark-blue swirling galaxy background of the official map.
-  const BG_ARM_COUNT = 4;
-  const BG_STARS  = 3500; // per arm — dense enough to see the spiral shape
-  const bgPos = new Float32Array(BG_ARM_COUNT * BG_STARS * 3);
-  const bgCol = new Float32Array(BG_ARM_COUNT * BG_STARS * 3);
-  let bi = 0;
-  for (let arm = 0; arm < BG_ARM_COUNT; arm++) {
-    const offset = (arm / BG_ARM_COUNT) * Math.PI * 2;
-    for (let s = 0; s < BG_STARS; s++) {
-      const t     = s / BG_STARS;
-      // Spiral starts at r≈350 (just outside planet zone) and winds to r≈950
+  // ── 2. Milky Way background band — unchanged from original ────────────────
+  // Disc-shaped band of 5,000 stars at r=1350–1800, in the XZ plane,
+  // giving the galaxy a "you're inside the Milky Way" halo effect.
+  const M = 5000, mp = new Float32Array(M * 3);
+  for (let i = 0; i < M; i++) {
+    const th = Math.random() * Math.PI * 2, r = 1350 + Math.random() * 450;
+    mp[i*3]   = r * Math.cos(th);
+    mp[i*3+1] = (Math.random() - 0.5) * r * 0.38;
+    mp[i*3+2] = r * Math.sin(th);
+  }
+  const mg = new THREE.BufferGeometry();
+  mg.setAttribute("position", new THREE.BufferAttribute(mp, 3));
+  scene.add(new THREE.Points(mg,
+    new THREE.PointsMaterial({ color: 0xccddf8, size: 1.1, transparent: true, opacity: 0.35, sizeAttenuation: true })));
+
+  // ── 3. Spiral arm stars — new, kept separate from environment stars ────────
+  // Blue spiral arms wrapping outside the planet zone (r = 350–950).
+  // Defined independently so they don't affect the background starfield.
+  const ARM_COUNT = 4;
+  const ARM_STARS = 3500;
+  const armPos = new Float32Array(ARM_COUNT * ARM_STARS * 3);
+  const armCol = new Float32Array(ARM_COUNT * ARM_STARS * 3);
+  let ai = 0;
+  for (let arm = 0; arm < ARM_COUNT; arm++) {
+    const offset = (arm / ARM_COUNT) * Math.PI * 2;
+    for (let s = 0; s < ARM_STARS; s++) {
+      const t     = s / ARM_STARS;
       const theta = offset + t * Math.PI * 3.5;
       const r     = 350 + t * 600;
       const scatter = (Math.random() - 0.5) * r * 0.22;
       const x = (r + scatter) * Math.cos(theta) + (Math.random() - 0.5) * 30;
       const z = (r + scatter) * Math.sin(theta) + (Math.random() - 0.5) * 30;
-      const y = (Math.random() - 0.5) * r * 0.08; // thin disc
-      bgPos[bi * 3]     = x;
-      bgPos[bi * 3 + 1] = y;
-      bgPos[bi * 3 + 2] = z;
-      // Deep blue — the dark teal/blue of spiral arms in the official map
-      bgCol[bi * 3]     = 0.25 + Math.random() * 0.20;
-      bgCol[bi * 3 + 1] = 0.45 + Math.random() * 0.30;
-      bgCol[bi * 3 + 2] = 0.80 + Math.random() * 0.20;
-      bi++;
+      const y = (Math.random() - 0.5) * r * 0.08;
+      armPos[ai * 3]     = x;
+      armPos[ai * 3 + 1] = y;
+      armPos[ai * 3 + 2] = z;
+      armCol[ai * 3]     = 0.25 + Math.random() * 0.20;
+      armCol[ai * 3 + 1] = 0.45 + Math.random() * 0.30;
+      armCol[ai * 3 + 2] = 0.80 + Math.random() * 0.20;
+      ai++;
     }
   }
-  const bg = new THREE.BufferGeometry();
-  bg.setAttribute("position", new THREE.BufferAttribute(bgPos.slice(0, bi * 3), 3));
-  bg.setAttribute("color",    new THREE.BufferAttribute(bgCol.slice(0, bi * 3), 3));
-  scene.add(new THREE.Points(bg,
-    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.70, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
-
-  // ── 3. Inner galaxy — denser star concentration inside the planet zone ────
-  const IN_STARS = 4000;
-  const inPos = new Float32Array(IN_STARS * 3);
-  const inCol = new Float32Array(IN_STARS * 3);
-  for (let i = 0; i < IN_STARS; i++) {
-    const th = Math.random() * Math.PI * 2;
-    const r  = Math.sqrt(Math.random()) * 350; // uniform in disc
-    const x  = r * Math.cos(th) + (Math.random() - 0.5) * 10;
-    const z  = r * Math.sin(th) + (Math.random() - 0.5) * 10;
-    const y  = (Math.random() - 0.5) * Math.max(6, r * 0.05);
-    inPos[i * 3]     = x;
-    inPos[i * 3 + 1] = y;
-    inPos[i * 3 + 2] = z;
-    // Warm golden near core → cool blue-white toward edge
-    const cf = Math.max(0, 1 - r / 350);
-    inCol[i * 3]     = 0.80 + cf * 0.20;
-    inCol[i * 3 + 1] = 0.75 + cf * 0.15;
-    inCol[i * 3 + 2] = 0.60 + (1 - cf) * 0.40;
-  }
-  const ig = new THREE.BufferGeometry();
-  ig.setAttribute("position", new THREE.BufferAttribute(inPos, 3));
-  ig.setAttribute("color",    new THREE.BufferAttribute(inCol, 3));
-  scene.add(new THREE.Points(ig,
-    new THREE.PointsMaterial({ size: 0.9, vertexColors: true, transparent: true, opacity: 0.55, sizeAttenuation: true, map: getDotTexture(), alphaTest: 0.02 })));
+  const ag = new THREE.BufferGeometry();
+  ag.setAttribute("position", new THREE.BufferAttribute(armPos.slice(0, ai * 3), 3));
+  ag.setAttribute("color",    new THREE.BufferAttribute(armCol.slice(0, ai * 3), 3));
+  scene.add(new THREE.Points(ag,
+    new THREE.PointsMaterial({ size: 1.8, vertexColors: true, transparent: true, opacity: 0.70, sizeAttenuation: true })));
 
   // ── 4. Galactic region zone fills ────────────────────────────────────────
   // Solid colored concentric bands on the XZ plane, matching the official
